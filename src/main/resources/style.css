@@ -21,3 +21,6 @@
 .buttonRegistration{
 -fx-background-color: rgba(238, 223, 223, 0.00);
 }
+.Input{
+-fx-background-image: url(input.png);
+}

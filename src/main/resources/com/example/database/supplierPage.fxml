@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,23 +11,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.SupplierPageController">
    <children>
-      <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@style.css">
+      <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@../../../style.css">
          <children>
             <Pane prefHeight="667.0" prefWidth="206.0" style="-fx-background-color: D9D9D9;">
                <children>
                   <Pane layoutY="112.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: A59B9B;" />
                   <Pane layoutY="176.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Label layoutX="54.0" layoutY="5.0" text="Номенклатура" textFill="WHITE">
+                        <Button fx:id="id_nomenclature" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </Pane>
-                  <Pane layoutY="220.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                  <Pane layoutY="220.0" prefHeight="29.0" prefWidth="215.0" style="-fx-background-color: #312828;">
                      <children>
                         <Label layoutX="65.0" layoutY="4.0" text="Поставщик" textFill="WHITE">
                            <font>
@@ -35,13 +36,13 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutY="262.0" prefHeight="29.0" prefWidth="215.0" style="-fx-background-color: #312828;">
+                  <Pane layoutY="262.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Label layoutX="72.0" layoutY="5.0" text="Поставка" textFill="WHITE">
+                        <Button fx:id="id_supply" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставка" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </Pane>
                   <Label layoutX="70.0" layoutY="56.0" text="Список" textFill="#803e3e">
@@ -51,62 +52,62 @@
                   </Label>
                   <Pane layoutY="305.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Label layoutX="72.0" layoutY="5.0" text="Продажа" textFill="WHITE">
+                        <Button fx:id="id_sale" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </Pane>
                   <Pane layoutY="346.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Label layoutX="76.0" layoutY="6.0" text="Склад" textFill="WHITE">
+                        <Button fx:id="id_warehouse" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </Pane>
                   <Pane layoutY="386.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Label layoutX="35.0" layoutY="5.0" text="Единица измерения" textFill="WHITE">
+                        <Button fx:id="id_unitOfMeasurement" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Единица измерения" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </Pane>
                </children>
             </Pane>
             <Pane layoutX="222.0" layoutY="17.0" prefHeight="632.0" prefWidth="932.0" style="-fx-background-color: D9D9D9;">
                <children>
-                  <TextField layoutX="705.0" layoutY="30.0" prefHeight="25.0" prefWidth="193.0" text="Поиск">
+                  <TextField fx:id="id_search" layoutX="705.0" layoutY="30.0" prefHeight="25.0" prefWidth="193.0" text="Поиск">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="id_add" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@input.png" />
+                        <Image url="@../../../input.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="id_edit" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@output.png" />
+                        <Image url="@../../../output.png" />
                      </image>
                   </ImageView>
-                  <TableView layoutX="20.0" layoutY="14.0" prefHeight="590.0" prefWidth="680.0">
+                  <TableView fx:id="id_tableSupplier" layoutX="20.0" layoutY="14.0" prefHeight="590.0" prefWidth="680.0">
                     <columns>
-                      <TableColumn text="ID" />
-                      <TableColumn prefWidth="175.0" text="Номер накладной" />
-                        <TableColumn prefWidth="181.0" text="Дата поставки" />
-                        <TableColumn prefWidth="131.0" text="Склад" />
-                        <TableColumn prefWidth="111.0" text="Поставщик" />
+                      <TableColumn fx:id="id_columnID" text="ID" />
+                      <TableColumn fx:id="id_columnName" prefWidth="181.0" text="Наименование" />
+                        <TableColumn fx:id="id_columnPhoneNumber" prefWidth="185.0" text="Номер телефона" />
+                        <TableColumn fx:id="id_columnINN" prefWidth="114.0" text="ИНН" />
+                        <TableColumn fx:id="id_columnKPP" prefWidth="118.0" text="КПП" />
                     </columns>
                   </TableView>
-                  <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="856.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="id_delete" fitHeight="31.0" fitWidth="35.0" layoutX="856.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@delete.png" />
+                        <Image url="@../../../delete.png" />
                      </image>
                   </ImageView>
                </children>

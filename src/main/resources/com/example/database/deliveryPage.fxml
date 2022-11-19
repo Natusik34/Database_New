@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.DeliveryPageController">
+   <children>
+      <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@../../../style.css">
+         <children>
+            <Pane prefHeight="667.0" prefWidth="206.0" style="-fx-background-color: D9D9D9;">
+               <children>
+                  <Pane layoutY="112.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: A59B9B;" />
+                  <Pane layoutY="176.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Button fx:id="id_nomenclature" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="220.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Button fx:id="id_supplier" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставщик" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="262.0" prefHeight="29.0" prefWidth="215.0" style="-fx-background-color: #312828;">
+                     <children>
+                        <Label layoutX="72.0" layoutY="4.0" text="Поставка" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="70.0" layoutY="56.0" text="Список" textFill="#803e3e">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutY="305.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Button fx:id="id_sale" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="346.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Button fx:id="id_warehouse" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="386.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Button fx:id="id_unitOfMeasurement" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Единица измерения" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="222.0" layoutY="17.0" prefHeight="632.0" prefWidth="932.0" style="-fx-background-color: D9D9D9;">
+               <children>
+                  <TextField fx:id="id_search" layoutX="705.0" layoutY="30.0" prefHeight="25.0" prefWidth="193.0" text="Поиск">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="id_add" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../input.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="id_edit" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../output.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="id_tableDelivery" layoutX="20.0" layoutY="14.0" prefHeight="590.0" prefWidth="680.0">
+                    <columns>
+                      <TableColumn fx:id="id_columnID" text="ID" />
+                      <TableColumn fx:id="id_columnInvoiceNumber" prefWidth="175.0" text="Номер накладной" />
+                        <TableColumn fx:id="id_columnDeliveryDate" prefWidth="181.0" text="Дата поставки" />
+                        <TableColumn fx:id="id_columnWarehouse" prefWidth="131.0" text="Склад" />
+                        <TableColumn fx:id="id_columnSupplier" prefWidth="111.0" text="Поставщик" />
+                    </columns>
+                  </TableView>
+                  <ImageView fx:id="id_delete" fitHeight="31.0" fitWidth="35.0" layoutX="856.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../delete.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>
