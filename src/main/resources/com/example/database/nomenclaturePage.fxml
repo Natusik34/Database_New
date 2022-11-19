@@ -86,9 +86,9 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="id_add" accessibleRole="BUTTON" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="id_add" accessibleRole="BUTTON" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="76.0" onMouseClicked="#initialize" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../input.png" />
+                        <Image url="@input.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="id_edit" accessibleRole="BUTTON" fitHeight="35.0" fitWidth="41.0" layoutX="854.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
@@ -108,6 +108,7 @@
                         <Image url="@../../../delete.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="id_buttonInput" layoutX="626.0" layoutY="199.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="41.0" styleClass="Input" stylesheets="@../../../style.css" />
                </children>
             </Pane>
          </children></Pane>

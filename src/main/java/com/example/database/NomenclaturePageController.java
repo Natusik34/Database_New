@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -60,6 +61,10 @@ public class NomenclaturePageController {
 
     @FXML
     private Button id_warehouse;
+
+    @FXML
+    private Button id_buttonInput;
+
 
     @FXML
     void initialize() {
@@ -157,6 +162,15 @@ public class NomenclaturePageController {
             stage.showAndWait();
 
         });
+
+        //ImageView id_add = new ImageView(new Image("input.png"));
+        //id_add.setOnAc
+
+        //id_buttonInput = new ImageView("input.png");
+
+        //id_add.getScene()
+
+        //id_buttonInput.get
 
 
 
