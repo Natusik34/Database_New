@@ -1,0 +1,20 @@
+.background{
+    -fx-background-image: url(fon.jpg);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1206 704 ;
+    -fx-background-position: center center;
+}
+.pane{
+    -fx-background-color: rgba(238, 223, 223, 0.70);
+    //-fx-border-color: EEDFDF;
+    //-fx-background-insets: 0, 0 1 1 0;
+    -fx-border-radius: 20;
+        -fx-background-radius: 20;
+}
+.inputText{
+-fx-border-radius: 5;
+        -fx-background-radius: 20;
+}
+.paneWorkPage{
+-fx-background-color: rgba(238, 223, 223, 0.70);
+}

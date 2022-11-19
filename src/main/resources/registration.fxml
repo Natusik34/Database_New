@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="300.0" layoutY="103.0" prefHeight="504.0" prefWidth="607.0" styleClass="pane" stylesheets="@style.css">
+         <children>
+            <Label layoutX="230.0" layoutY="40.0" text="Регистрация" textFill="#803e3e">
+               <font>
+                  <Font size="25.0" />
+               </font></Label>
+            <Label layoutX="279.0" layoutY="88.0" text="почта" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="235.0" layoutY="150.0" text="код подтверждения" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="278.0" layoutY="218.0" text="логин" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="273.0" layoutY="285.0" text="пароль" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="230.0" layoutY="351.0" text="повторите пароль" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Button layoutX="211.0" layoutY="431.0" mnemonicParsing="false" text="Зарегистрироваться" textFill="#803e3e">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button layoutX="430.0" layoutY="114.0" mnemonicParsing="false" text="отправить код" textFill="#803e3e" />
+            <TextField layoutX="180.0" layoutY="114.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@style.css" />
+            <TextField layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@style.css" />
+            <TextField layoutX="180.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@style.css" />
+            <TextField layoutX="180.0" layoutY="311.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@style.css" />
+            <TextField layoutX="182.0" layoutY="377.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@style.css" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

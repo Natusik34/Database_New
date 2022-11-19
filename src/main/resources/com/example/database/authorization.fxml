@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.AuthorizationController">
+   <children>
+      <Pane layoutX="436.0" layoutY="206.0" prefHeight="330.0" prefWidth="334.0" styleClass="pane" stylesheets="@../../../style.css">
+         <children>
+            <Label layoutX="92.0" layoutY="32.0" text="Авторизация" textFill="#803e3e">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="139.0" layoutY="85.0" text="логин" textFill="#8f5858">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="134.0" layoutY="159.0" text="пароль" textFill="#8f5858">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="id_login" layoutX="58.0" layoutY="124.0" prefHeight="25.0" prefWidth="221.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <TextField fx:id="id_password" layoutX="58.0" layoutY="196.0" prefHeight="25.0" prefWidth="221.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <Button fx:id="id_entrance" layoutX="108.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Вход" textFill="#8f5858">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="id_registration" layoutX="126.0" layoutY="302.0" text="Регистрация" textFill="#8f5858">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@style.css">
+         <children>
+            <Pane prefHeight="667.0" prefWidth="206.0" style="-fx-background-color: D9D9D9;">
+               <children>
+                  <Pane layoutY="112.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: A59B9B;" />
+                  <Pane layoutY="176.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="54.0" layoutY="5.0" text="Номенклатура" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="220.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="65.0" layoutY="4.0" text="Поставщик" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="262.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="72.0" layoutY="5.0" text="Поставка" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="70.0" layoutY="56.0" text="Список" textFill="#803e3e">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutY="305.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="72.0" layoutY="5.0" text="Продажа" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="346.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="76.0" layoutY="6.0" text="Склад" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="386.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
+                     <children>
+                        <Label layoutX="35.0" layoutY="5.0" text="Единица измерения" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>
