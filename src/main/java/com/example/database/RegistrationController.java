@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AuthorizationController {
+public class RegistrationController {
 
     @FXML
     private ResourceBundle resources;
@@ -15,7 +15,10 @@ public class AuthorizationController {
     private URL location;
 
     @FXML
-    private Button id_entrance;
+    private TextField id_confirmationCode;
+
+    @FXML
+    private TextField id_email;
 
     @FXML
     private TextField id_login;
@@ -24,13 +27,17 @@ public class AuthorizationController {
     private TextField id_password;
 
     @FXML
-    private Button id_registration;
+    private Button id_register;
+
+    @FXML
+    private TextField id_repeatPassword;
+
+    @FXML
+    private Button id_sendCode;
 
     @FXML
     void initialize() {
-        id_registration.setOnAction(event -> {
 
-        });
 
     }
 

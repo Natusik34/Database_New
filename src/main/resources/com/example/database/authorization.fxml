@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.AuthorizationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.AuthorizationController">
    <children>
       <Pane layoutX="436.0" layoutY="206.0" prefHeight="330.0" prefWidth="334.0" styleClass="pane" stylesheets="@../../../style.css">
          <children>
@@ -33,11 +33,11 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Label fx:id="id_registration" layoutX="126.0" layoutY="302.0" text="Регистрация" textFill="#8f5858">
+            <Button fx:id="id_registration" layoutX="116.0" layoutY="292.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Регистрация" textFill="#8f5858">
                <font>
                   <Font size="15.0" />
                </font>
-            </Label>
+            </Button>
          </children>
       </Pane>
    </children>
