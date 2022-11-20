@@ -24,6 +24,21 @@
 .Input{
 -fx-background-image: url(input.png);
 -fx-background-repeat: no-repeat;
-    -fx-background-size: 41 35 ;
+    -fx-background-size: 35 35 ;
     -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
+.Output{
+-fx-background-image: url(output.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 35 35 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
+.Delete{
+-fx-background-image: url(delete.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 31 31 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
 }

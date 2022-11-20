@@ -24,7 +24,13 @@ public class NomenclaturePageController {
     private URL location;
 
     @FXML
-    private ImageView id_add;
+    private Button id_buttonDelete;
+
+    @FXML
+    private Button id_buttonInput;
+
+    @FXML
+    private Button id_buttonOutput;
 
     @FXML
     private TableColumn<?, ?> id_columName;
@@ -34,12 +40,6 @@ public class NomenclaturePageController {
 
     @FXML
     private TableColumn<?, ?> id_columnID;
-
-    @FXML
-    private ImageView id_delete;
-
-    @FXML
-    private ImageView id_edit;
 
     @FXML
     private Button id_sale;
@@ -61,10 +61,6 @@ public class NomenclaturePageController {
 
     @FXML
     private Button id_warehouse;
-
-    @FXML
-    private Button id_buttonInput;
-
 
     @FXML
     void initialize() {
@@ -162,18 +158,6 @@ public class NomenclaturePageController {
             stage.showAndWait();
 
         });
-
-        //ImageView id_add = new ImageView(new Image("input.png"));
-        //id_add.setOnAc
-
-        //id_buttonInput = new ImageView("input.png");
-
-        //id_add.getScene()
-
-        //id_buttonInput.get
-
-
-
 
     }
 

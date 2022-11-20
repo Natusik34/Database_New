@@ -23,7 +23,13 @@ public class DeliveryPageController {
     private URL location;
 
     @FXML
-    private ImageView id_add;
+    private Button id_buttonDelete;
+
+    @FXML
+    private Button id_buttonInput;
+
+    @FXML
+    private Button id_buttonOutput;
 
     @FXML
     private TableColumn<?, ?> id_columnDeliveryDate;
@@ -39,12 +45,6 @@ public class DeliveryPageController {
 
     @FXML
     private TableColumn<?, ?> id_columnWarehouse;
-
-    @FXML
-    private ImageView id_delete;
-
-    @FXML
-    private ImageView id_edit;
 
     @FXML
     private Button id_nomenclature;
