@@ -2,21 +2,26 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 
 public class UnitOfMeasurementPageController {
 
@@ -36,12 +41,6 @@ public class UnitOfMeasurementPageController {
     private Button id_buttonOutput;
 
     @FXML
-    private TableColumn<?, ?> id_columnID;
-
-    @FXML
-    private TableColumn<?, ?> id_columnName;
-
-    @FXML
     private Button id_nomenclature;
 
     @FXML
@@ -57,13 +56,50 @@ public class UnitOfMeasurementPageController {
     private Button id_supply;
 
     @FXML
-    private TableView<?> id_tableUnitOfMeasurement;
+    private TableView id_tableUnitOfMeasurement;
 
     @FXML
     private Button id_warehouse;
 
+    private ObservableList<ObservableList> data;
+
     @FXML
-    void initialize() {
+    protected void initialize() {
+
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from izmerenie");
+            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableUnitOfMeasurement.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableUnitOfMeasurement.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        /////
         id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
@@ -161,6 +197,8 @@ public class UnitOfMeasurementPageController {
 
 
     }
+
+
 
     public void showAdd(ActionEvent actionEvent) {
         try{

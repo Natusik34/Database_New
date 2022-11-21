@@ -1,28 +1,50 @@
 package com.example.database;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBConnection {
 
-    public static Connection DBConnection (String username, String password, String jdbcURL) {
-       // String jdbcURL = "jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka";
-       // String username = "Vasiltsova";
-       // String password = "Vasiltsova";
+    public Connection connection = null;
+    public String jdbcURL = "jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka";
+    public String username;
+    public String password;
+    //String username = "Vasiltsova";
+    //String password = "Vasiltsova";
+
+    public void Connection() throws IOException, SQLException {
+
         //com.example.database.DBConnection con1 = new com.example.database.DBConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova","Vasiltsova");
 
         try{
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            //Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            connection = DriverManager.getConnection(jdbcURL, "Vasiltsova", "Vasiltsova");
             System.out.println("Connected");
-            return connection;
+            //return connection;
 
         } catch (SQLException e){
             System.out.println("Error in connection");
             e.printStackTrace();
-            return null;
+            //return null;
         }
     }
+
+    public ResultSet gettable(String sql){
+        try{
+            //sql = "Select * from izmerenie";
+            //Connection connection;
+            ResultSet rs = connection.createStatement().executeQuery(sql);
+            return rs;
+        }
+        catch (Exception e){
+            return null;
+        }
+
+    }
+
     //добавление
     /*
     public static void Insert() {
@@ -234,6 +256,8 @@ public class DBConnection {
         }
 */
     }
+
+
 
     //изменение
 //int ro = statement.executeUpdate("UPDATE izmerenie SET naimenovanie");
