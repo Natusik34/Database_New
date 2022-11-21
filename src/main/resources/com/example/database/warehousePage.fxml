@@ -90,8 +90,8 @@
                       <TableColumn fx:id="id_columnName" prefWidth="482.0" text="Наименование" />
                     </columns>
                   </TableView>
-                  <Button fx:id="id_buttonInput" layoutX="851.0" layoutY="76.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="41.0" styleClass="Input" stylesheets="@../../../style.css" />
-                  <Button fx:id="id_buttonOutput" layoutX="851.0" layoutY="123.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="41.0" styleClass="Output" stylesheets="@../../../style.css" />
+                  <Button fx:id="id_buttonInput" layoutX="851.0" layoutY="76.0" mnemonicParsing="false" onAction="#showAdd" prefHeight="35.0" prefWidth="41.0" styleClass="Input" stylesheets="@../../../style.css" />
+                  <Button fx:id="id_buttonOutput" layoutX="851.0" layoutY="123.0" mnemonicParsing="false" onAction="#showEdit" prefHeight="35.0" prefWidth="41.0" styleClass="Output" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonDelete" layoutX="851.0" layoutY="172.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="41.0" styleClass="Delete" stylesheets="@../../../style.css" />
                </children>
             </Pane>

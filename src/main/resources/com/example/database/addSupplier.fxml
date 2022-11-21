@@ -25,12 +25,7 @@
          </font>
       </Label>
       <TextField layoutX="248.0" layoutY="121.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button layoutX="181.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" text="Добавить">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="346.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" text="Отмена">
+      <Button layoutX="264.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" text="Добавить">
          <font>
             <Font size="15.0" />
          </font>

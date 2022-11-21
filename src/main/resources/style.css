@@ -42,3 +42,24 @@
     -fx-background-position: center center;
     -fx-background-color: rgba(238, 223, 223, 0.00);
 }
+.InputTable{
+-fx-background-image: url(input.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 30 30 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
+.OutputTable{
+-fx-background-image: url(output.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 30 30 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
+.DeleteTable{
+-fx-background-image: url(delete.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 25 25 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
