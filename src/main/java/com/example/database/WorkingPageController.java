@@ -3,6 +3,8 @@ package com.example.database;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,6 +40,12 @@ public class WorkingPageController {
 
     @FXML
     void initialize() {
+        /*try {
+            ButtonNomenclature();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
         id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
@@ -154,5 +162,13 @@ public class WorkingPageController {
 
 
     }
+    /*
+    @FXML
+    protected void ButtonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        Stage stage = (Stage) id_nomenclature.getScene().getWindow();
+        stage.setScene(new Scene(root));
+    }*/
+
 
 }

@@ -2,8 +2,14 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class NomenclaturePageController {
 
@@ -37,15 +44,6 @@ public class NomenclaturePageController {
     private Button id_buttonOutput;
 
     @FXML
-    private TableColumn<?, ?> id_columName;
-
-    @FXML
-    private TableColumn<?, ?> id_columUnitOfMeasurement;
-
-    @FXML
-    private TableColumn<?, ?> id_columnID;
-
-    @FXML
     private Button id_sale;
 
     @FXML
@@ -58,7 +56,7 @@ public class NomenclaturePageController {
     private Button id_supply;
 
     @FXML
-    private TableView<?> id_tableNomenclature;
+    private TableView id_tableNomenclature;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -66,8 +64,48 @@ public class NomenclaturePageController {
     @FXML
     private Button id_warehouse;
 
+    private ObservableList<ObservableList> data;
+
     @FXML
-    void initialize() {
+    protected void initialize() {
+
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from nomenklatyra");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableNomenclature.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableNomenclature.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+        ////////////////////
         id_supplier.setOnAction(event -> {
             id_supplier.getScene().getWindow().hide();
 

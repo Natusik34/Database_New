@@ -71,7 +71,7 @@ public class UnitOfMeasurementPageController {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from izmerenie");
-            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
                 col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
@@ -213,6 +213,15 @@ public class UnitOfMeasurementPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Object source = actionEvent.getSource();
+        //если нажата не кнопка - выходим из метода
+        if(!(source instanceof Button)){
+            return;
+        }
+
+        Button clickedButton = (Button) source;
+
     }
 
     public void showEdit(ActionEvent actionEvent) {
@@ -228,6 +237,9 @@ public class UnitOfMeasurementPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showDelete(ActionEvent actionEvent) {
     }
 }
 

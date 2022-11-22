@@ -35,7 +35,6 @@ public class DBConnection {
     public ResultSet gettable(String sql){
         try{
             //sql = "Select * from izmerenie";
-            //Connection connection;
             ResultSet rs = connection.createStatement().executeQuery(sql);
             return rs;
         }

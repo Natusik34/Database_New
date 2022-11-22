@@ -2,8 +2,14 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class WarehoursePageController {
 
@@ -36,12 +43,6 @@ public class WarehoursePageController {
     private Button id_buttonOutput;
 
     @FXML
-    private TableColumn<?, ?> id_columnID;
-
-    @FXML
-    private TableColumn<?, ?> id_columnName;
-
-    @FXML
     private Button id_nomenclature;
 
     @FXML
@@ -57,13 +58,54 @@ public class WarehoursePageController {
     private Button id_supply;
 
     @FXML
-    private TableView<?> id_tableWarehouse;
+    private TableView id_tableWarehouse;
 
     @FXML
     private Button id_unitOfMeasurement;
 
+    private ObservableList<ObservableList> data;
+
     @FXML
-    void initialize() {
+    protected void initialize() {
+
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from cklad");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableWarehouse.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableWarehouse.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+        /////
         id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
