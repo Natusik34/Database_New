@@ -28,7 +28,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class SupplierPageController{ //implements Initializable
+public class SupplierPageController implements Initializable{
 
     @FXML
     private ResourceBundle resources;
@@ -41,6 +41,18 @@ public class SupplierPageController{ //implements Initializable
 
     @FXML
     private Button id_buttonInput;
+
+    @FXML
+    private TableColumn<postavchik, String> id_columnINN;
+
+    @FXML
+    private TableColumn<postavchik, String> id_columnKPP;
+
+    @FXML
+    private TableColumn<postavchik, String> id_columnName;
+
+    @FXML
+    private TableColumn<postavchik, String> id_columnPhoneNumber;
 
     @FXML
     private Button id_buttonOutput;
@@ -58,7 +70,7 @@ public class SupplierPageController{ //implements Initializable
     private Button id_supply;
 
     @FXML
-    private TableView id_tableSupplier;
+    private TableView<postavchik> id_tableSupplier;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -66,11 +78,13 @@ public class SupplierPageController{ //implements Initializable
     @FXML
     private Button id_warehouse;
 
-    private ObservableList<ObservableList> data;
+    private ObservableList<> data;
 
     //DBConnection dbConnection = new DBConnection();
 
-    //private final ObservableList<postavchik> data = FXCollections.observableArrayList();
+    //ObservableList<postavchik> data = FXCollections.observableArrayList();
+
+
 
     @FXML
     protected void initialize() {
@@ -288,6 +302,11 @@ public class SupplierPageController{ //implements Initializable
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
     /*
     ObservableList<postavchik> list = FXCollections.observableArrayList();
