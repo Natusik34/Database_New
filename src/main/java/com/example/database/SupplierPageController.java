@@ -28,7 +28,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class SupplierPageController implements Initializable{
+public class SupplierPageController{
 
     @FXML
     private ResourceBundle resources;
@@ -70,7 +70,7 @@ public class SupplierPageController implements Initializable{
     private Button id_supply;
 
     @FXML
-    private TableView<postavchik> id_tableSupplier;
+    private TableView id_tableSupplier;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -78,7 +78,7 @@ public class SupplierPageController implements Initializable{
     @FXML
     private Button id_warehouse;
 
-    private ObservableList<> data;
+    private ObservableList<ObservableList> data;
 
     //DBConnection dbConnection = new DBConnection();
 
@@ -88,7 +88,7 @@ public class SupplierPageController implements Initializable{
 
     @FXML
     protected void initialize() {
-/*
+
         data = FXCollections.observableArrayList();
         try{
             DBConnection con = new DBConnection();
@@ -119,8 +119,8 @@ public class SupplierPageController implements Initializable{
             throwables.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-
+        }
+//"Select * from postavchik"
         /*addInfAboutPostavchik();
 
         id_columnID.setCellValueFactory(new PropertyValueFactory<>("id_postavchik"));
@@ -304,8 +304,8 @@ public class SupplierPageController implements Initializable{
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+   // @Override
+   // public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
     /*
@@ -319,5 +319,5 @@ public class SupplierPageController implements Initializable{
         id_columnKPP.setCellValueFactory(new PropertyValueFactory<postavchik, String>("id_columnKPP"));
 
     }*/
-}
+
 
