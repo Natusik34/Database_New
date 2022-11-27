@@ -20,7 +20,7 @@
          </font>
       </Label>
       <TextField fx:id="id_name" layoutX="205.0" layoutY="133.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button fx:id="id_buttonAdd" layoutX="221.0" layoutY="186.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" text="Добавить">
+      <Button fx:id="id_buttonAdd" layoutX="221.0" layoutY="186.0" mnemonicParsing="false" onAction="#addButton" prefHeight="40.0" prefWidth="108.0" text="Добавить">
          <font>
             <Font size="15.0" />
          </font>

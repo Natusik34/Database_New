@@ -2,9 +2,13 @@ package com.example.database;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class AddUnitOfMeasurementController {
 
@@ -25,6 +29,14 @@ public class AddUnitOfMeasurementController {
 
 
     }
+
+    public void addButton(ActionEvent actionEvent) {
+        DBConnection.Insert("INSERT INTO public.izmerenie(naimenovanie)" + "VALUES(" + id_name.getText() + "");
+        Stage stage = (Stage) id_buttonAdd.getScene().getWindow();
+        stage.close();
+    }
+
+    //DBConnection.Insert("INSERT INTO public.izmerenie(naimenovanie)" + "VALUES(\'" + id_name.getText() + "\'");
 
 }
 

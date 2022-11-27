@@ -64,6 +64,16 @@ public class WorkingPageController {
             stage.showAndWait();
 
         });
+        /*
+        Parent root = null;
+        try{
+            root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();*/
 
         id_supplier.setOnAction(event -> {
             id_supplier.getScene().getWindow().hide();
