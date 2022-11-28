@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.WorkingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.WorkingPageController">
    <children>
       <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@../../../style.css">
          <children>
@@ -15,7 +15,7 @@
                   <Pane layoutY="112.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: A59B9B;" />
                   <Pane layoutY="176.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_nomenclature" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
+                        <Button fx:id="id_nomenclature" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonNomenclature" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -24,7 +24,7 @@
                   </Pane>
                   <Pane layoutY="220.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_supplier" layoutX="2.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставщик" textFill="WHITE">
+                        <Button fx:id="id_supplier" layoutX="2.0" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonSupplier" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставщик" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -33,7 +33,7 @@
                   </Pane>
                   <Pane layoutY="262.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_supply" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставка" textFill="WHITE">
+                        <Button fx:id="id_supply" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonSupply" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставка" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -47,7 +47,7 @@
                   </Label>
                   <Pane layoutY="305.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_sale" layoutY="-2.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
+                        <Button fx:id="id_sale" layoutY="-2.0" mnemonicParsing="false" onAction="#buttonSale" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -56,7 +56,7 @@
                   </Pane>
                   <Pane layoutY="346.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_warehouse" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
+                        <Button fx:id="id_warehouse" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonWarehouse" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -65,7 +65,7 @@
                   </Pane>
                   <Pane layoutY="386.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_unitOfMeasurement" layoutX="1.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Единица измерения" textFill="WHITE">
+                        <Button fx:id="id_unitOfMeasurement" layoutX="1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#buttonUnitOfMeasurement" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Единица измерения" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>

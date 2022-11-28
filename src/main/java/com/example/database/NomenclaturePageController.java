@@ -28,6 +28,8 @@ import javafx.util.Callback;
 
 public class NomenclaturePageController {
 
+    Stage window;
+
     @FXML
     private ResourceBundle resources;
 
@@ -70,13 +72,13 @@ public class NomenclaturePageController {
     protected void initialize() {
 
         data = FXCollections.observableArrayList();
-        try{
+        try {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from nomenklatyra");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+            for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
                 final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
                 col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
 
@@ -87,9 +89,9 @@ public class NomenclaturePageController {
                 id_tableNomenclature.getColumns().addAll(col);
             }
 
-            while(rs.next()){
+            while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                     row.add(rs.getString(i));
                 }
                 data.add(row);
@@ -103,7 +105,7 @@ public class NomenclaturePageController {
 
 
 
-
+/*
 
         ////////////////////
         id_supplier.setOnAction(event -> {
@@ -231,6 +233,44 @@ public class NomenclaturePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
     }
+
+/*
+
+    @FXML
+    protected void buttonSupplier() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
+        window = (Stage) id_supplier.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupply() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
+        window = (Stage) id_supply.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonWarehouse() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
+        window = (Stage) id_warehouse.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonUnitOfMeasurement() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
+        window = (Stage) id_unitOfMeasurement.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }*/
 }
 

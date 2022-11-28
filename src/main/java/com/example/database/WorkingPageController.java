@@ -13,6 +13,15 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class WorkingPageController {
+    Stage window;
+   /* @FXML
+    public void showNomenclature(ActionEvent actionEvent){
+        try {
+            Stage stage = new Stage();
+            stage.initOwner(MainWindow);
+
+        }
+    }*/
 
     @FXML
     private ResourceBundle resources;
@@ -39,13 +48,55 @@ public class WorkingPageController {
     private Button id_warehouse;
 
     @FXML
+    protected void buttonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        window = (Stage) id_nomenclature.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupplier() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
+        window = (Stage) id_supplier.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupply() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
+        window = (Stage) id_supply.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonWarehouse() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
+        window = (Stage) id_warehouse.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonUnitOfMeasurement() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
+        window = (Stage) id_unitOfMeasurement.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
     void initialize() {
         /*try {
             ButtonNomenclature();
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-
+/*
         id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
@@ -63,7 +114,7 @@ public class WorkingPageController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-        });
+        });*/
         /*
         Parent root = null;
         try{
@@ -74,7 +125,7 @@ public class WorkingPageController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.showAndWait();*/
-
+/*
         id_supplier.setOnAction(event -> {
             id_supplier.getScene().getWindow().hide();
 
@@ -170,7 +221,7 @@ public class WorkingPageController {
 
         });
 
-
+*/
     }
     /*
     @FXML
@@ -182,3 +233,4 @@ public class WorkingPageController {
 
 
 }
+//liliyahaill89@gmail.com
