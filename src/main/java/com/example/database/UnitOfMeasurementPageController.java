@@ -214,13 +214,13 @@ public class UnitOfMeasurementPageController {
             e.printStackTrace();
         }
 
-        Object source = actionEvent.getSource();
+     /*   Object source = actionEvent.getSource();
         //если нажата не кнопка - выходим из метода
         if(!(source instanceof Button)){
             return;
         }
 
-        Button clickedButton = (Button) source;
+        Button clickedButton = (Button) source;*/
 
     }
 
@@ -253,8 +253,8 @@ public class UnitOfMeasurementPageController {
             e.printStackTrace();
         }
 
-        int row = id_tableUnitOfMeasurement.getSelectionModel().getSelectionIndex();
-        id_tableUnitOfMeasurement.getItems().remove(selectedIndex);
+       // int selectedIndex = id_tableUnitOfMeasurement.getSelectionModel().getSelectionIndex();
+       // id_tableUnitOfMeasurement.getItems().remove(selectedIndex);
     }
 }
 

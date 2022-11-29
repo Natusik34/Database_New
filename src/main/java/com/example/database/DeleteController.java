@@ -27,12 +27,15 @@ public class DeleteController {
 
     @FXML
     void buttonDelete(ActionEvent event) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+       /* try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("Delete from public.izmerenie where ('" + id_name.getText() + "')");
+            int rows = statement.executeUpdate("Delete from public.izmerenie where id_izmerenie = );
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
+
+        Stage stage = (Stage) id_buttonNoDelete.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -40,7 +43,6 @@ public class DeleteController {
     void buttonNoDelete(ActionEvent event) {
         Stage stage = (Stage) id_buttonNoDelete.getScene().getWindow();
         stage.close();
-
     }
 
     @FXML
@@ -48,6 +50,14 @@ public class DeleteController {
 
 
     }
+/*
+    public void buttonDelete(ActionEvent actionEvent) {
 
+
+
+
+        Stage stage = (Stage) id_buttonDelete.getScene().getWindow();
+        stage.close();
+    }*/
 }
 
