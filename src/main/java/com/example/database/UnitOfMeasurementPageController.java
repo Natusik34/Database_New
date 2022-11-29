@@ -17,7 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -56,12 +56,14 @@ public class UnitOfMeasurementPageController {
     private Button id_supply;
 
     @FXML
-    private TableView id_tableUnitOfMeasurement;
+    private TableView<ObservableList> id_tableUnitOfMeasurement;
 
     @FXML
     private Button id_warehouse;
 
     private ObservableList<ObservableList> data;
+
+
 
     @FXML
     protected void initialize() {
@@ -199,7 +201,6 @@ public class UnitOfMeasurementPageController {
     }
 
 
-
     public void showAdd(ActionEvent actionEvent) {
         try{
             Stage stage = new Stage();
@@ -256,5 +257,11 @@ public class UnitOfMeasurementPageController {
        // int selectedIndex = id_tableUnitOfMeasurement.getSelectionModel().getSelectionIndex();
        // id_tableUnitOfMeasurement.getItems().remove(selectedIndex);
     }
+
+
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList person = id_tableUnitOfMeasurement.getSelectionModel().getSelectedItem();
+        System.out.println(person.get(0).toString());
 }
+    }
 

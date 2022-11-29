@@ -73,7 +73,9 @@ public class WarehoursePageController {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from cklad");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+            for(int i = 1; i < rs.getMetaData(
+
+            ).getColumnCount(); i++){
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
                 col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {

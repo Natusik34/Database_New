@@ -236,7 +236,7 @@ public class NomenclaturePageController {
     }*/
     }
 
-/*
+
 
     @FXML
     protected void buttonSupplier() throws IOException{
@@ -271,6 +271,6 @@ public class NomenclaturePageController {
         Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
         window = (Stage) id_unitOfMeasurement.getScene().getWindow();
         window.setScene(new Scene(root));
-    }*/
+    }
 }
 

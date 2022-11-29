@@ -25,7 +25,6 @@ public class EditUnitOfMeasurementController {
     @FXML
     void initialize() {
 
-
     }
 
     public void buttonEditUnitOfMeasurement(ActionEvent actionEvent) {
