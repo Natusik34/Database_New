@@ -260,8 +260,8 @@ public class UnitOfMeasurementPageController {
 
 
     public void getcell(MouseEvent mouseEvent) {
-        ObservableList person = id_tableUnitOfMeasurement.getSelectionModel().getSelectedItem();
-        System.out.println(person.get(0).toString());
+        ObservableList izm = id_tableUnitOfMeasurement.getSelectionModel().getSelectedItem();
+        System.out.println(izm.get(0).toString());
 }
     }
 

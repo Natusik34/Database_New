@@ -27,6 +27,8 @@ import javafx.util.Callback;
 
 public class WarehoursePageController {
 
+    Stage window;
+
     @FXML
     private ResourceBundle resources;
 
@@ -108,7 +110,7 @@ public class WarehoursePageController {
 
 
         /////
-        id_nomenclature.setOnAction(event -> {
+    /*    id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
@@ -201,9 +203,44 @@ public class WarehoursePageController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-        });
+        });*/
 
 
+    }
+
+    @FXML
+    protected void buttonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        window = (Stage) id_nomenclature.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupplier() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
+        window = (Stage) id_supplier.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupply() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
+        window = (Stage) id_supply.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonUnitOfMeasurement() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
+        window = (Stage) id_unitOfMeasurement.getScene().getWindow();
+        window.setScene(new Scene(root));
     }
 
     public void showAdd(ActionEvent actionEvent) {

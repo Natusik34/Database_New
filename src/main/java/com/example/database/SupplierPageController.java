@@ -30,6 +30,8 @@ import javafx.util.Callback;
 
 public class SupplierPageController{
 
+    Stage window;
+
     @FXML
     private ResourceBundle resources;
 
@@ -41,18 +43,6 @@ public class SupplierPageController{
 
     @FXML
     private Button id_buttonInput;
-
-    @FXML
-    private TableColumn<postavchik, String> id_columnINN;
-
-    @FXML
-    private TableColumn<postavchik, String> id_columnKPP;
-
-    @FXML
-    private TableColumn<postavchik, String> id_columnName;
-
-    @FXML
-    private TableColumn<postavchik, String> id_columnPhoneNumber;
 
     @FXML
     private Button id_buttonOutput;
@@ -131,7 +121,7 @@ public class SupplierPageController{
         id_tableSupplier.setItems(data);*/
 
         ///////////
-        id_nomenclature.setOnAction(event -> {
+     /*   id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
@@ -273,6 +263,40 @@ public class SupplierPageController{
         }
 */
 
+    @FXML
+    protected void buttonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        window = (Stage) id_nomenclature.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupply() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
+        window = (Stage) id_supply.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonWarehouse() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
+        window = (Stage) id_warehouse.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonUnitOfMeasurement() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
+        window = (Stage) id_unitOfMeasurement.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
     public void showDialog(ActionEvent actionEvent) {
         try{

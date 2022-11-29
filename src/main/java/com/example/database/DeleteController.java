@@ -27,9 +27,11 @@ public class DeleteController {
 
     @FXML
     void buttonDelete(ActionEvent event) {
+        //UnitOfMeasurementPageController un = new UnitOfMeasurementPageController();
+       // un.getcell(iz);
        /* try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("Delete from public.izmerenie where id_izmerenie = );
+            int rows = statement.executeUpdate("Delete from public.izmerenie where id_izmerenie =  );
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }*/

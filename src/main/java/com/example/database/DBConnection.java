@@ -42,7 +42,7 @@ public class DBConnection {
     }
 
     //добавление
-
+/*
     public static void Insert(String insert){
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
@@ -50,7 +50,7 @@ public class DBConnection {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
+    }*/
     /*
     public static void Insert() {
         //добавление строки в таблицу измерение
