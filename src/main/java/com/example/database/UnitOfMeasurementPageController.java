@@ -25,6 +25,8 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 
 public class UnitOfMeasurementPageController {
 
+    Stage window;
+
     @FXML
     private ResourceBundle resources;
 
@@ -102,7 +104,7 @@ public class UnitOfMeasurementPageController {
 
 
         /////
-        id_nomenclature.setOnAction(event -> {
+      /*  id_nomenclature.setOnAction(event -> {
             id_nomenclature.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
@@ -195,11 +197,45 @@ public class UnitOfMeasurementPageController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-        });
+        });*/
 
 
     }
 
+    @FXML
+    protected void buttonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        window = (Stage) id_nomenclature.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupplier() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
+        window = (Stage) id_supplier.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSupply() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
+        window = (Stage) id_supply.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
+    @FXML
+    protected void buttonWarehouse() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
+        window = (Stage) id_warehouse.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
     public void showAdd(ActionEvent actionEvent) {
         try{

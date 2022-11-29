@@ -102,107 +102,6 @@ public class NomenclaturePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-/*
-
-        ////////////////////
-        id_supplier.setOnAction(event -> {
-            id_supplier.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("supplierPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_supply.setOnAction(event -> {
-            id_supply.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("deliveryPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_sale.setOnAction(event -> {
-            id_sale.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("salePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_warehouse.setOnAction(event -> {
-            id_warehouse.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("warehousePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_unitOfMeasurement.setOnAction(event -> {
-            id_unitOfMeasurement.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("unitOfMeasurementPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
     }
 
     public void showAdd(ActionEvent actionEvent) {
@@ -233,10 +132,7 @@ public class NomenclaturePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
     }
-
-
 
     @FXML
     protected void buttonSupplier() throws IOException{
@@ -273,4 +169,3 @@ public class NomenclaturePageController {
         window.setScene(new Scene(root));
     }
 }
-

@@ -2,8 +2,14 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +23,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class DeliveryPageController {
+
+    Stage window;
 
     @FXML
     private ResourceBundle resources;
@@ -36,21 +45,6 @@ public class DeliveryPageController {
     private Button id_buttonOutput;
 
     @FXML
-    private TableColumn<?, ?> id_columnDeliveryDate;
-
-    @FXML
-    private TableColumn<?, ?> id_columnID;
-
-    @FXML
-    private TableColumn<?, ?> id_columnInvoiceNumber;
-
-    @FXML
-    private TableColumn<?, ?> id_columnSupplier;
-
-    @FXML
-    private TableColumn<?, ?> id_columnWarehouse;
-
-    @FXML
     private Button id_nomenclature;
 
     @FXML
@@ -63,7 +57,7 @@ public class DeliveryPageController {
     private Button id_supplier;
 
     @FXML
-    private TableView<?> id_tableDelivery;
+    private TableView id_tableDelivery;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -71,103 +65,77 @@ public class DeliveryPageController {
     @FXML
     private Button id_warehouse;
 
+    private ObservableList<ObservableList> data;
+
     @FXML
     void initialize() {
-        id_nomenclature.setOnAction(event -> {
-            id_nomenclature.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("nomenclaturePage.fxml"));
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from postavka");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableDelivery.getColumns().addAll(col);
             }
 
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_supplier.setOnAction(event -> {
-            id_supplier.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("supplierPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
             }
+            id_tableDelivery.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+    @FXML
+    protected void buttonNomenclature() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
+        window = (Stage) id_nomenclature.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
-        });
+    @FXML
+    protected void buttonSupplier() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
+        window = (Stage) id_supplier.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
-        id_sale.setOnAction(event -> {
-            id_sale.getScene().getWindow().hide();
+    @FXML
+    protected void buttonSale() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("salePage.fxml"));
+        window = (Stage) id_sale.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("salePage.fxml"));
+    @FXML
+    protected void buttonWarehouse() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
+        window = (Stage) id_warehouse.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_warehouse.setOnAction(event -> {
-            id_warehouse.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("warehousePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_unitOfMeasurement.setOnAction(event -> {
-            id_unitOfMeasurement.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("unitOfMeasurementPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
+    @FXML
+    protected void buttonUnitOfMeasurement() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
+        window = (Stage) id_unitOfMeasurement.getScene().getWindow();
+        window.setScene(new Scene(root));
     }
 
     public void showEdit(ActionEvent actionEvent) {
