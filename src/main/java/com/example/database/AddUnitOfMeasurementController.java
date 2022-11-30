@@ -35,10 +35,6 @@ public class AddUnitOfMeasurementController {
     }
 
     public void addButton(ActionEvent actionEvent) {
-
-        //DBConnection.Insert("INSERT INTO public.izmerenie(naimenovanie) + VALUES(" + id_name.getText() + "");
-        //DBConnection.Insert("INSERT INTO public.izmerenie(naimenovanie) VALUES (id_name.getText()");
-
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.izmerenie(naimenovanie) VALUES('" + id_name.getText() + "')");
@@ -48,15 +44,6 @@ public class AddUnitOfMeasurementController {
 
         Stage stage = (Stage) id_buttonAdd.getScene().getWindow();
         stage.close();
-
-        /*
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
-            Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("INSERT INTO public.izmerenie(naimenovanie) + VALUES(" + id_name.getText() + "");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-
     }
 
     public static void Insert(String insert){
