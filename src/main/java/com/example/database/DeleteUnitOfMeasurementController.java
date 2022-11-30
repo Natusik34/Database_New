@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class DeleteController {
+public class DeleteUnitOfMeasurementController {
 
     @FXML
     private ResourceBundle resources;
@@ -35,6 +35,14 @@ public class DeleteController {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }*/
+
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
+
+            int rows = statement.executeUpdate("DELETE FROM public.izmerenie WHERE id_izmerenie = " + Peremennie.id + "");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         Stage stage = (Stage) id_buttonNoDelete.getScene().getWindow();
         stage.close();

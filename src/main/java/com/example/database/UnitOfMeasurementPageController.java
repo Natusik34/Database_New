@@ -2,8 +2,7 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -101,105 +100,6 @@ public class UnitOfMeasurementPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        /////
-      /*  id_nomenclature.setOnAction(event -> {
-            id_nomenclature.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("nomenclaturePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_supply.setOnAction(event -> {
-            id_supply.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("deliveryPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_supplier.setOnAction(event -> {
-            id_supplier.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("supplierPage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_sale.setOnAction(event -> {
-            id_sale.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("salePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });
-
-        id_warehouse.setOnAction(event -> {
-            id_warehouse.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("warehousePage.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });*/
-
-
     }
 
     @FXML
@@ -262,6 +162,14 @@ public class UnitOfMeasurementPageController {
     }
 
     public void showEdit(ActionEvent actionEvent) {
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
+
+            int rows = statement.executeUpdate("Select FROM public.izmerenie WHERE id_izmerenie = '" + Peremennie.id + "'");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         try{
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("editUnitOfMeasurement.fxml"));
@@ -298,6 +206,9 @@ public class UnitOfMeasurementPageController {
     public void getcell(MouseEvent mouseEvent) {
         ObservableList izm = id_tableUnitOfMeasurement.getSelectionModel().getSelectedItem();
         System.out.println(izm.get(0).toString());
+        Peremennie.name = izm.get(1).toString();
+        Peremennie.id =  Integer.parseInt(izm.get(0).toString()) ;
+
 }
     }
 
