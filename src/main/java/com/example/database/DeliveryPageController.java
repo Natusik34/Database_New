@@ -141,9 +141,9 @@ public class DeliveryPageController {
     public void showEdit(ActionEvent actionEvent) {
         try{
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("addDelivery.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("editDelivery.fxml"));
             stage.setScene(new Scene(root));
-            stage.setTitle("Добавление новой записи");
+            stage.setTitle("Редактирование записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
@@ -156,9 +156,9 @@ public class DeliveryPageController {
     public void showAdd(ActionEvent actionEvent) {
         try{
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("editDelivery.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("addDelivery.fxml"));
             stage.setScene(new Scene(root));
-            stage.setTitle("Редактирование записи");
+            stage.setTitle("Добавление новой записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
