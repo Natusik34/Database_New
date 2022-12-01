@@ -62,6 +62,8 @@ public class AddNomenclatureController {
                 listUnit = new ArrayList<>(Collections.singleton(nom));
                //5  6  7  8
                          //кг кг кг кг
+
+                //чч
                 id_LIST.add(id);
                 NAM_LIST.add(nom);
                 NAM_LIST.indexOf(NAM_LIST);
