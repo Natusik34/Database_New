@@ -65,11 +65,15 @@ public class AddNomenclatureController {
                 id_LIST.add(id);
                 NAM_LIST.add(nom);
                 NAM_LIST.indexOf(NAM_LIST);
+                id_comboBoxUnit.getSelectionModel().select(0);
+                str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(18)));
 
+                System.out.println( NAM_LIST.indexOf(NAM_LIST.get(0)));
 
+                System.out.println(id_LIST.get(Integer.parseInt(str)));
 
-                System.out.println(listId);
-                System.out.println(listUnit);
+            //    System.out.println(listId);
+            //    System.out.println(listUnit);
                // System.out.println( listId);
                // System.out.println( listUnit);
                 System.out.println("ВЫбранный элемент "+ listUnit.get(0));
@@ -78,11 +82,17 @@ public class AddNomenclatureController {
                 id_comboBoxUnit.getItems().addAll(listUnit);
                 id_comboBoxUnit.getSelectionModel().select(0);
             }
-            str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(18)));
-            System.out.println( NAM_LIST.indexOf(NAM_LIST.get(18)));
-            System.out.println(id_LIST.indexOf(str));
+            for (int i = 0; i < NAM_LIST.size(); i++) {
+                str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(i)));
+
+                System.out.println( NAM_LIST.indexOf(NAM_LIST.get(i)));
+
+                System.out.println(id_LIST.get(Integer.parseInt(str)));
+
+            }
             System.out.println(id_LIST);
             System.out.println(NAM_LIST);
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
