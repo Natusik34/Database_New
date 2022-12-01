@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.RegistrationController">
    <children>
-      <Pane layoutX="300.0" layoutY="103.0" prefHeight="504.0" prefWidth="607.0" styleClass="pane" stylesheets="@../../../style.css">
+      <Pane layoutX="300.0" layoutY="103.0" prefHeight="510.0" prefWidth="607.0" styleClass="pane" stylesheets="@../../../style.css">
          <children>
             <Label layoutX="230.0" layoutY="40.0" text="Регистрация" textFill="#803e3e">
                <font>
@@ -45,6 +45,11 @@
             <TextField fx:id="id_login" layoutX="180.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <TextField fx:id="id_password" layoutX="180.0" layoutY="311.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <TextField fx:id="id_repeatPassword" layoutX="182.0" layoutY="377.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <Button fx:id="id_avtoriz" layoutX="248.0" layoutY="474.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Авторизация" textFill="#8f5858">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
