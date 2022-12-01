@@ -16,6 +16,12 @@ import javafx.stage.Stage;
 public class AddNomenclatureController {
 
     String nom;
+    String id;
+    List listId;
+    List listUnit;
+    String str;
+    List<String>id_LIST = new ArrayList<>();
+    List<String>NAM_LIST = new ArrayList<>();
 
     @FXML
     private ResourceBundle resources;
@@ -47,13 +53,36 @@ public class AddNomenclatureController {
                 for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
                     listRow.add(rs.getString(i));
                 }
-                nom = listRow.get(0);
-                List listUnit = new ArrayList<>(Collections.singleton(nom));
-                List listId = new ArrayList<>(Collections.singleton(nom));
+
+                id = listRow.get(0);
+                nom = listRow.get(1);
+
+
+                listId = new ArrayList<>(Collections.singleton(id));
+                listUnit = new ArrayList<>(Collections.singleton(nom));
+               //5  6  7  8
+                         //кг кг кг кг
+                id_LIST.add(id);
+                NAM_LIST.add(nom);
+                NAM_LIST.indexOf(NAM_LIST);
+
+
+
+                System.out.println(listId);
+                System.out.println(listUnit);
+               // System.out.println( listId);
+               // System.out.println( listUnit);
+                System.out.println("ВЫбранный элемент "+ listUnit.get(0));
+
                 //String id = lisrRow.get(0);
                 id_comboBoxUnit.getItems().addAll(listUnit);
                 id_comboBoxUnit.getSelectionModel().select(0);
             }
+            str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(18)));
+            System.out.println( NAM_LIST.indexOf(NAM_LIST.get(18)));
+            System.out.println(id_LIST.indexOf(str));
+            System.out.println(id_LIST);
+            System.out.println(NAM_LIST);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
