@@ -22,7 +22,7 @@ public class AddNomenclatureController {
     String str;
     List<String>id_LIST = new ArrayList<>();
     List<String>NAM_LIST = new ArrayList<>();
-
+    String GetValue;
     @FXML
     private ResourceBundle resources;
 
@@ -57,43 +57,25 @@ public class AddNomenclatureController {
                 id = listRow.get(0);
                 nom = listRow.get(1);
 
-
                 listId = new ArrayList<>(Collections.singleton(id));
                 listUnit = new ArrayList<>(Collections.singleton(nom));
-               //5  6  7  8
-                         //кг кг кг кг
 
-                //чч
                 id_LIST.add(id);
                 NAM_LIST.add(nom);
+
                 NAM_LIST.indexOf(NAM_LIST);
-                id_comboBoxUnit.getSelectionModel().select(0);
-                str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(18)));
 
-                System.out.println( NAM_LIST.indexOf(NAM_LIST.get(0)));
-
-                System.out.println(id_LIST.get(Integer.parseInt(str)));
-
-            //    System.out.println(listId);
-            //    System.out.println(listUnit);
-               // System.out.println( listId);
-               // System.out.println( listUnit);
                 System.out.println("ВЫбранный элемент "+ listUnit.get(0));
-
-                //String id = lisrRow.get(0);
                 id_comboBoxUnit.getItems().addAll(listUnit);
                 id_comboBoxUnit.getSelectionModel().select(0);
+
+                GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
+
+                str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
             }
-            for (int i = 0; i < NAM_LIST.size(); i++) {
-                str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(i)));
+            System.out.println(NAM_LIST.get(0));
+            System.out.println(id_LIST.get(Integer.parseInt(str)));
 
-                System.out.println( NAM_LIST.indexOf(NAM_LIST.get(i)));
-
-                System.out.println(id_LIST.get(Integer.parseInt(str)));
-
-            }
-            System.out.println(id_LIST);
-            System.out.println(NAM_LIST);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -101,9 +83,14 @@ public class AddNomenclatureController {
     }
 
     public void ButtonAdd(ActionEvent actionEvent) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
+
+        str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
+String idIzmerenie = id_LIST.get(Integer.parseInt(str));
+     //   System.out.println();
+          try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra(naimenovanie, id_izmerenie) VALUES('" + id_name.getText() + "','" + id_comboBoxUnit.getValue() + "')");
+            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra(naimenovanie, id_izmerenie) VALUES('" + id_name.getText() + "','" + idIzmerenie + "')");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
