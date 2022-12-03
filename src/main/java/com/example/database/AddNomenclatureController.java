@@ -86,7 +86,7 @@ public class AddNomenclatureController {
         GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
 
         str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
-String idIzmerenie = id_LIST.get(Integer.parseInt(str));
+        String idIzmerenie = id_LIST.get(Integer.parseInt(str));
      //   System.out.println();
           try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();

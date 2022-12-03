@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,7 +27,7 @@
          </font>
       </Label>
       <TextField fx:id="id_invoiceNumber" layoutX="298.0" layoutY="120.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button fx:id="id_buttonAdd" layoutX="296.0" layoutY="529.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="108.0" text="Добавить">
+      <Button fx:id="id_buttonAdd" layoutX="296.0" layoutY="529.0" mnemonicParsing="false" onAction="#AddSale" prefHeight="40.0" prefWidth="108.0" text="Добавить">
          <font>
             <Font size="15.0" />
          </font>
@@ -41,14 +40,7 @@
       </Label>
       <TextField fx:id="id_saleDate" layoutX="298.0" layoutY="163.0" prefHeight="25.0" prefWidth="298.0" />
       <ComboBox fx:id="id_warehouse" layoutX="297.0" layoutY="205.0" prefHeight="25.0" prefWidth="298.0" />
-      <TableView fx:id="id_tableItemOfSale" layoutY="338.0" prefHeight="162.0" prefWidth="700.0">
-        <columns>
-          <TableColumn fx:id="id_columnNomenclature" prefWidth="197.0" text="Номенклатура" />
-          <TableColumn fx:id="id_columnQuantity" prefWidth="175.0" text="Количество" />
-            <TableColumn fx:id="id_columnPrice" prefWidth="171.0" text="Цена" />
-            <TableColumn fx:id="id_columnAmount" prefWidth="156.0" text="Сумма" />
-        </columns>
-      </TableView>
+      <TableView fx:id="id_tableItemOfSale" layoutY="338.0" prefHeight="162.0" prefWidth="700.0" />
       <Label layoutX="274.0" layoutY="261.0" text="Табличная часть">
          <font>
             <Font size="20.0" />
