@@ -14,10 +14,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class EditUnitOfMeasurementController {
-DataSingleton data = DataSingleton.getInstance();
+
+    DataSingleton dataS = DataSingleton.getInstance();
+    String idIzmerenie;
     @FXML
     private ResourceBundle resources;
 
@@ -32,62 +35,62 @@ DataSingleton data = DataSingleton.getInstance();
 
     @FXML
     void initialize() {
+        idIzmerenie = dataS.getIdIzerenie();
+        id_editName.setText("Привет");
+        System.out.println(dataS.getIdIzerenie());
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from public.izmerenie where id_izmerenie = '" + idIzmerenie + "';");
+            while (rs.next()) {
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    row.add(rs.getString(i));
+                }
+                id_editName.setText(row.get(1));
+                }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
     public void buttonEditUnitOfMeasurement(ActionEvent actionEvent) {
-
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
+         /*   idIzmerenie = dataS.getIdIzerenie();
 
-            String idIzmerenie = data.getIdIzerenie();
 
+            ResultSet rs =  statement.executeUpdate("Select * from public.izmerenie where id_izmerenie = '" + idIzmerenie + "';");
 
-            DBConnect dbConnect = new DBConnect();
-            dbConnect.username = "PetrovR";
-            dbConnect.password = "PetrovR";
-            try {
-                dbConnect.ConnectToDB();
-                String SQL = "SELECT\n" +
-                        "  DISTINCT \n" +
-                        "  (\"To\") \"From\",\n" +
-                        "  \"To\"\n" +
-                        "FROM\n" +
-                        "  tickets\n" +
-                        "ORDER BY\n" +
-                        "  \"From\",\n" +
-                        "  \"To\";";/*
-  select \"From\", \"To\", count(*)\n" +
-                    "from public.tickets\n" +
-                    "group by \"From\", \"To\"\n" +
-                    "HAVING count(*) >= 1*/
-                ResultSet rsF = dbConnect.connection.createStatement().executeQuery(SQL);
-                while (rsF.next()) {
-                    ObservableList<String> row = FXCollections.observableArrayList();
-                    for (int i = 1; i <= rsF.getMetaData().getColumnCount(); i++) {
-                        row.add(rsF.getString(i));
-                    }
-                    Fr = row.get(0);
-                    To = row.get(1);
-                    List listFr = new ArrayList<>(Collections.singleton(Fr));
-                    List listTo = new ArrayList<>(Collections.singleton(To));
-                    fromComboBox.getItems().addAll(listFr);
-                    toComboBox.getItems().addAll(listTo);
-
-                    fromComboBox.getSelectionModel().select(0);
-                    toComboBox.getSelectionModel().select(1);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error on Building Data");
+            ObservableList<String> row = FXCollections.observableArrayList();
+            for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                row.add(rs.getString(i));
             }
+            id_editName.setText(row.get(0));
+            System.out.println(row.get(0));
+            System.out.println(row.get(1));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
 
             int rows = statement.executeUpdate("UPDATE public.izmerenie\n" +
                     "\tSET  naimenovanie='"+id_editName.getText()+"'" +"\n" +
-                    "\tWHERE id_izmerenie='"+Peremennie.id+"' ;");
+                    "\tWHERE id_izmerenie='"+idIzmerenie+"' ;");
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }
+        Stage stage = (Stage) id_buttonEdit.getScene().getWindow();
+        stage.close();
 
     }
 }

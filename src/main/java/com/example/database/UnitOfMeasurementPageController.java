@@ -205,9 +205,9 @@ public class UnitOfMeasurementPageController {
 
     public void getcell(MouseEvent mouseEvent) {
         ObservableList izm = id_tableUnitOfMeasurement.getSelectionModel().getSelectedItem();
-        System.out.println(izm.get(0).toString());
-
+      //  System.out.println(izm.get(0).toString());
         dataS.setIdIzerenie(izm.get(0).toString());
+        System.out.println(dataS.getIdIzerenie());
 
         Peremennie.name = izm.get(1).toString();
         Peremennie.id =  Integer.parseInt(izm.get(0).toString()) ;
