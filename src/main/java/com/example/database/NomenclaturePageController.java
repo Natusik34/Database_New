@@ -168,4 +168,19 @@ public class NomenclaturePageController {
         window = (Stage) id_unitOfMeasurement.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+
+    public void showDelete(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("delete.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

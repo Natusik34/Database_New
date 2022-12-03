@@ -14,15 +14,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class AddSaleController {
+
+    Stage window;
 
     String id, cklad;
     List listId, listCklad;
@@ -152,6 +158,22 @@ public class AddSaleController {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public void addButtonInput(ActionEvent actionEvent) throws IOException{
+        Stage stage = new Stage();
+        stage.initOwner(window);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        Parent root = FXMLLoader.load(getClass().getResource("addTableSale.fxml"));
+        stage.setTitle("Добавление новой строки");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
+
+    public void addButtonOutput(ActionEvent actionEvent) {
+    }
+
+    public void addButtonDelete(ActionEvent actionEvent) {
     }
 }
 

@@ -211,8 +211,6 @@ public class UnitOfMeasurementPageController {
 
         Peremennie.name = izm.get(1).toString();
         Peremennie.id =  Integer.parseInt(izm.get(0).toString()) ;
-
-
-}
+    }
     }
 

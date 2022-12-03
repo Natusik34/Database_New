@@ -47,8 +47,8 @@
          </font>
       </Label>
       <Separator layoutY="290.0" prefHeight="0.0" prefWidth="700.0" style="-fx-background-color: black;" />
-      <Button fx:id="id_buttonInput" layoutX="248.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="InputTable" stylesheets="@../../../style.css" />
-      <Button fx:id="id_buttonOutput" layoutX="331.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="OutputTable" stylesheets="@../../../style.css" />
-      <Button fx:id="id_buttonDelete" layoutX="416.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="DeleteTable" stylesheets="@../../../style.css" />
+      <Button fx:id="id_buttonInput" layoutX="248.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonInput" prefHeight="35.0" prefWidth="35.0" styleClass="InputTable" stylesheets="@../../../style.css" />
+      <Button fx:id="id_buttonOutput" layoutX="331.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonOutput" prefHeight="35.0" prefWidth="35.0" styleClass="OutputTable" stylesheets="@../../../style.css" />
+      <Button fx:id="id_buttonDelete" layoutX="416.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonDelete" prefHeight="35.0" prefWidth="35.0" styleClass="DeleteTable" stylesheets="@../../../style.css" />
    </children>
 </AnchorPane>

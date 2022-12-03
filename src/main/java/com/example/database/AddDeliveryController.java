@@ -29,6 +29,8 @@ import javafx.util.Callback;
 
 public class AddDeliveryController {
 
+    Stage window;
+
     String id, cklad, post;
 
     List listId, listCklad, listPost;
@@ -161,8 +163,8 @@ public class AddDeliveryController {
         }
     }
 
-    public void buttonAdd(ActionEvent actionEvent) {
-        try{
+    public void buttonAdd(ActionEvent actionEvent) throws IOException {
+        /*try{
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("addTableDelivery.fxml"));
             stage.setScene(new Scene(root));
@@ -173,7 +175,16 @@ public class AddDeliveryController {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        Stage stage = new Stage();
+        stage.initOwner(window);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        Parent root = FXMLLoader.load(getClass().getResource("addTableDelivery.fxml"));
+        stage.setTitle("Добавление новой строки");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+
     }
 
     public void buttonEdit(ActionEvent actionEvent) {
