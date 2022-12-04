@@ -14,5 +14,7 @@ public class Peremennie {
     public static String phoneNumberSupplier;
     public static String INNSupplier;
     public static String KPPNumberSupplier;
-
+//склад
+public static int idCklad;
+    public static String nameCklad;
 }

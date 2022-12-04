@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -60,7 +61,7 @@ public class WarehoursePageController {
     private Button id_supply;
 
     @FXML
-    private TableView id_tableWarehouse;
+    private TableView<ObservableList> id_tableWarehouse;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -168,6 +169,31 @@ public class WarehoursePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showDelete(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteWarehourse.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList cklad = id_tableWarehouse.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdIzerenie(izm.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.nameCklad = cklad.get(1).toString();
+        Peremennie.idCklad =  Integer.parseInt(cklad.get(0).toString()) ;
     }
 }
 
