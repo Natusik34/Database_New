@@ -1,17 +1,18 @@
 package com.example.database;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
-public class DeleteUnitOfMeasurementController {
+public class DeleteNomenclatureController {
 
     @FXML
     private ResourceBundle resources;
@@ -31,7 +32,7 @@ public class DeleteUnitOfMeasurementController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
 
-            int rows = statement.executeUpdate("DELETE FROM public.izmerenie WHERE id_izmerenie = " + Peremennie.id + "");
+            int rows = statement.executeUpdate("DELETE FROM public.nomenklatyra WHERE id_nomenklatyra = " + Peremennie.idNom + "");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

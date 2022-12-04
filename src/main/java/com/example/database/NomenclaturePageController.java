@@ -22,13 +22,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 
 public class NomenclaturePageController {
 
     Stage window;
+    DataSingleton dataS =  DataSingleton.getInstance();
 
     @FXML
     private ResourceBundle resources;
@@ -58,7 +61,7 @@ public class NomenclaturePageController {
     private Button id_supply;
 
     @FXML
-    private TableView id_tableNomenclature;
+    private TableView<ObservableList> id_tableNomenclature;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -79,7 +82,7 @@ public class NomenclaturePageController {
             for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
 
                     public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
@@ -172,7 +175,7 @@ public class NomenclaturePageController {
     public void showDelete(ActionEvent actionEvent) {
         try{
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("delete.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("deleteNomenclature.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
@@ -182,5 +185,18 @@ public class NomenclaturePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList nom = id_tableNomenclature.getSelectionModel().getSelectedItem();
+          //System.out.println(nom.get(0).toString());
+
+       // dataS.setIdIzerenie(nom.get(0).toString());
+       // System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idNom =  Integer.parseInt(nom.get(0).toString()) ;
+        Peremennie.nameNom = nom.get(1).toString();
+        Peremennie.idIzmNom =  Integer.parseInt(nom.get(2).toString()) ;
+
     }
 }
