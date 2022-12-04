@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -60,7 +61,7 @@ public class SupplierPageController{
     private Button id_supply;
 
     @FXML
-    private TableView id_tableSupplier;
+    private TableView<ObservableList> id_tableSupplier;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -69,10 +70,6 @@ public class SupplierPageController{
     private Button id_warehouse;
 
     private ObservableList<ObservableList> data;
-
-    //DBConnection dbConnection = new DBConnection();
-
-    //ObservableList<postavchik> data = FXCollections.observableArrayList();
 
 
 
@@ -110,38 +107,8 @@ public class SupplierPageController{
         } catch (IOException e) {
             e.printStackTrace();
         }
-//"Select * from postavchik"
-        /*addInfAboutPostavchik();
-
-        id_columnID.setCellValueFactory(new PropertyValueFactory<>("id_postavchik"));
-        id_columnName.setCellValueFactory(new PropertyValueFactory<>("naimenovanie"));
-        id_columnPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("nomer_telefona"));
-        id_columnINN.setCellValueFactory(new PropertyValueFactory<>("INN"));
-        id_columnKPP.setCellValueFactory(new PropertyValueFactory<>("KPP"));
-        id_tableSupplier.setItems(data);*/
 
     }
-/*
-    private void addInfAboutPostavchik(){
-        ResultSet rs = dbConnection.gettable("Select * from izmerenie");
-
-            try {
-                while(rs.next()) {
-                    postavchik postavchik = new postavchik(rs.getInt(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5));
-                    data.add(postavchik);
-
-                }
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-*/
 
     @FXML
     protected void buttonNomenclature() throws IOException{
@@ -208,20 +175,32 @@ public class SupplierPageController{
         }
     }
 
-   // @Override
-   // public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void showDelete(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteSupplier.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    /*
-    ObservableList<postavchik> list = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        id_columnName.setCellValueFactory(new PropertyValueFactory<postavchik, String>("id_columnName"));
-        id_columnPhoneNumber.setCellValueFactory(new PropertyValueFactory<postavchik, String>("id_columnPhoneNumber"));
-        id_columnINN.setCellValueFactory(new PropertyValueFactory<postavchik, String>("id_columnINN"));
-        id_columnKPP.setCellValueFactory(new PropertyValueFactory<postavchik, String>("id_columnKPP"));
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList supplier = id_tableSupplier.getSelectionModel().getSelectedItem();
+        //System.out.println(nom.get(0).toString());
 
-    }*/
+        // dataS.setIdIzerenie(nom.get(0).toString());
+        // System.out.println(dataS.getIdIzerenie());
 
-
+        Peremennie.idSupplier =  Integer.parseInt(supplier.get(0).toString()) ;
+        Peremennie.nameSupplier = supplier.get(1).toString();
+        Peremennie.phoneNumberSupplier = supplier.get(2).toString();
+        Peremennie.INNSupplier = supplier.get(3).toString();
+        Peremennie.KPPNumberSupplier = supplier.get(4).toString();
+    }
+}
