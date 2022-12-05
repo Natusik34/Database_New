@@ -105,5 +105,14 @@ public class AddTableSaleController {
             throwables.printStackTrace();
         }
     }
+/*
+    public void getSum(){
+        double sum = 0;
+
+            sum = Double.parseDouble(id_amount.getText()) * Double.parseDouble(id_price.getText());
+
+        id_sum.getText() = Double.toString(sum);
+
+    }*/
 
 }
