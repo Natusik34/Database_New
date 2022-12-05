@@ -17,4 +17,18 @@ public class Peremennie {
 //склад
 public static int idCklad;
     public static String nameCklad;
+    //поставка
+    public static int idDelivery;
+    public static String nomNakDelivery;
+    public static String DataDelivery;
+    public static int idCkladDelivery;
+    public static int idPostavDelivery;
+    //продажа
+    public static int idSale;
+    public static String nomNakSale;
+    public static String DataSale;
+    public static int idCkladSale;
+
+
+
 }

@@ -32,6 +32,7 @@ import javafx.util.Callback;
 public class SupplierPageController{
 
     Stage window;
+    DataSingleton dataS =  DataSingleton.getInstance();
 
     @FXML
     private ResourceBundle resources;
@@ -194,8 +195,8 @@ public class SupplierPageController{
         ObservableList supplier = id_tableSupplier.getSelectionModel().getSelectedItem();
         //System.out.println(nom.get(0).toString());
 
-        // dataS.setIdIzerenie(nom.get(0).toString());
-        // System.out.println(dataS.getIdIzerenie());
+         dataS.setIdIzerenie(supplier.get(0).toString());
+         System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idSupplier =  Integer.parseInt(supplier.get(0).toString()) ;
         Peremennie.nameSupplier = supplier.get(1).toString();

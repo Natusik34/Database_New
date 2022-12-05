@@ -22,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -58,7 +59,7 @@ public class SalePageController {
     private Button id_supplier;
 
     @FXML
-    private TableView id_tableSale;
+    private TableView<ObservableList> id_tableSale;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -167,6 +168,33 @@ public class SalePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showDelete(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteSale.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList deliv = id_tableSale.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdIzerenie(izm.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idSale =  Integer.parseInt(deliv.get(0).toString()) ;
+        Peremennie.nomNakSale = deliv.get(1).toString();
+        Peremennie.DataSale = deliv.get(2).toString();
+        Peremennie.idCkladSale =  Integer.parseInt(deliv.get(3).toString()) ;
     }
 }
 

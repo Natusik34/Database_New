@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -57,7 +58,7 @@ public class DeliveryPageController {
     private Button id_supplier;
 
     @FXML
-    private TableView id_tableDelivery;
+    private TableView<ObservableList> id_tableDelivery;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -159,6 +160,35 @@ public class DeliveryPageController {
             Parent root = FXMLLoader.load(getClass().getResource("addDelivery.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Добавление новой записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getcell(MouseEvent mouseEvent) {
+        ObservableList deliv = id_tableDelivery.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdIzerenie(izm.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idDelivery =  Integer.parseInt(deliv.get(0).toString()) ;
+        Peremennie.nomNakDelivery = deliv.get(1).toString();
+        Peremennie.DataDelivery = deliv.get(2).toString();
+        Peremennie.idCkladDelivery =  Integer.parseInt(deliv.get(3).toString()) ;
+        Peremennie.idPostavDelivery =  Integer.parseInt(deliv.get(4).toString()) ;
+
+    }
+
+    public void showDelete(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteDelivery.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
