@@ -191,8 +191,8 @@ public class NomenclaturePageController {
         ObservableList nom = id_tableNomenclature.getSelectionModel().getSelectedItem();
           //System.out.println(nom.get(0).toString());
 
-       // dataS.setIdIzerenie(nom.get(0).toString());
-       // System.out.println(dataS.getIdIzerenie());
+        dataS.setIdNomenclature(nom.get(0).toString());
+        System.out.println(dataS.getIdNomenclature());
 
         Peremennie.idNom =  Integer.parseInt(nom.get(0).toString()) ;
         Peremennie.nameNom = nom.get(1).toString();

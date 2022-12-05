@@ -60,6 +60,7 @@ public class AddTableSaleController {
 
         Stage stage = (Stage) id_buttonAdd.getScene().getWindow();
         stage.close();
+        //tableView.refresh();
 
     }
 
