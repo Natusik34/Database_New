@@ -17,11 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -49,7 +45,7 @@ public class AddSaleController {
     private TextField id_invoiceNumber;
 
     @FXML
-    private TextField id_saleDate;
+    private DatePicker id_saleDate;
 
 
     @FXML
@@ -72,7 +68,7 @@ public class AddSaleController {
 
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("INSERT INTO public.prodasha(nomer_nakladnoi, data_prodasha, id_cklad) VALUES('" + id_invoiceNumber.getText() + "','" + id_saleDate.getText() + "','" + idCklad + "')");
+            int rows = statement.executeUpdate("INSERT INTO public.prodasha(nomer_nakladnoi, data_prodasha, id_cklad) VALUES('" + id_invoiceNumber.getText() + "','" + id_saleDate.getValue()+ "','" + idCklad + "')");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
