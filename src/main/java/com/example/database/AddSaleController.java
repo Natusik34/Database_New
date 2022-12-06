@@ -46,22 +46,11 @@ public class AddSaleController {
     private Button id_buttonAdd;
 
     @FXML
-    private Button id_buttonDelete;
-
-    @FXML
-    private Button id_buttonInput;
-
-    @FXML
-    private Button id_buttonOutput;
-
-    @FXML
     private TextField id_invoiceNumber;
 
     @FXML
     private TextField id_saleDate;
 
-    @FXML
-    private TableView id_tableItemOfSale;
 
     @FXML
     private ComboBox<?> id_warehouse;
@@ -70,37 +59,7 @@ public class AddSaleController {
 
     @FXML
     protected void initialize() {
-        data = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from prodasha");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableItemOfSale.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
-            }
-            id_tableItemOfSale.setItems(data);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         ComboBoxSale();
 
     }

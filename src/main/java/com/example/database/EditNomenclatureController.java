@@ -67,7 +67,7 @@ public class EditNomenclatureController {
     @FXML
     void initialize() {
         ComboBoxNomenclature();
-        getCB();
+     //   getCB();
         idNomenclature = dataS.getIdNomenclature();
         //id_editName.setText("Привет");
         //System.out.println(dataS.getIdIzerenie());
@@ -101,15 +101,14 @@ public void getCB(){
                 listRow.add(rs.getString(i));
             }
 
-            id = listRow.get(0);
             nom = listRow.get(1);
 
             listgetNomfromCB = new ArrayList<>(Collections.singleton(nom));
             listgetNomfromCB.add(nom);
 
-            listgetNomfromCB.indexOf(NAM_LIST);
+            listgetNomfromCB.indexOf(dataS.getIdIzerenieFromNom());
 
-        //    System.out.println("ВЫбранный элемент "+ listgetNomfromCB.get(0));
+
 
          //   id_comboBoxUnit.getItems().addAll(listUnit);
 
@@ -118,7 +117,7 @@ public void getCB(){
            // GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
 
         //    str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
-        }
+        }System.out.println("ВЫбранный элемент "+  listgetNomfromCB);
      //   System.out.println(NAM_LIST.get(0));
       //  System.out.println(id_LIST.get(Integer.parseInt(str)));
 
@@ -157,16 +156,21 @@ public void getCB(){
 
 
                 id_comboBoxUnit.getSelectionModel().select(0);
+
+
                 GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
 
                 str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
                 System.out.println(str);
             }
+            id_comboBoxUnit.getSelectionModel().select(0);
 
-          //  System.out.println(id_LIST.get(Integer.parseInt(str)));
-
+            System.out.println(NAM_LIST);
+            System.out.println(NAM_LIST.indexOf(dataS.getIdIzerenieFromNom()));
+            System.out.println(NAM_LIST.indexOf(id_LIST.get(2)));
+            System.out.println(NAM_LIST.indexOf(2));
             str1 = dataS.getIdIzerenieFromNom();
-            id_comboBoxUnit.getSelectionModel().select(Integer.parseInt(str));
+           // id_comboBoxUnit.getSelectionModel().select(GetValue);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

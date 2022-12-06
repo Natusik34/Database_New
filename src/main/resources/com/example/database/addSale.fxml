@@ -4,51 +4,40 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.AddSaleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.AddSaleController">
    <children>
-      <Label layoutX="228.0" layoutY="37.0" text="Добавление новой записи">
+      <Label layoutX="148.0" layoutY="35.0" text="Добавление новой записи">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="144.0" layoutY="120.0" text="Номер накладной:">
+      <Label layoutX="44.0" layoutY="122.0" text="Номер накладной:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="173.0" layoutY="163.0" text="Дата продажи:">
+      <Label layoutX="73.0" layoutY="165.0" text="Дата продажи:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="id_invoiceNumber" layoutX="298.0" layoutY="120.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button fx:id="id_buttonAdd" layoutX="296.0" layoutY="529.0" mnemonicParsing="false" onAction="#AddSale" prefHeight="40.0" prefWidth="108.0" text="Добавить">
+      <TextField fx:id="id_invoiceNumber" layoutX="198.0" layoutY="122.0" prefHeight="25.0" prefWidth="298.0" />
+      <Button fx:id="id_buttonAdd" layoutX="216.0" layoutY="250.0" mnemonicParsing="false" onAction="#AddSale" prefHeight="40.0" prefWidth="108.0" text="Добавить">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Separator layoutY="80.0" prefHeight="0.0" prefWidth="700.0" style="-fx-background-color: black;" />
-      <Label layoutX="238.0" layoutY="204.0" text="Склад:">
+      <Separator layoutY="83.0" prefHeight="0.0" prefWidth="539.0" style="-fx-background-color: black;" />
+      <Label layoutX="138.0" layoutY="206.0" text="Склад:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="id_saleDate" layoutX="298.0" layoutY="163.0" prefHeight="25.0" prefWidth="298.0" />
-      <ComboBox fx:id="id_warehouse" layoutX="297.0" layoutY="205.0" prefHeight="25.0" prefWidth="298.0" />
-      <TableView fx:id="id_tableItemOfSale" layoutY="338.0" prefHeight="162.0" prefWidth="700.0" />
-      <Label layoutX="274.0" layoutY="261.0" text="Табличная часть">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Separator layoutY="290.0" prefHeight="0.0" prefWidth="700.0" style="-fx-background-color: black;" />
-      <Button fx:id="id_buttonInput" layoutX="248.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonInput" prefHeight="35.0" prefWidth="35.0" styleClass="InputTable" stylesheets="@../../../style.css" />
-      <Button fx:id="id_buttonOutput" layoutX="331.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonOutput" prefHeight="35.0" prefWidth="35.0" styleClass="OutputTable" stylesheets="@../../../style.css" />
-      <Button fx:id="id_buttonDelete" layoutX="416.0" layoutY="297.0" mnemonicParsing="false" onAction="#addButtonDelete" prefHeight="35.0" prefWidth="35.0" styleClass="DeleteTable" stylesheets="@../../../style.css" />
+      <TextField fx:id="id_saleDate" layoutX="198.0" layoutY="165.0" prefHeight="25.0" prefWidth="298.0" />
+      <ComboBox fx:id="id_warehouse" layoutX="197.0" layoutY="207.0" prefHeight="25.0" prefWidth="298.0" />
    </children>
 </AnchorPane>

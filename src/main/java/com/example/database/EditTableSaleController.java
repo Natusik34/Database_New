@@ -1,12 +1,5 @@
 package com.example.database;
 
-import java.net.URL;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,9 +9,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static java.lang.Double.parseDouble;
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AddTableSaleController {
+public class EditTableSaleController {
 
     String id, nom;
     List listId, listNom;
@@ -68,23 +66,7 @@ public class AddTableSaleController {
 
     @FXML
     void initialize() {
-
         ComboBoxTableSale();
-        //id_amount.setText("0");
-        //id_price.setText("0");
-
-        id_amount.textProperty().addListener((observable, oldValue, newValue) -> {
-            // String str = id_price.getText();
-            // System.out.println("textfield changed from " + oldValue + " to " + newValue);
-            double str1 = Double.parseDouble(newValue) * Double.parseDouble(id_price.getText());
-            id_sum.setText(String.valueOf(str1));
-        });
-        id_price.textProperty().addListener((observable, oldValue, newValue) -> {
-            //  String str = id_price.getText();
-//            System.out.println("textfield changed from " + oldValue + " to " + newValue);
-            double str1 = Double.parseDouble(newValue) * Double.parseDouble(id_amount.getText());
-            id_sum.setText(String.valueOf(str1));
-        });
     }
 
     public void ComboBoxTableSale(){

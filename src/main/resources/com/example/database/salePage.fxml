@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.SalePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.SalePageController">
    <children>
       <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@../../../style.css">
          <children>
@@ -83,10 +83,14 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TableView fx:id="id_tableSale" layoutX="20.0" layoutY="14.0" onMouseClicked="#getcell" prefHeight="590.0" prefWidth="563.0" />
+                  <TableView fx:id="id_tableSale" layoutX="20.0" layoutY="14.0" onMouseClicked="#getcell" prefHeight="285.0" prefWidth="563.0" />
                   <Button fx:id="id_buttonInput" layoutX="851.0" layoutY="76.0" mnemonicParsing="false" onAction="#showAdd" prefHeight="35.0" prefWidth="41.0" styleClass="Input" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonOutput" layoutX="851.0" layoutY="123.0" mnemonicParsing="false" onAction="#showEdit" prefHeight="35.0" prefWidth="41.0" styleClass="Output" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonDelete" layoutX="851.0" layoutY="172.0" mnemonicParsing="false" onAction="#showDelete" prefHeight="35.0" prefWidth="41.0" styleClass="Delete" stylesheets="@../../../style.css" />
+                  <TableView fx:id="id_tableSaleNomenclature" layoutX="20.0" layoutY="355.0" onMouseClicked="#getcellTable" prefHeight="256.0" prefWidth="563.0" />
+                  <Button fx:id="id_buttonInputRow" layoutX="140.0" layoutY="313.0" mnemonicParsing="false" onAction="#showAddRow" prefHeight="35.0" prefWidth="41.0" styleClass="InputTable" stylesheets="@../../../style.css" />
+                  <Button fx:id="id_buttonOutputRow" layoutX="261.0" layoutY="313.0" mnemonicParsing="false" onAction="#showEditRow" prefHeight="35.0" prefWidth="41.0" styleClass="OutputTable" stylesheets="@../../../style.css" />
+                  <Button fx:id="id_buttonDeleteRow" layoutX="379.0" layoutY="313.0" mnemonicParsing="false" onAction="#showDeleteRow" prefHeight="35.0" prefWidth="41.0" styleClass="DeleteTable" stylesheets="@../../../style.css" />
                </children>
             </Pane>
          </children></Pane>

@@ -41,10 +41,19 @@ public class SalePageController {
     private Button id_buttonDelete;
 
     @FXML
+    private Button id_buttonDeleteRow;
+
+    @FXML
     private Button id_buttonInput;
 
     @FXML
+    private Button id_buttonInputRow;
+
+    @FXML
     private Button id_buttonOutput;
+
+    @FXML
+    private Button id_buttonOutputRow;
 
     @FXML
     private Button id_delivery;
@@ -60,6 +69,9 @@ public class SalePageController {
 
     @FXML
     private TableView<ObservableList> id_tableSale;
+
+    @FXML
+    private TableView<?> id_tableSaleNomenclature;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -195,6 +207,42 @@ public class SalePageController {
         Peremennie.nomNakSale = deliv.get(1).toString();
         Peremennie.DataSale = deliv.get(2).toString();
         Peremennie.idCkladSale =  Integer.parseInt(deliv.get(3).toString()) ;
+    }
+
+    public void getcellTable(MouseEvent mouseEvent) {
+    }
+
+    public void showAddRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("addTableSale.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Добавление новой строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showEditRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("editTableSale.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Редактирование строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showDeleteRow(ActionEvent actionEvent) {
     }
 }
 
