@@ -233,7 +233,7 @@ public class SalePageController {
     }
 
     public void getcell(MouseEvent mouseEvent) {
-        ObservableList deliv = id_tableSale.getSelectionModel().getSelectedItem();
+        ObservableList sale = id_tableSale.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
         //dataS.setIdIzerenie(izm.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());

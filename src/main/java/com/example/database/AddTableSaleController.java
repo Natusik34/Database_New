@@ -20,11 +20,16 @@ import static java.lang.Double.parseDouble;
 
 public class AddTableSaleController {
 
-    String id, nom;
-    List listId, listNom;
-    List<String> id_LIST = new ArrayList<>();
-    List<String> nom_LIST = new ArrayList<>();
-    String GetNom, strNom;
+    String idSale, sale, nom,idNom;
+
+    List listIdSale, listSale, listNom, listIdNom;
+
+    List<String>id_LISTSale = new ArrayList<>();
+    List<String>sale_LIST = new ArrayList<>();
+    List<String>nom_LIST = new ArrayList<>();
+    List<String>id_LISTNom = new ArrayList<>();
+
+    String GetSale, GetNom, strSale, strNom;
 
     @FXML
     private ResourceBundle resources;
@@ -52,13 +57,17 @@ public class AddTableSaleController {
 
     @FXML
     void ButtonAdd(ActionEvent event) {
+        GetSale = String.valueOf(id_comboBoxSale.getSelectionModel().getSelectedIndex());
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
 
+        strSale = String.valueOf(sale_LIST.indexOf(sale_LIST.get(Integer.parseInt(GetSale))));
         strNom = String.valueOf(nom_LIST.indexOf(nom_LIST.get(Integer.parseInt(GetNom))));
-        String idNomen = id_LIST.get(Integer.parseInt(strNom));
+
+        String idSalE = id_LISTSale.get(Integer.parseInt(strSale));
+        String idNomen = id_LISTNom.get(Integer.parseInt(strNom));
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_prodasha(id_nomenklatyra, kolichestvo_prodasha, price_prodasha, summa_prodasha) VALUES('" + idNomen + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
+            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_prodasha(id_prodasha, id_nomenklatyra, kolichestvo_prodasha, price_prodasha, summa_prodasha) VALUES('" + idSalE + "','" + idNomen + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -73,6 +82,7 @@ public class AddTableSaleController {
     void initialize() {
 
         ComboBoxTableSale();
+        ComboBoxTableNomenclature();
         //id_amount.setText("0");
         //id_price.setText("0");
 
@@ -93,6 +103,44 @@ public class AddTableSaleController {
     public void ComboBoxTableSale(){
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("Select * from public.prodasha");
+            while(rs.next()){
+                ObservableList<String> listRow = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    listRow.add(rs.getString(i));
+                }
+
+                idSale = listRow.get(0);
+                sale = listRow.get(1);
+
+                listIdSale = new ArrayList<>(Collections.singleton(idSale));
+                listSale = new ArrayList<>(Collections.singleton(sale));
+
+                id_LISTSale.add(idSale);
+                sale_LIST.add(sale);
+
+                sale_LIST.indexOf(sale_LIST);
+
+                System.out.println("ВЫбранный элемент "+ listSale.get(0));
+                id_comboBoxSale.getItems().addAll(listSale);
+                id_comboBoxSale.getSelectionModel().select(0);
+
+                GetSale = String.valueOf(id_comboBoxSale.getSelectionModel().getSelectedIndex());
+
+                strSale = String.valueOf(sale_LIST.indexOf(sale_LIST.get(Integer.parseInt(GetSale))));
+            }
+            System.out.println(nom_LIST.get(0));
+            System.out.println(id_LISTSale.get(Integer.parseInt(strSale)));
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void ComboBoxTableNomenclature(){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.nomenklatyra");
             while(rs.next()){
                 ObservableList<String> listRow = FXCollections.observableArrayList();
@@ -100,13 +148,13 @@ public class AddTableSaleController {
                     listRow.add(rs.getString(i));
                 }
 
-                id = listRow.get(0);
+                idNom = listRow.get(0);
                 nom = listRow.get(1);
 
-                listId = new ArrayList<>(Collections.singleton(id));
+                listIdNom = new ArrayList<>(Collections.singleton(idNom));
                 listNom = new ArrayList<>(Collections.singleton(nom));
 
-                id_LIST.add(id);
+                id_LISTNom.add(idNom);
                 nom_LIST.add(nom);
 
                 nom_LIST.indexOf(nom_LIST);
@@ -120,7 +168,7 @@ public class AddTableSaleController {
                 strNom = String.valueOf(nom_LIST.indexOf(nom_LIST.get(Integer.parseInt(GetNom))));
             }
             System.out.println(nom_LIST.get(0));
-            System.out.println(id_LIST.get(Integer.parseInt(strNom)));
+            System.out.println(id_LISTNom.get(Integer.parseInt(strNom)));
 
 
         } catch (SQLException throwables) {
