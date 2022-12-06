@@ -23,6 +23,7 @@ public class EditNomenclatureController {
     String id;
     List listId;
     List listUnit;
+    List listgetNomfromCB;
     String str;
     List<String>id_LIST = new ArrayList<>();
     List<String>NAM_LIST = new ArrayList<>();
@@ -30,7 +31,7 @@ public class EditNomenclatureController {
 
     DataSingleton dataS = DataSingleton.getInstance();
     String idNomenclature;
-
+    String str1;
     @FXML
     private ResourceBundle resources;
 
@@ -66,7 +67,7 @@ public class EditNomenclatureController {
     @FXML
     void initialize() {
         ComboBoxNomenclature();
-
+        getCB();
         idNomenclature = dataS.getIdNomenclature();
         //id_editName.setText("Привет");
         //System.out.println(dataS.getIdIzerenie());
@@ -90,6 +91,43 @@ public class EditNomenclatureController {
         }
 
     }
+public void getCB(){
+    try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        Statement statement = con.createStatement();
+        ResultSet rs = statement.executeQuery("Select * from public.izmerenie where id_izmerenie ='"+dataS.getIdIzerenieFromNom()+"';");
+        while(rs.next()){
+            ObservableList<String> listRow = FXCollections.observableArrayList();
+            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                listRow.add(rs.getString(i));
+            }
+
+            id = listRow.get(0);
+            nom = listRow.get(1);
+
+            listgetNomfromCB = new ArrayList<>(Collections.singleton(nom));
+            listgetNomfromCB.add(nom);
+
+            listgetNomfromCB.indexOf(NAM_LIST);
+
+        //    System.out.println("ВЫбранный элемент "+ listgetNomfromCB.get(0));
+
+         //   id_comboBoxUnit.getItems().addAll(listUnit);
+
+
+          //  id_comboBoxUnit.getSelectionModel().select(0);
+           // GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
+
+        //    str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
+        }
+     //   System.out.println(NAM_LIST.get(0));
+      //  System.out.println(id_LIST.get(Integer.parseInt(str)));
+
+       // str1 = dataS.getIdIzerenieFromNom();
+       // id_comboBoxUnit.getSelectionModel().select(Integer.parseInt(str1));
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    }
+}
 
     public void ComboBoxNomenclature(){
         //ObservableList<ObservableList> list = FXCollections.observableArrayList();
@@ -113,18 +151,22 @@ public class EditNomenclatureController {
 
                 NAM_LIST.indexOf(NAM_LIST);
 
-                System.out.println("ВЫбранный элемент "+ listUnit.get(0));
-                id_comboBoxUnit.getItems().addAll(listUnit);
-                id_comboBoxUnit.getSelectionModel().select(0);
+               System.out.println("ВЫбранный элемент "+ listUnit.get(0));
 
+                id_comboBoxUnit.getItems().addAll(listUnit);
+
+
+                id_comboBoxUnit.getSelectionModel().select(0);
                 GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
 
                 str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
+                System.out.println(str);
             }
-            System.out.println(NAM_LIST.get(0));
-            System.out.println(id_LIST.get(Integer.parseInt(str)));
 
+          //  System.out.println(id_LIST.get(Integer.parseInt(str)));
 
+            str1 = dataS.getIdIzerenieFromNom();
+            id_comboBoxUnit.getSelectionModel().select(Integer.parseInt(str));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -6,6 +6,8 @@ public class DataSingleton {
     String idNomenclature;
     String idSupplier;
     String idWarehouse;
+    String idIzerenieFromNom;
+
     private DataSingleton(){}
 
     public static DataSingleton getInstance(){
@@ -42,5 +44,13 @@ public class DataSingleton {
 
     public void setIdWarehouse(String idWarehouse) {
         this.idWarehouse = idWarehouse;
+    }
+
+    public String getIdIzerenieFromNom() {
+        return idIzerenieFromNom;
+    }
+
+    public void setIdIzerenieFromNom(String idIzerenieFromNom) {
+        this.idIzerenieFromNom = idIzerenieFromNom;
     }
 }

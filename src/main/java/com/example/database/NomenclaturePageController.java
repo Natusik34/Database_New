@@ -192,7 +192,10 @@ public class NomenclaturePageController {
           //System.out.println(nom.get(0).toString());
 
         dataS.setIdNomenclature(nom.get(0).toString());
-        System.out.println(dataS.getIdNomenclature());
+        dataS.setIdIzerenieFromNom(nom.get(2).toString());
+
+      //System.out.println(dataS.getIdNomenclature());
+        System.out.println(dataS.getIdIzerenieFromNom());
 
         Peremennie.idNom =  Integer.parseInt(nom.get(0).toString()) ;
         Peremennie.nameNom = nom.get(1).toString();
