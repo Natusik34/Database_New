@@ -8,42 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.EditTableSaleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.EditTableSaleController">
    <children>
       <Label layoutX="194.0" layoutY="38.0" text="Редактирование строки">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="88.0" layoutY="130.0" text="Номенклатура:">
+      <Label layoutX="88.0" layoutY="174.0" text="Номенклатура:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="id_amount" layoutX="221.0" layoutY="183.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button fx:id="id_buttonEdit" layoutX="249.0" layoutY="350.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
+      <TextField fx:id="id_amount" layoutX="221.0" layoutY="227.0" prefHeight="25.0" prefWidth="298.0" />
+      <Button fx:id="id_buttonEdit" layoutX="249.0" layoutY="394.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <Separator layoutY="82.0" prefHeight="1.0" prefWidth="606.0" style="-fx-background-color: black;" />
-      <Label layoutX="109.0" layoutY="182.0" text="Количество:">
+      <Label layoutX="109.0" layoutY="226.0" text="Количество:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="id_comboBoxNomenclature" layoutX="221.0" layoutY="131.0" prefHeight="25.0" prefWidth="298.0" />
-      <Label layoutX="161.0" layoutY="236.0" text="Цена:">
+      <ComboBox fx:id="id_comboBoxNomenclature" layoutX="221.0" layoutY="175.0" prefHeight="25.0" prefWidth="298.0" />
+      <Label layoutX="161.0" layoutY="280.0" text="Цена:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="id_price" layoutX="221.0" layoutY="237.0" prefHeight="25.0" prefWidth="298.0" />
-      <Label layoutX="150.0" layoutY="293.0" text="Сумма:">
+      <TextField fx:id="id_price" layoutX="221.0" layoutY="281.0" prefHeight="25.0" prefWidth="298.0" />
+      <Label layoutX="150.0" layoutY="337.0" text="Сумма:">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="id_sum" layoutX="221.0" layoutY="294.0" prefHeight="25.0" prefWidth="298.0" />
+      <TextField fx:id="id_sum" layoutX="221.0" layoutY="338.0" prefHeight="25.0" prefWidth="298.0" />
+      <Label layoutX="130.0" layoutY="123.0" text="Продажа:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="id_comboBoxSale" layoutX="221.0" layoutY="124.0" prefHeight="25.0" prefWidth="298.0" />
    </children>
 </AnchorPane>

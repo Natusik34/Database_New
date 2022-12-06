@@ -40,6 +40,9 @@ public class EditTableSaleController {
     private ComboBox<?> id_comboBoxNomenclature;
 
     @FXML
+    private ComboBox<?> id_comboBoxSale;
+
+    @FXML
     private TextField id_price;
 
     @FXML

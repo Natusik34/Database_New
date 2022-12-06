@@ -40,10 +40,20 @@ public class DeliveryPageController {
     private Button id_buttonDelete;
 
     @FXML
+    private Button id_buttonDeleteRow;
+
+    @FXML
     private Button id_buttonInput;
 
     @FXML
+    private Button id_buttonInputRow;
+
+    @FXML
     private Button id_buttonOutput;
+
+    @FXML
+    private Button id_buttonOutputRow;
+
 
     @FXML
     private Button id_nomenclature;
@@ -61,12 +71,16 @@ public class DeliveryPageController {
     private TableView<ObservableList> id_tableDelivery;
 
     @FXML
+    private TableView<ObservableList> id_tableDeliveryNomenclature;
+
+    @FXML
     private Button id_unitOfMeasurement;
 
     @FXML
     private Button id_warehouse;
 
     private ObservableList<ObservableList> data;
+    private ObservableList<ObservableList> dataTable;
 
     @FXML
     void initialize() {
@@ -76,7 +90,7 @@ public class DeliveryPageController {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from postavka");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
                 col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
@@ -102,6 +116,43 @@ public class DeliveryPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        /////////////////////////////
+
+        dataTable = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from nomenklatyra_postavka");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableDeliveryNomenclature.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                dataTable.add(row);
+            }
+            id_tableDeliveryNomenclature.setItems(dataTable);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @FXML
@@ -189,6 +240,65 @@ public class DeliveryPageController {
             Parent root = FXMLLoader.load(getClass().getResource("deleteDelivery.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Удаление записи");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getcellTable(MouseEvent mouseEvent) {
+        ObservableList delivTable = id_tableDeliveryNomenclature.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdIzerenie(izm.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idNomenclatureDeliveryTable =  Integer.parseInt(delivTable.get(0).toString()) ;
+        Peremennie.idDeliveryTable =  Integer.parseInt(delivTable.get(1).toString()) ;
+        Peremennie.idNomDelivery =  Integer.parseInt(delivTable.get(2).toString()) ;
+        Peremennie.amountDelivery = delivTable.get(3).toString();
+        Peremennie.priceDelivery = delivTable.get(4).toString();
+        Peremennie.sumDelivery = delivTable.get(5).toString();
+    }
+
+    public void showEditRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("editTableDelivery.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Редактирование строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showAddRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("addTableDelivery.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Добавление новой строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showDeleteRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteTableDelivery.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();

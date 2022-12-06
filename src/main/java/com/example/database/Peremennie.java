@@ -28,7 +28,13 @@ public static int idCklad;
     public static String nomNakSale;
     public static String DataSale;
     public static int idCkladSale;
-
+//номенлатура поставки
+public static int idNomenclatureDeliveryTable;
+    public static int idDeliveryTable;
+    public static int idNomDelivery;
+    public static String amountDelivery;
+    public static String priceDelivery;
+    public static String sumDelivery;
 
 
 }
