@@ -238,13 +238,24 @@ public class SalePageController {
         //dataS.setIdIzerenie(izm.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
-        Peremennie.idSale =  Integer.parseInt(deliv.get(0).toString()) ;
-        Peremennie.nomNakSale = deliv.get(1).toString();
-        Peremennie.DataSale = deliv.get(2).toString();
-        Peremennie.idCkladSale =  Integer.parseInt(deliv.get(3).toString()) ;
+        Peremennie.idSale =  Integer.parseInt(sale.get(0).toString()) ;
+        Peremennie.nomNakSale = sale.get(1).toString();
+        Peremennie.DataSale = sale.get(2).toString();
+        Peremennie.idCkladSale =  Integer.parseInt(sale.get(3).toString()) ;
     }
 
     public void getcellTable(MouseEvent mouseEvent) {
+        ObservableList saleTable = id_tableSaleNomenclature.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdIzerenie(izm.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idNomenclatureSaleTable =  Integer.parseInt(saleTable.get(0).toString()) ;
+        Peremennie.idSaleTable =  Integer.parseInt(saleTable.get(1).toString()) ;
+        Peremennie.idNomSale =  Integer.parseInt(saleTable.get(2).toString()) ;
+        Peremennie.amountSale = saleTable.get(3).toString();
+        Peremennie.priceSale = saleTable.get(4).toString();
+        Peremennie.sumSale = saleTable.get(5).toString();
     }
 
     public void showAddRow(ActionEvent actionEvent) {
@@ -278,6 +289,18 @@ public class SalePageController {
     }
 
     public void showDeleteRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteTableSale.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

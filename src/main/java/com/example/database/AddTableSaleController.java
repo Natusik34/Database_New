@@ -129,7 +129,7 @@ public class AddTableSaleController {
 
                 strSale = String.valueOf(sale_LIST.indexOf(sale_LIST.get(Integer.parseInt(GetSale))));
             }
-            System.out.println(nom_LIST.get(0));
+            System.out.println(sale_LIST.get(0));
             System.out.println(id_LISTSale.get(Integer.parseInt(strSale)));
 
 

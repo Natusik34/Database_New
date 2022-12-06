@@ -35,6 +35,13 @@ public static int idNomenclatureDeliveryTable;
     public static String amountDelivery;
     public static String priceDelivery;
     public static String sumDelivery;
+    //номенлатура продажи
+    public static int idNomenclatureSaleTable;
+    public static int idSaleTable;
+    public static int idNomSale;
+    public static String amountSale;
+    public static String priceSale;
+    public static String sumSale;
 
 
 }

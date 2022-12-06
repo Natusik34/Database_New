@@ -47,7 +47,7 @@ public class EditTableSaleController {
 
     @FXML
     private TextField id_sum;
-
+/*
     @FXML
     void ButtonAdd(ActionEvent event) {
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
@@ -65,13 +65,16 @@ public class EditTableSaleController {
         stage.close();
         //tableView.refresh();
 
-    }
+    }*/
 
     @FXML
     void initialize() {
-        ComboBoxTableSale();
+       // ComboBoxTableSale();
     }
 
+    public void ButtonEdit(ActionEvent actionEvent) {
+    }
+/*
     public void ComboBoxTableSale(){
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
@@ -108,7 +111,7 @@ public class EditTableSaleController {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
+    }*/
 /*
     public void getSum(){
         double sum = 0;
