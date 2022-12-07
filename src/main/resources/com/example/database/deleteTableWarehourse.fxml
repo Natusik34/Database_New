@@ -24,7 +24,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="60.0" layoutY="44.0" text="удалить эту запись?">
+      <Label layoutX="60.0" layoutY="44.0" text="удалить эту строку?">
          <font>
             <Font size="20.0" />
          </font>

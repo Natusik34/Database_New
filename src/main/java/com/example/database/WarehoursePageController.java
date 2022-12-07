@@ -181,7 +181,7 @@ public class WarehoursePageController {
     public void getcellTable(MouseEvent mouseEvent) {
         ObservableList tovarCklad = id_tableWarehouseNomenclature.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
-        //dataS.setIdWarehouse(cklad.get(0).toString());
+        dataS.setIdWarehouseNomenclature(tovarCklad.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idTovarWarehouseTable =  Integer.parseInt(tovarCklad.get(0).toString()) ;

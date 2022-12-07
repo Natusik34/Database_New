@@ -11,6 +11,11 @@ public class DataSingleton {
     String idDelivery;
     String idDeliveryNomenclature;
 
+    String idSale;
+    String idSaleNomenclature;
+
+    String idWarehouseNomenclature;
+
 
 
     private DataSingleton(){}
@@ -74,6 +79,30 @@ public class DataSingleton {
 
     public void setIdDeliveryNomenclature(String idDeliveryNomenclature) {
         this.idDeliveryNomenclature = idDeliveryNomenclature;
+    }
+
+    public String getIdSale() {
+        return idSale;
+    }
+
+    public void setIdSale(String idSale) {
+        this.idSale = idSale;
+    }
+
+    public String getIdSaleNomenclature() {
+        return idSaleNomenclature;
+    }
+
+    public void setIdSaleNomenclature(String idSaleNomenclature) {
+        this.idSaleNomenclature = idSaleNomenclature;
+    }
+
+    public String getIdWarehouseNomenclature() {
+        return idWarehouseNomenclature;
+    }
+
+    public void setIdWarehouseNomenclature(String idWarehouseNomenclature) {
+        this.idWarehouseNomenclature = idWarehouseNomenclature;
     }
 
 

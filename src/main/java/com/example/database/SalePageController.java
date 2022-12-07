@@ -31,6 +31,8 @@ public class SalePageController {
 
     Stage window;
 
+    DataSingleton dataS =  DataSingleton.getInstance();
+
     @FXML
     private ResourceBundle resources;
 
@@ -171,7 +173,7 @@ public class SalePageController {
     public void getcell(MouseEvent mouseEvent) {
         ObservableList sale = id_tableSale.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
-        //dataS.setIdIzerenie(izm.get(0).toString());
+        dataS.setIdSale(sale.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idSale =  Integer.parseInt(sale.get(0).toString()) ;
@@ -183,7 +185,7 @@ public class SalePageController {
     public void getcellTable(MouseEvent mouseEvent) {
         ObservableList saleTable = id_tableSaleNomenclature.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
-        //dataS.setIdIzerenie(izm.get(0).toString());
+        dataS.setIdSaleNomenclature(saleTable.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idNomenclatureSaleTable =  Integer.parseInt(saleTable.get(0).toString()) ;

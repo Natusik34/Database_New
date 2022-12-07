@@ -115,20 +115,6 @@ public class AddSaleController {
         }
     }
 
-    public void addButtonInput(ActionEvent actionEvent) throws IOException{
-        Stage stage = new Stage();
-        stage.initOwner(window);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        Parent root = FXMLLoader.load(getClass().getResource("addTableSale.fxml"));
-        stage.setTitle("Добавление новой строки");
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-    }
 
-    public void addButtonOutput(ActionEvent actionEvent) {
-    }
-
-    public void addButtonDelete(ActionEvent actionEvent) {
-    }
 }
 
