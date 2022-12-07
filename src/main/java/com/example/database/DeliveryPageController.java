@@ -86,75 +86,8 @@ public class DeliveryPageController {
 
     @FXML
     void initialize() {
-
-        data = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from postavka");
-            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableDelivery.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
-            }
-            id_tableDelivery.setItems(data);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        /////////////////////////////
-
-        dataTable = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from nomenklatyra_postavka");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableDeliveryNomenclature.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                dataTable.add(row);
-            }
-            id_tableDeliveryNomenclature.setItems(dataTable);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+        UpdateDelivery();
+        UpdateDeliveryNomenclature();
     }
 
     @FXML
@@ -254,7 +187,7 @@ public class DeliveryPageController {
     public void getcellTable(MouseEvent mouseEvent) {
         ObservableList delivTable = id_tableDeliveryNomenclature.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
-        //dataS.setIdIzerenie(izm.get(0).toString());
+        dataS.setIdDeliveryNomenclature(delivTable.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idNomenclatureDeliveryTable =  Integer.parseInt(delivTable.get(0).toString()) ;
@@ -308,6 +241,87 @@ public class DeliveryPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showReset(ActionEvent actionEvent) {
+        id_tableDelivery.getColumns().clear();
+        UpdateDelivery();
+    }
+
+    public void showResetRow(ActionEvent actionEvent) {
+        id_tableDeliveryNomenclature.getColumns().clear();
+        UpdateDeliveryNomenclature();
+    }
+
+    public void UpdateDelivery(){
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from postavka");
+            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableDelivery.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableDelivery.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void UpdateDeliveryNomenclature(){
+        dataTable = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from nomenklatyra_postavka");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableDeliveryNomenclature.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                dataTable.add(row);
+            }
+            id_tableDeliveryNomenclature.setItems(dataTable);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
 

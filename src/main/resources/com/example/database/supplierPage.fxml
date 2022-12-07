@@ -87,6 +87,7 @@
                   <Button fx:id="id_buttonInput" layoutX="851.0" layoutY="76.0" mnemonicParsing="false" onAction="#showDialog" prefHeight="35.0" prefWidth="41.0" styleClass="Input" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonOutput" layoutX="851.0" layoutY="123.0" mnemonicParsing="false" onAction="#showEdit" prefHeight="35.0" prefWidth="41.0" styleClass="Output" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonDelete" layoutX="851.0" layoutY="172.0" mnemonicParsing="false" onAction="#showDelete" prefHeight="35.0" prefWidth="41.0" styleClass="Delete" stylesheets="@../../../style.css" />
+                  <Button fx:id="id_buttonReset" layoutX="851.0" layoutY="221.0" mnemonicParsing="false" onAction="#showReset" prefHeight="35.0" prefWidth="41.0" styleClass="Reset" stylesheets="@../../../style.css" />
                </children>
             </Pane>
          </children></Pane>

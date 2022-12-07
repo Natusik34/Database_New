@@ -73,38 +73,8 @@ public class NomenclaturePageController {
 
     @FXML
     protected void initialize() {
+        UpdateTable();
 
-        data = FXCollections.observableArrayList();
-        try {
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from nomenklatyra");
-            for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
-                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableNomenclature.getColumns().addAll(col);
-            }
-
-            while (rs.next()) {
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
-            }
-            id_tableNomenclature.setItems(data);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void showAdd(ActionEvent actionEvent) {
@@ -200,6 +170,46 @@ public class NomenclaturePageController {
         Peremennie.idNom =  Integer.parseInt(nom.get(0).toString()) ;
         Peremennie.nameNom = nom.get(1).toString();
         Peremennie.idIzmNom =  Integer.parseInt(nom.get(2).toString()) ;
+
+    }
+
+    public void showReset(ActionEvent actionEvent) {
+        id_tableNomenclature.getColumns().clear();
+        UpdateTable();
+    }
+
+    public void UpdateTable(){
+        data = FXCollections.observableArrayList();
+        try {
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from nomenklatyra");
+            for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableNomenclature.getColumns().addAll(col);
+            }
+
+            while (rs.next()) {
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableNomenclature.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

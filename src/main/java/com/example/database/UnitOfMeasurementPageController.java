@@ -36,6 +36,9 @@ public class UnitOfMeasurementPageController {
     private Button id_buttonDelete;
 
     @FXML
+    private Button id_buttonReset;
+
+    @FXML
     private Button id_buttonInput;
 
     @FXML
@@ -69,6 +72,41 @@ public class UnitOfMeasurementPageController {
     @FXML
     protected void initialize() {
 
+       /* data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from izmerenie");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableUnitOfMeasurement.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableUnitOfMeasurement.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        UpdateTable();
+    }
+
+    public void UpdateTable(){
         data = FXCollections.observableArrayList();
         try{
             DBConnection con = new DBConnection();
@@ -100,6 +138,7 @@ public class UnitOfMeasurementPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @FXML
@@ -212,5 +251,10 @@ public class UnitOfMeasurementPageController {
         Peremennie.name = izm.get(1).toString();
         Peremennie.id =  Integer.parseInt(izm.get(0).toString()) ;
     }
+
+    public void showReset(ActionEvent actionEvent) {
+        id_tableUnitOfMeasurement.getColumns().clear();
+        UpdateTable();
     }
+}
 

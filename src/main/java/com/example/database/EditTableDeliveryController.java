@@ -1,5 +1,6 @@
 package com.example.database;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class EditTableDeliveryController {
     List<String>id_LISTNom = new ArrayList<>();
 
     String GetDeliv, GetNom, strDeliv, srtNom;
+
+    DataSingleton dataS = DataSingleton.getInstance();
+    String idNomenclatureDelivery;
 
     @FXML
     private ResourceBundle resources;
@@ -64,7 +68,7 @@ public class EditTableDeliveryController {
 
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("UPDATE public.postavka SET  id_postavka= '"+idDelivery+"',id_nomenklatyra = '"+idNomenclature+"', kolichestvo_postavka = '"+id_amount.getText()+"', price_postavka = '"+id_price.getText()+"', summa_postavka = '"+id_sum.getText()+"' WHERE id_nomenklatyra_postavka='"+idNomenclature+"' ;");
+            int rows = statement.executeUpdate("UPDATE public.nomenklatyra_postavka SET  id_postavka= '"+idDelivery+"',id_nomenklatyra = '"+idNomenclature+"', kolichestvo_postavka = '"+id_amount.getText()+"', price_postavka = '"+id_price.getText()+"', summa_postavka = '"+id_sum.getText()+"' WHERE id_nomenklatyra_postavka='"+idNomenclatureDelivery+"' ;");
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }
@@ -77,6 +81,7 @@ public class EditTableDeliveryController {
     void initialize() {
         ComboBoxDelivery();
         ComboBoxNomenclature();
+
         id_amount.textProperty().addListener((observable, oldValue, newValue) -> {
             // String str = id_price.getText();
             // System.out.println("textfield changed from " + oldValue + " to " + newValue);
@@ -89,6 +94,33 @@ public class EditTableDeliveryController {
             double str1 = Double.parseDouble(newValue) * Double.parseDouble(id_amount.getText());
             id_sum.setText(String.valueOf(str1));
         });
+
+
+        idNomenclatureDelivery = dataS.getIdDeliveryNomenclature();
+        //id_editName.setText("Привет");
+        //System.out.println(dataS.getIdIzerenie());
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from public.nomenklatyra_postavka where id_nomenklatyra_postavka = '" + idNomenclatureDelivery + "';");
+            while (rs.next()) {
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    row.add(rs.getString(i));
+                }
+                id_comboBoxDelivery.getValue();
+                id_comboBoxNomenclature.getValue();
+                id_amount.setText(row.get(3));
+                id_price.setText(row.get(4));
+                id_sum.setText(row.get(5));
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

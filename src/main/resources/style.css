@@ -42,6 +42,13 @@
     -fx-background-position: center center;
     -fx-background-color: rgba(238, 223, 223, 0.00);
 }
+.Reset{
+-fx-background-image: url(reset.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 31 31 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
 .InputTable{
 -fx-background-image: url(input.png);
 -fx-background-repeat: no-repeat;
@@ -58,6 +65,13 @@
 }
 .DeleteTable{
 -fx-background-image: url(delete.png);
+-fx-background-repeat: no-repeat;
+    -fx-background-size: 25 25 ;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(238, 223, 223, 0.00);
+}
+.ResetTable{
+-fx-background-image: url(reset.png);
 -fx-background-repeat: no-repeat;
     -fx-background-size: 25 25 ;
     -fx-background-position: center center;

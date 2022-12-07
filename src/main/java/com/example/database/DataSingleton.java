@@ -9,6 +9,7 @@ public class DataSingleton {
     //String idIzerenieFromNom;
 
     String idDelivery;
+    String idDeliveryNomenclature;
 
 
 
@@ -65,6 +66,14 @@ public class DataSingleton {
 
     public void setIdDelivery(String idDelivery) {
         this.idDelivery = idDelivery;
+    }
+
+    public String getIdDeliveryNomenclature() {
+        return idDeliveryNomenclature;
+    }
+
+    public void setIdDeliveryNomenclature(String idDeliveryNomenclature) {
+        this.idDeliveryNomenclature = idDeliveryNomenclature;
     }
 
 

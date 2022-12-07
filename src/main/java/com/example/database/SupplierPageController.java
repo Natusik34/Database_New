@@ -76,38 +76,8 @@ public class SupplierPageController{
 
     @FXML
     protected void initialize() {
+        UpdateTable();
 
-        data = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from postavchik");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableSupplier.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
-            }
-            id_tableSupplier.setItems(data);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -203,5 +173,45 @@ public class SupplierPageController{
         Peremennie.phoneNumberSupplier = supplier.get(2).toString();
         Peremennie.INNSupplier = supplier.get(3).toString();
         Peremennie.KPPNumberSupplier = supplier.get(4).toString();
+    }
+
+    public void showReset(ActionEvent actionEvent) {
+        id_tableSupplier.getColumns().clear();
+        UpdateTable();
+    }
+
+    public void UpdateTable(){
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select * from postavchik");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableSupplier.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableSupplier.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
