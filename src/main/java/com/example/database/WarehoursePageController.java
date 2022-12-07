@@ -74,7 +74,7 @@ public class WarehoursePageController {
     private TableView<ObservableList> id_tableWarehouse;
 
     @FXML
-    private TableView id_tableWarehouseNomenclature;
+    private TableView<ObservableList> id_tableWarehouseNomenclature;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -247,6 +247,15 @@ public class WarehoursePageController {
     }
 
     public void getcellTable(MouseEvent mouseEvent) {
+        ObservableList tovarCklad = id_tableWarehouseNomenclature.getSelectionModel().getSelectedItem();
+        //  System.out.println(izm.get(0).toString());
+        //dataS.setIdWarehouse(cklad.get(0).toString());
+        //System.out.println(dataS.getIdIzerenie());
+
+        Peremennie.idTovarWarehouseTable =  Integer.parseInt(tovarCklad.get(0).toString()) ;
+        Peremennie.idWarehouseTable =  Integer.parseInt(tovarCklad.get(1).toString()) ;
+        Peremennie.idNomWarehouse =  Integer.parseInt(tovarCklad.get(2).toString()) ;
+        Peremennie.amountWarehouse = tovarCklad.get(3).toString();
     }
 
     public void showAddRow(ActionEvent actionEvent) {
@@ -265,9 +274,35 @@ public class WarehoursePageController {
     }
 
     public void showEditRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("editTableWarehouse.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Редактирование строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showDeleteRow(ActionEvent actionEvent) {
+        try{
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("deleteTableWarehourse.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Удаление строки");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
 }
 

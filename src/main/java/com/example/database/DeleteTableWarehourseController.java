@@ -32,7 +32,7 @@ public class DeleteTableWarehourseController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
 
-            int rows = statement.executeUpdate("DELETE FROM public.cklad WHERE id_cklad = " + Peremennie.idCklad + "");
+            int rows = statement.executeUpdate("DELETE FROM public.tovar_cklad WHERE id_tovar_cklad = " + Peremennie.idTovarWarehouseTable + "");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

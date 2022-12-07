@@ -20,7 +20,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="id_buttonAdd" layoutX="249.0" layoutY="280.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
+      <Button fx:id="id_buttonEdit" layoutX="249.0" layoutY="280.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
          <font>
             <Font size="15.0" />
          </font>
