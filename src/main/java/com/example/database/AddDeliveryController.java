@@ -25,8 +25,6 @@ import javafx.util.Callback;
 
 public class AddDeliveryController {
 
-    Stage window;
-
     String id, cklad, post,idPost;
 
     List listId, listCklad, listPost, listIdPost;

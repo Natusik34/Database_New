@@ -55,7 +55,7 @@ public class EditNomenclatureController {
 
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("UPDATE public.nomenklatyra SET  naimenovanie= '"+id_name.getText()+"', '"+idIzmerenie+"' WHERE id_nomenklatyra='"+idNomenclature+"' ;");
+            int rows = statement.executeUpdate("UPDATE public.nomenklatyra SET  naimenovanie= '"+id_name.getText()+"', id_izmerenie= '"+idIzmerenie+"' WHERE id_nomenklatyra='"+idNomenclature+"' ;");
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }
@@ -91,6 +91,8 @@ public class EditNomenclatureController {
         }
 
     }
+
+  /*
 public void getCB(){
     try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
         Statement statement = con.createStatement();
@@ -126,7 +128,7 @@ public void getCB(){
     } catch (SQLException throwables) {
         throwables.printStackTrace();
     }
-}
+}*/
 
     public void ComboBoxNomenclature(){
         //ObservableList<ObservableList> list = FXCollections.observableArrayList();
@@ -165,11 +167,11 @@ public void getCB(){
             }
             id_comboBoxUnit.getSelectionModel().select(0);
 
-            System.out.println(NAM_LIST);
-            System.out.println(NAM_LIST.indexOf(dataS.getIdIzerenieFromNom()));
-            System.out.println(NAM_LIST.indexOf(id_LIST.get(2)));
-            System.out.println(NAM_LIST.indexOf(2));
-            str1 = dataS.getIdIzerenieFromNom();
+           // System.out.println(NAM_LIST);
+           // System.out.println(NAM_LIST.indexOf(dataS.getIdIzerenieFromNom()));
+          //  System.out.println(NAM_LIST.indexOf(id_LIST.get(2)));
+          //  System.out.println(NAM_LIST.indexOf(2));
+            //str1 = dataS.getIdIzerenieFromNom();
            // id_comboBoxUnit.getSelectionModel().select(GetValue);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -30,6 +30,8 @@ public class DeliveryPageController {
 
     Stage window;
 
+    DataSingleton dataS =  DataSingleton.getInstance();
+
     @FXML
     private ResourceBundle resources;
 
@@ -223,7 +225,7 @@ public class DeliveryPageController {
     public void getcell(MouseEvent mouseEvent) {
         ObservableList deliv = id_tableDelivery.getSelectionModel().getSelectedItem();
         //  System.out.println(izm.get(0).toString());
-        //dataS.setIdIzerenie(izm.get(0).toString());
+        dataS.setIdDelivery(deliv.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
         Peremennie.idDelivery =  Integer.parseInt(deliv.get(0).toString()) ;
