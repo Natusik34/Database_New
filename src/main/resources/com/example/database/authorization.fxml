@@ -28,7 +28,7 @@
             </Label>
             <TextField fx:id="id_login" layoutX="58.0" layoutY="124.0" prefHeight="25.0" prefWidth="221.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <TextField fx:id="id_password" layoutX="58.0" layoutY="196.0" prefHeight="25.0" prefWidth="221.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <Button fx:id="id_entrance" layoutX="108.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Вход" textFill="#8f5858">
+            <Button fx:id="id_entrance" layoutX="108.0" layoutY="247.0" mnemonicParsing="false" onAction="#ButtonAuthorization" prefHeight="25.0" prefWidth="121.0" text="Вход" textFill="#8f5858">
                <font>
                   <Font size="17.0" />
                </font>

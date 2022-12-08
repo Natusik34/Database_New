@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.RegistrationController">
    <children>
-      <Pane layoutX="300.0" layoutY="103.0" prefHeight="510.0" prefWidth="607.0" styleClass="pane" stylesheets="@../../../style.css">
+      <Pane layoutX="300.0" layoutY="125.0" prefHeight="454.0" prefWidth="607.0" styleClass="pane" stylesheets="@../../../style.css">
          <children>
             <Label layoutX="230.0" layoutY="40.0" text="Регистрация" textFill="#803e3e">
                <font>
@@ -23,29 +23,24 @@
                <font>
                   <Font size="17.0" />
                </font></Label>
-            <Label layoutX="278.0" layoutY="218.0" text="логин" textFill="#803e3e">
+            <Label layoutX="273.0" layoutY="218.0" text="пароль" textFill="#803e3e">
                <font>
                   <Font size="17.0" />
                </font></Label>
-            <Label layoutX="273.0" layoutY="285.0" text="пароль" textFill="#803e3e">
+            <Label layoutX="228.0" layoutY="286.0" text="повторите пароль" textFill="#803e3e">
                <font>
                   <Font size="17.0" />
                </font></Label>
-            <Label layoutX="230.0" layoutY="351.0" text="повторите пароль" textFill="#803e3e">
-               <font>
-                  <Font size="17.0" />
-               </font></Label>
-            <Button fx:id="id_register" layoutX="211.0" layoutY="431.0" mnemonicParsing="false" text="Зарегистрироваться" textFill="#803e3e">
+            <Button fx:id="id_register" layoutX="214.0" layoutY="376.0" mnemonicParsing="false" onAction="#ButtonRegistration" text="Зарегистрироваться" textFill="#803e3e">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Button fx:id="id_sendCode" layoutX="430.0" layoutY="114.0" mnemonicParsing="false" text="отправить код" textFill="#803e3e" />
+            <Button fx:id="id_sendCode" layoutX="430.0" layoutY="114.0" mnemonicParsing="false" onAction="#ButtonSendCode" text="отправить код" textFill="#803e3e" />
             <TextField fx:id="id_email" layoutX="180.0" layoutY="114.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <TextField fx:id="id_confirmationCode" layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <TextField fx:id="id_login" layoutX="180.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <TextField fx:id="id_password" layoutX="180.0" layoutY="311.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <TextField fx:id="id_repeatPassword" layoutX="182.0" layoutY="377.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <Button fx:id="id_avtoriz" layoutX="248.0" layoutY="474.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Авторизация" textFill="#8f5858">
+            <TextField fx:id="id_password" layoutX="180.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <TextField fx:id="id_repeatPassword" layoutX="180.0" layoutY="312.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <Button fx:id="id_avtoriz" layoutX="251.0" layoutY="419.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Авторизация" textFill="#8f5858">
                <font>
                   <Font size="15.0" />
                </font>

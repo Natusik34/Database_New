@@ -2,7 +2,13 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +17,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+
 public class RegistrationController {
+
+    private final int min = 0;
+    private final int max = 999999;
+    private Random random = new Random();
+    private String Code;
 
     @FXML
     private ResourceBundle resources;
@@ -24,9 +39,6 @@ public class RegistrationController {
 
     @FXML
     private TextField id_email;
-
-    @FXML
-    private TextField id_login;
 
     @FXML
     private TextField id_password;
@@ -68,4 +80,56 @@ public class RegistrationController {
 
     }
 
+    public void ButtonRegistration(ActionEvent actionEvent) {
+        AddUser();
+    }
+
+    public void ButtonSendCode(ActionEvent actionEvent) {
+        GetCodeEmail();
+    }
+
+    public void GetCodeEmail(){
+        final String fromEmail = "vasiltsova-natulya@yandex.ru"; //requires valid gmail id
+        final String password = "kptvgwqnzkiojzth"; // correct password for gmail id
+        final String toEmail = "xifed82642@covbase.com"; // can be any email id
+
+        System.out.println("SSLEmail Start");
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.yandex.ru"); //SMTP Host
+        props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory"); //SSL Factory Class
+        props.put("mail.smtp.auth", "true"); //Enabling SMTP Authentication
+        props.put("mail.smtp.port", "465"); //SMTP Port
+
+        Authenticator auth = new Authenticator() {
+            //override the getPasswordAuthentication method
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        };
+
+        Code = String.valueOf(random.nextInt(max - min) + min);
+        Session session = Session.getDefaultInstance(props, auth);
+        System.out.println("Session created");
+        EmailUtil.sendEmail(session, toEmail,"Вам пришел код! ", Code);
+
+    }
+
+    private void AddUser(){
+        String email = id_email.getText().trim();
+        String code = id_confirmationCode.getText().trim();
+        String password = id_password.getText().trim();
+        String repeatPassword = id_repeatPassword.getText().trim();
+
+        if(Objects.equals(Code, code) && password.equals(repeatPassword) && !password.equals("") && !repeatPassword.equals("")){
+            try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+                Statement statement = con.createStatement();
+                int rows = statement.executeUpdate("Insert into public.users (mail, password) values ('"+email+"', '"+password+"')");
+                Code = "";
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 }
