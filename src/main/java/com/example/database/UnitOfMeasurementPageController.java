@@ -256,5 +256,14 @@ public class UnitOfMeasurementPageController {
         id_tableUnitOfMeasurement.getColumns().clear();
         UpdateTable();
     }
+
+    public void Search(ActionEvent actionEvent) {
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ");
+    } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
 
