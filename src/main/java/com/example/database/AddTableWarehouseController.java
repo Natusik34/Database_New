@@ -61,6 +61,7 @@ public class AddTableWarehouseController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.tovar_cklad(id_cklad, id_nomenklatyra, kolichestvo_cklad) VALUES('" + idWarehouse + "', '" + idNomenclature + "','" + id_amount.getText() + "')");
+       statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -118,6 +119,9 @@ public class AddTableWarehouseController {
                 strWareh = String.valueOf(wareh_LIST.indexOf(wareh_LIST.get(Integer.parseInt(GetWareh))));
                 //srtPost = String.valueOf(post_LIST.indexOf(post_LIST.get(Integer.parseInt(GetPost))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(wareh_LIST.get(0));
             System.out.println(id_LISTWareh.get(Integer.parseInt(strWareh)));
            /* System.out.println(post_LIST.get(0));
@@ -168,6 +172,9 @@ public class AddTableWarehouseController {
                 //strCkl = String.valueOf(cklad_LIST.indexOf(cklad_LIST.get(Integer.parseInt(GetCklad))));
                 srtNom = String.valueOf(nom_LIST.indexOf(nom_LIST.get(Integer.parseInt(GetNom))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             /*System.out.println(cklad_LIST.get(0));
             System.out.println(id_LIST.get(Integer.parseInt(strCkl)));*/
             System.out.println(nom_LIST.get(0));

@@ -170,6 +170,7 @@ public class NomenclaturePageController {
         Peremennie.idNom =  Integer.parseInt(nom.get(0).toString()) ;
         Peremennie.nameNom = nom.get(1).toString();
         Peremennie.idIzmNom =  Integer.parseInt(nom.get(2).toString()) ;
+        Peremennie.price = nom.get(3).toString();
 
     }
 

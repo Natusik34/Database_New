@@ -107,6 +107,9 @@ public class AddDeliveryController {
                 strCkl = String.valueOf(cklad_LIST.indexOf(cklad_LIST.get(Integer.parseInt(GetCklad))));
                 //srtPost = String.valueOf(post_LIST.indexOf(post_LIST.get(Integer.parseInt(GetPost))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(cklad_LIST.get(0));
             System.out.println(id_LIST.get(Integer.parseInt(strCkl)));
            /* System.out.println(post_LIST.get(0));
@@ -115,6 +118,7 @@ public class AddDeliveryController {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
     }
 
     public void ComboBoxDeliverySupplier(){
@@ -157,6 +161,9 @@ public class AddDeliveryController {
                 //strCkl = String.valueOf(cklad_LIST.indexOf(cklad_LIST.get(Integer.parseInt(GetCklad))));
                 srtPost = String.valueOf(post_LIST.indexOf(post_LIST.get(Integer.parseInt(GetPost))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             /*System.out.println(cklad_LIST.get(0));
             System.out.println(id_LIST.get(Integer.parseInt(strCkl)));*/
             System.out.println(post_LIST.get(0));
@@ -181,6 +188,7 @@ public class AddDeliveryController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.postavka(nomer_nakladnoi, data_postavki, id_cklad, id_postavchik) VALUES('" + id_invoiceNumber.getText() + "','" + id_deliveryDate.getValue() + "','" + idCklad + "', '" + idPost + "')");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

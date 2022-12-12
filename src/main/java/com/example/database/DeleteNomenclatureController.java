@@ -33,6 +33,7 @@ public class DeleteNomenclatureController {
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("DELETE FROM public.nomenklatyra WHERE id_nomenklatyra = " + Peremennie.idNom + "");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

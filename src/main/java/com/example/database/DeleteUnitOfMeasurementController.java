@@ -32,6 +32,7 @@ public class DeleteUnitOfMeasurementController {
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("DELETE FROM public.izmerenie WHERE id_izmerenie = " + Peremennie.id + "");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

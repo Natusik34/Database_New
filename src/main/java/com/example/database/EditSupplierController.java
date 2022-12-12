@@ -44,6 +44,7 @@ public class EditSupplierController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.postavchik SET  naimenovanie='"+id_name.getText()+"', nomer_telefona= '"+id_phoneNomber.getText()+"',\"INN\"= '"+id_INN.getText()+"',\"KPP\"= '"+id_KPP.getText()+"' WHERE id_postavchik='"+idSupplier+"' ;");
+        statement.close();
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }

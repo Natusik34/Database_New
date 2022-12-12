@@ -8,6 +8,7 @@ public class Peremennie {
     public static int idNom;
     public static String nameNom;
     public static int idIzmNom;
+    public static String price;
 //поставщик
     public static int idSupplier;
     public static String nameSupplier;

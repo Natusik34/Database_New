@@ -41,6 +41,7 @@ public class AddWarehouseController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.cklad(naimenovanie) VALUES('" + id_name.getText() + "')");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -33,6 +33,7 @@ public class DeleteSaleController {
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("DELETE FROM public.prodasha WHERE id_prodasha = " + Peremennie.idSale + "");
+       statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

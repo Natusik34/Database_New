@@ -33,6 +33,7 @@ public class DeleteWarehourseController {
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("DELETE FROM public.cklad WHERE id_cklad = " + Peremennie.idCklad + "");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

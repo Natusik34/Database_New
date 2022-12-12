@@ -39,6 +39,10 @@ public class AddNomenclatureController {
     private TextField id_name;
 
     @FXML
+    private TextField id_price;
+
+
+    @FXML
     void initialize() {
         ComboBoxNomenclature();
     }
@@ -73,6 +77,9 @@ public class AddNomenclatureController {
 
                 str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(NAM_LIST.get(0));
             System.out.println(id_LIST.get(Integer.parseInt(str)));
 
@@ -90,8 +97,9 @@ public class AddNomenclatureController {
      //   System.out.println();
           try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra(naimenovanie, id_izmerenie) VALUES('" + id_name.getText() + "','" + idIzmerenie + "')");
-        } catch (SQLException throwables) {
+            int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra(naimenovanie, id_izmerenie, price) VALUES('" + id_name.getText() + "','" + idIzmerenie + "', '" + id_price.getText() + "')");
+        statement.close();
+          } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 

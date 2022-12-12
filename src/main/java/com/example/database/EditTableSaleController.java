@@ -113,6 +113,7 @@ public class EditTableSaleController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.nomenklatyra_prodasha SET  id_prodasha= '"+idSale+"',id_nomenklatyra = '"+idNomenclature+"', kolichestvo_prodasha = '"+id_amount.getText()+"', price_prodasha = '"+id_price.getText()+"', summa_prodasha = '"+id_sum.getText()+"' WHERE id_nomenklatyra_prodasha='"+idNomenclatureSale+"' ;");
+        statement.close();
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }
@@ -150,6 +151,9 @@ public class EditTableSaleController {
 
                 strSale = String.valueOf(sale_LIST.indexOf(sale_LIST.get(Integer.parseInt(GetSale))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(sale_LIST.get(0));
             System.out.println(id_LISTSale.get(Integer.parseInt(strSale)));
 
@@ -188,6 +192,9 @@ public class EditTableSaleController {
 
                 strNom = String.valueOf(nom_LIST.indexOf(nom_LIST.get(Integer.parseInt(GetNom))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(nom_LIST.get(0));
             System.out.println(id_LISTNom.get(Integer.parseInt(strNom)));
 

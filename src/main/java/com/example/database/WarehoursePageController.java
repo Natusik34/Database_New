@@ -281,6 +281,7 @@ public class WarehoursePageController {
             e.printStackTrace();
         }
 
+
     }
 
     public void UpdateWarehouseNomenclature(){

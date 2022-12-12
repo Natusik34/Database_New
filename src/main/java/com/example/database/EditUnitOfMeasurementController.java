@@ -86,6 +86,7 @@ public class EditUnitOfMeasurementController {
             int rows = statement.executeUpdate("UPDATE public.izmerenie\n" +
                     "\tSET  naimenovanie='"+id_editName.getText()+"'" +"\n" +
                     "\tWHERE id_izmerenie='"+idIzmerenie+"' ;");
+        statement.close();
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }

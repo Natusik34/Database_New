@@ -69,6 +69,7 @@ public class AddSaleController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.prodasha(nomer_nakladnoi, data_prodasha, id_cklad) VALUES('" + id_invoiceNumber.getText() + "','" + id_saleDate.getValue()+ "','" + idCklad + "')");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -106,6 +107,9 @@ public class AddSaleController {
 
                 strCkl = String.valueOf(cklad_LIST.indexOf(cklad_LIST.get(Integer.parseInt(GetCklad))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(cklad_LIST.get(0));
             System.out.println(id_LIST.get(Integer.parseInt(strCkl)));
 

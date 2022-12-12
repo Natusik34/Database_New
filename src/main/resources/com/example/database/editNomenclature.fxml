@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.EditNomenclatureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.EditNomenclatureController">
    <children>
       <Label layoutX="193.0" layoutY="35.0" text="Редактирование записи">
          <font>
@@ -21,7 +21,7 @@
          </font>
       </Label>
       <TextField fx:id="id_name" layoutX="246.0" layoutY="132.0" prefHeight="25.0" prefWidth="298.0" />
-      <Button fx:id="id_buttonEdit" layoutX="249.0" layoutY="243.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
+      <Button fx:id="id_buttonEdit" layoutX="249.0" layoutY="300.0" mnemonicParsing="false" onAction="#ButtonEdit" prefHeight="40.0" prefWidth="108.0" text="Изменить">
          <font>
             <Font size="15.0" />
          </font>
@@ -33,5 +33,11 @@
          </font>
       </Label>
       <ComboBox fx:id="id_comboBoxUnit" layoutX="246.0" layoutY="183.0" prefHeight="25.0" prefWidth="298.0" />
+      <Label layoutX="191.0" layoutY="239.0" text="Цена:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_price" layoutX="246.0" layoutY="239.0" prefHeight="25.0" prefWidth="298.0" />
    </children>
 </AnchorPane>

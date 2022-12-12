@@ -48,6 +48,9 @@ public class EditNomenclatureController {
     private TextField id_name;
 
     @FXML
+    private TextField id_price;
+
+    @FXML
     void ButtonEdit(ActionEvent event) {
         GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
         str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
@@ -55,7 +58,8 @@ public class EditNomenclatureController {
 
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            int rows = statement.executeUpdate("UPDATE public.nomenklatyra SET  naimenovanie= '"+id_name.getText()+"', id_izmerenie= '"+idIzmerenie+"' WHERE id_nomenklatyra='"+idNomenclature+"' ;");
+            int rows = statement.executeUpdate("UPDATE public.nomenklatyra SET  naimenovanie= '"+id_name.getText()+"', id_izmerenie= '"+idIzmerenie+"', price= '"+id_price.getText()+"' WHERE id_nomenklatyra='"+idNomenclature+"' ;");
+        statement.close();
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
             throwables.printStackTrace();
         }
@@ -82,6 +86,7 @@ public class EditNomenclatureController {
                 }
                 id_name.setText(row.get(1));
                 id_comboBoxUnit.getValue();
+                id_price.setText(row.get(3));
             }
 
         } catch (SQLException throwables) {
@@ -165,7 +170,11 @@ public void getCB(){
                 str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
                 System.out.println(str);
             }
+
             id_comboBoxUnit.getSelectionModel().select(0);
+            con.close();
+            statement.close();
+            rs.close();
 
            // System.out.println(NAM_LIST);
            // System.out.println(NAM_LIST.indexOf(dataS.getIdIzerenieFromNom()));

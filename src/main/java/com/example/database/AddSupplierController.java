@@ -46,6 +46,7 @@ public class AddSupplierController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.postavchik(naimenovanie, nomer_telefona, \"INN\", \"KPP\") VALUES('" + id_name.getText() + "', '" + id_phoneNumber.getText() + "', '" + id_INN.getText() + "', '" + id_KPP.getText() + "')");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

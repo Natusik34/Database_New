@@ -68,6 +68,7 @@ public class AddTableSaleController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_prodasha(id_prodasha, id_nomenklatyra, kolichestvo_prodasha, price_prodasha, summa_prodasha) VALUES('" + idSalE + "','" + idNomen + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
+        statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -129,6 +130,9 @@ public class AddTableSaleController {
 
                 strSale = String.valueOf(sale_LIST.indexOf(sale_LIST.get(Integer.parseInt(GetSale))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(sale_LIST.get(0));
             System.out.println(id_LISTSale.get(Integer.parseInt(strSale)));
 
@@ -167,6 +171,9 @@ public class AddTableSaleController {
 
                 strNom = String.valueOf(nom_LIST.indexOf(nom_LIST.get(Integer.parseInt(GetNom))));
             }
+            con.close();
+            statement.close();
+            rs.close();
             System.out.println(nom_LIST.get(0));
             System.out.println(id_LISTNom.get(Integer.parseInt(strNom)));
 
