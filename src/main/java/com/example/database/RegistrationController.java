@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -41,13 +42,13 @@ public class RegistrationController {
     private TextField id_email;
 
     @FXML
-    private TextField id_password;
+    private PasswordField id_password;
 
     @FXML
     private Button id_register;
 
     @FXML
-    private TextField id_repeatPassword;
+    private PasswordField id_repeatPassword;
 
     @FXML
     private Button id_avtoriz;

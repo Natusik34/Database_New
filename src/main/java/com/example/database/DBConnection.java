@@ -187,7 +187,7 @@ public class DBConnection {
     }
 */
     //удаление
-    public  static void Delete(){
+   // public  static void Delete(){
 /*
 //сделано
 
@@ -260,7 +260,7 @@ public class DBConnection {
             e.printStackTrace();
         }
 */
-    }
+  //  }
 
 
 

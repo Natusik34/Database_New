@@ -99,6 +99,28 @@ public class AddTableSaleController {
             double str1 = Double.parseDouble(newValue) * Double.parseDouble(id_amount.getText());
             id_sum.setText(String.valueOf(str1));
         });
+
+
+        id_comboBoxNomenclature.setOnAction(e->{
+            String q1= "SELECT id_nomenklatyra FROM public.nomenklatyra WHERE price = ?";
+
+            try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+                PreparedStatement pstmt = con.prepareStatement(q1);
+
+                pstmt.setString(3, (String) id_comboBoxNomenclature.getSelectionModel().getSelectedItem());
+                ResultSet rs = pstmt.executeQuery();
+
+                while (rs.next()) {
+                    id_price.setText(rs.getString("price"));
+                }
+
+                System.out.println(pstmt);
+                con.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+
+            }
+        });
     }
 
     public void ComboBoxTableSale(){

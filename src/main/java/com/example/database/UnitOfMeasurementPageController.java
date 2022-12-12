@@ -258,12 +258,32 @@ public class UnitOfMeasurementPageController {
     }
 
     public void Search(ActionEvent actionEvent) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+
+       // DBConnection con = new DBConnection();
+       // con.gettable(id_tableUnitOfMeasurement, "Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ")
+      /*  try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ");
     } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }*/
+/*
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova"))
+        {
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT FROM public.cklad WHERE ID LIKE ?% ");
+            ps.setString(1, this.search.getText());
+
+            ResultSet rs = conn.createStatement().executeQuery(String.valueOf(ps));
+            while (rs.next())
+            {
+                this.data.add(new StudentData(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+            }
         }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }*/
     }
 }
 

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -38,13 +39,13 @@
             <Button fx:id="id_sendCode" layoutX="430.0" layoutY="114.0" mnemonicParsing="false" onAction="#ButtonSendCode" text="отправить код" textFill="#803e3e" />
             <TextField fx:id="id_email" layoutX="180.0" layoutY="114.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <TextField fx:id="id_confirmationCode" layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <TextField fx:id="id_password" layoutX="180.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
-            <TextField fx:id="id_repeatPassword" layoutX="180.0" layoutY="312.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
             <Button fx:id="id_avtoriz" layoutX="251.0" layoutY="419.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Авторизация" textFill="#8f5858">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
+            <PasswordField fx:id="id_password" layoutX="181.0" layoutY="244.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
+            <PasswordField fx:id="id_repeatPassword" layoutX="179.0" layoutY="312.0" prefHeight="25.0" prefWidth="242.0" styleClass="inputText" stylesheets="@../../../style.css" />
          </children>
       </Pane>
    </children>
