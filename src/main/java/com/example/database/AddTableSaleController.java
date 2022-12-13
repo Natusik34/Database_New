@@ -102,12 +102,13 @@ public class AddTableSaleController {
 
 
         id_comboBoxNomenclature.setOnAction(e->{
-            String q1= "SELECT id_nomenklatyra FROM public.nomenklatyra WHERE price = ?";
+
 
             try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+                String q1= "SELECT price FROM public.nomenclature WHERE naimenovanie = ?";
                 PreparedStatement pstmt = con.prepareStatement(q1);
 
-                pstmt.setString(3, (String) id_comboBoxNomenclature.getSelectionModel().getSelectedItem());
+                pstmt.setString(1, (String) id_comboBoxNomenclature.getSelectionModel().getSelectedItem());
                 ResultSet rs = pstmt.executeQuery();
 
                 while (rs.next()) {
