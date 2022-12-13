@@ -103,6 +103,13 @@ public class UnitOfMeasurementPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+/*
+        id_search.getOnAction(e->{
+            id_tableUnitOfMeasurement.getColumns().clear();
+
+            UpdateTable("Select public.izmerenie  where naimenovanie like \'%"+id_search.getText()+"%\' ");
+        });*/
+
         UpdateTable();
     }
 
@@ -257,13 +264,13 @@ public class UnitOfMeasurementPageController {
         UpdateTable();
     }
 
-    public void Search(ActionEvent actionEvent) {
+  //  public void Search(ActionEvent actionEvent) {
 
        // DBConnection con = new DBConnection();
        // con.gettable(id_tableUnitOfMeasurement, "Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ")
-      /*  try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+    /*    try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ");
+            ResultSet rs = statement.executeQuery("Select public.izmerenie where naimenovanie like '%"+id_search.getText()+"%' ");
     } catch (SQLException throwables) {
             throwables.printStackTrace();
         }*/
@@ -284,6 +291,6 @@ public class UnitOfMeasurementPageController {
         {
             System.out.println(e);
         }*/
-    }
+   // }
 }
 

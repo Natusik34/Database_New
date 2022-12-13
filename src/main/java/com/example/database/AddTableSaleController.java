@@ -105,7 +105,7 @@ public class AddTableSaleController {
 
 
             try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
-                String q1= "SELECT price FROM public.nomenclature WHERE naimenovanie = ?";
+                String q1= "SELECT price FROM public.nomenklatyra WHERE naimenovanie = ?";
                 PreparedStatement pstmt = con.prepareStatement(q1);
 
                 pstmt.setString(1, (String) id_comboBoxNomenclature.getSelectionModel().getSelectedItem());

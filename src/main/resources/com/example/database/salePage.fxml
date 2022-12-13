@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
@@ -93,6 +94,7 @@
                   <Button fx:id="id_buttonDeleteRow" layoutX="335.0" layoutY="340.0" mnemonicParsing="false" onAction="#showDeleteRow" prefHeight="35.0" prefWidth="41.0" styleClass="DeleteTable" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonReset" layoutX="851.0" layoutY="224.0" mnemonicParsing="false" onAction="#showReset" prefHeight="35.0" prefWidth="41.0" styleClass="Reset" stylesheets="@../../../style.css" />
                   <Button fx:id="id_buttonResetRow" layoutX="542.0" layoutY="340.0" mnemonicParsing="false" onAction="#showResetRow" prefHeight="35.0" prefWidth="41.0" styleClass="ResetTable" stylesheets="@../../../style.css" />
+                  <PieChart fx:id="id_salesChart" layoutX="601.0" layoutY="358.0" prefHeight="250.0" prefWidth="317.0" />
                </children>
             </Pane>
          </children></Pane>

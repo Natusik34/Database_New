@@ -3,8 +3,7 @@ package com.example.database;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -17,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,7 +31,9 @@ public class SalePageController {
 
     Stage window;
 
-    DataSingleton dataS =  DataSingleton.getInstance();
+    DataSingleton dataS = DataSingleton.getInstance();
+
+    ObservableList<PieChart.Data> DATA = FXCollections.observableArrayList();
 
     @FXML
     private ResourceBundle resources;
@@ -81,6 +83,9 @@ public class SalePageController {
     @FXML
     private Button id_warehouse;
 
+    @FXML
+    private PieChart id_salesChart;
+
     private ObservableList<ObservableList> data;
     private ObservableList<ObservableList> dataTable;
 
@@ -88,51 +93,52 @@ public class SalePageController {
     void initialize() {
         UpdateSale();
         UpdateSaleNomenclature();
+        Diagram();
     }
 
     @FXML
-    protected void buttonNomenclature() throws IOException{
+    protected void buttonNomenclature() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("nomenclaturePage.fxml"));
         window = (Stage) id_nomenclature.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
     @FXML
-    protected void buttonSupplier() throws IOException{
+    protected void buttonSupplier() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("supplierPage.fxml"));
         window = (Stage) id_supplier.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
     @FXML
-    protected void buttonSupply() throws IOException{
+    protected void buttonSupply() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("deliveryPage.fxml"));
         window = (Stage) id_delivery.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
     @FXML
-    protected void buttonWarehouse() throws IOException{
+    protected void buttonWarehouse() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
         window = (Stage) id_warehouse.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
     @FXML
-    protected void buttonUnitOfMeasurement() throws IOException{
+    protected void buttonUnitOfMeasurement() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("unitOfMeasurementPage.fxml"));
         window = (Stage) id_unitOfMeasurement.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
     public void showAdd(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("addSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Добавление новой записи");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -141,13 +147,13 @@ public class SalePageController {
     }
 
     public void showEdit(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("editSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Редактирование записи");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -156,13 +162,13 @@ public class SalePageController {
     }
 
     public void showDelete(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("deleteSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -176,10 +182,10 @@ public class SalePageController {
         dataS.setIdSale(sale.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
-        Peremennie.idSale =  Integer.parseInt(sale.get(0).toString()) ;
+        Peremennie.idSale = Integer.parseInt(sale.get(0).toString());
         Peremennie.nomNakSale = sale.get(1).toString();
         Peremennie.DataSale = sale.get(2).toString();
-        Peremennie.idCkladSale =  Integer.parseInt(sale.get(3).toString()) ;
+        Peremennie.idCkladSale = Integer.parseInt(sale.get(3).toString());
     }
 
     public void getcellTable(MouseEvent mouseEvent) {
@@ -188,22 +194,22 @@ public class SalePageController {
         dataS.setIdSaleNomenclature(saleTable.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
-        Peremennie.idNomenclatureSaleTable =  Integer.parseInt(saleTable.get(0).toString()) ;
-        Peremennie.idSaleTable =  Integer.parseInt(saleTable.get(1).toString()) ;
-        Peremennie.idNomSale =  Integer.parseInt(saleTable.get(2).toString()) ;
+        Peremennie.idNomenclatureSaleTable = Integer.parseInt(saleTable.get(0).toString());
+        Peremennie.idSaleTable = Integer.parseInt(saleTable.get(1).toString());
+        Peremennie.idNomSale = Integer.parseInt(saleTable.get(2).toString());
         Peremennie.amountSale = saleTable.get(3).toString();
         Peremennie.priceSale = saleTable.get(4).toString();
         Peremennie.sumSale = saleTable.get(5).toString();
     }
 
     public void showAddRow(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("addTableSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Добавление новой строки");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -212,13 +218,13 @@ public class SalePageController {
     }
 
     public void showEditRow(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("editTableSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Редактирование строки");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -227,13 +233,13 @@ public class SalePageController {
     }
 
     public void showDeleteRow(ActionEvent actionEvent) {
-        try{
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("deleteTableSale.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Удаление строки");
             stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
@@ -250,15 +256,16 @@ public class SalePageController {
         id_tableSaleNomenclature.getColumns().clear();
         UpdateSaleNomenclature();
     }
-    public void UpdateSale(){
+
+    public void UpdateSale() {
         data = FXCollections.observableArrayList();
-        try{
+        try {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from prodasha");
-            for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
+            for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
                 final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
                 col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
 
@@ -269,9 +276,9 @@ public class SalePageController {
                 id_tableSale.getColumns().addAll(col);
             }
 
-            while(rs.next()){
+            while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                     row.add(rs.getString(i));
                 }
                 data.add(row);
@@ -285,15 +292,15 @@ public class SalePageController {
 
     }
 
-    public void UpdateSaleNomenclature(){
+    public void UpdateSaleNomenclature() {
         dataTable = FXCollections.observableArrayList();
-        try{
+        try {
             DBConnection con = new DBConnection();
             con.Connection();
             ResultSet rs = con.gettable("Select * from nomenklatyra_prodasha");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+            for (int i = 1; i < rs.getMetaData().getColumnCount(); i++) {
                 final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
                 col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
 
 
@@ -304,9 +311,9 @@ public class SalePageController {
                 id_tableSaleNomenclature.getColumns().addAll(col);
             }
 
-            while(rs.next()){
+            while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                     row.add(rs.getString(i));
                 }
                 dataTable.add(row);
@@ -318,6 +325,29 @@ public class SalePageController {
             e.printStackTrace();
         }
 
+    }
+
+    public void Diagram() {
+        String nomenclature;
+        String amount;
+        ObservableList<PieChart.Data> pieChart = null;
+        try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT id_nomenklatyra, sum(kolichestvo_prodasha) as sum \n" +
+                    "FROM public.nomenklatyra_prodasha group by id_nomenklatyra;");
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                nomenclature = row.get(0);
+                amount = row.get(1);
+                DATA.add(new PieChart.Data(nomenclature, Integer.parseInt(amount)));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        id_salesChart.setData(DATA);
     }
 }
 
