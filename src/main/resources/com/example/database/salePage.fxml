@@ -79,7 +79,7 @@
             </Pane>
             <Pane layoutX="222.0" layoutY="17.0" prefHeight="632.0" prefWidth="932.0" style="-fx-background-color: D9D9D9;">
                <children>
-                  <TextField fx:id="id_search" layoutX="705.0" layoutY="30.0" prefHeight="25.0" prefWidth="193.0" text="Поиск">
+                  <TextField fx:id="id_search" layoutX="705.0" layoutY="30.0" onAction="#Search" prefHeight="25.0" prefWidth="193.0">
                      <font>
                         <Font size="15.0" />
                      </font>

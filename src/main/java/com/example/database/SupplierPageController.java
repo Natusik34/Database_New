@@ -221,8 +221,7 @@ public class SupplierPageController{
         try{
             DBConnection con = new DBConnection();
             con.Connection();
-            ResultSet rs = con.gettable("Select naimenovanie,nomer_telefona, \"INN\", \"KPP\" from postavchik where naimenovanie like '"+id_search.getText()+"%' " +
-                    "OR nomer_telefona like '"+id_search.getText()+"%' OR INN like '"+id_search.getText()+"%' OR KPP like '"+id_search.getText()+"%'");
+            ResultSet rs = con.gettable("Select * from postavchik where naimenovanie like '"+id_search.getText()+"%'");
             for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
                 final int j = i;
                 TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
