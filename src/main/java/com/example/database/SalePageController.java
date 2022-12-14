@@ -333,8 +333,9 @@ public class SalePageController {
         ObservableList<PieChart.Data> pieChart = null;
         try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT id_nomenklatyra, sum(kolichestvo_prodasha) as sum \n" +
-                    "FROM public.nomenklatyra_prodasha group by id_nomenklatyra;");
+            ResultSet rs = statement.executeQuery("SELECT naimenovanie, sum(kolichestvo_prodasha) FROM public.nomenklatyra_prodasha\n" +
+                    "JOIN public.nomenklatyra ON public.nomenklatyra_prodasha.id_nomenklatyra = public.nomenklatyra.id_nomenklatyra\n" +
+                    "GROUP BY naimenovanie, kolichestvo_prodasha;");
             while(rs.next()){
                 ObservableList<String> row = FXCollections.observableArrayList();
                 for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
