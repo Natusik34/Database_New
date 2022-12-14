@@ -264,7 +264,46 @@ public class UnitOfMeasurementPageController {
         UpdateTable();
     }
 
-  //  public void Search(ActionEvent actionEvent) {
+    public void Search(ActionEvent actionEvent) {
+        id_tableUnitOfMeasurement.getColumns().clear();
+
+    data = FXCollections.observableArrayList();
+        try{
+        DBConnection con = new DBConnection();
+        con.Connection();
+        ResultSet rs = con.gettable("Select * from izmerenie where naimenovanie like '"+id_search.getText()+"%'");
+        for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+            final int j = i;
+            TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+            col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                    return new SimpleStringProperty(param.getValue().get(j).toString());
+                }
+            });
+            id_tableUnitOfMeasurement.getColumns().addAll(col);
+        }
+
+        while(rs.next()){
+            ObservableList<String> row = FXCollections.observableArrayList();
+            for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                row.add(rs.getString(i));
+            }
+            data.add(row);
+        }
+        id_tableUnitOfMeasurement.setItems(data);
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+/*
+        id_search.getOnAction(e->{
+            id_tableUnitOfMeasurement.getColumns().clear();
+
+            UpdateTable("Select public.izmerenie  where naimenovanie like \'%"+id_search.getText()+"%\' ");
+        });
 
        // DBConnection con = new DBConnection();
        // con.gettable(id_tableUnitOfMeasurement, "Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ")
@@ -291,6 +330,6 @@ public class UnitOfMeasurementPageController {
         {
             System.out.println(e);
         }*/
-   // }
+    }
 }
 

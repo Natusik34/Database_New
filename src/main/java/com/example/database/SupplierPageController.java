@@ -214,4 +214,40 @@ public class SupplierPageController{
         }
 
     }
+
+    public void Search(ActionEvent actionEvent) {
+        id_tableSupplier.getColumns().clear();
+        data = FXCollections.observableArrayList();
+        try{
+            DBConnection con = new DBConnection();
+            con.Connection();
+            ResultSet rs = con.gettable("Select naimenovanie,nomer_telefona, \"INN\", \"KPP\" from postavchik where naimenovanie like '"+id_search.getText()+"%' " +
+                    "OR nomer_telefona like '"+id_search.getText()+"%' OR INN like '"+id_search.getText()+"%' OR KPP like '"+id_search.getText()+"%'");
+            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+
+
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                id_tableSupplier.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    row.add(rs.getString(i));
+                }
+                data.add(row);
+            }
+            id_tableSupplier.setItems(data);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
