@@ -67,7 +67,13 @@ public class AddTableDeliveryController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_postavka(id_postavka, id_nomenklatyra, kolichestvo_postavka, price_postavka, summa_postavka) VALUES('" + idDelivery + "', '" + idNomenclature + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
-        statement.close();
+            int rows1 = statement.executeUpdate("UPDATE public.tovar_cklad\n" +
+                    "\tSET  kolichestvo_cklad='"+id_amount.getText()+"'\n" +
+                    "\tWHERE id_nomenklatyra='"+id_LISTNom.get(Integer.parseInt(srtNom))+"';");
+
+            statement.close();
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -91,8 +97,7 @@ public class AddTableDeliveryController {
             id_sum.setText(String.valueOf(str1));
         });
         id_price.textProperty().addListener((observable, oldValue, newValue) -> {
-            //  String str = id_price.getText();
-//            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
             double str1 = Double.parseDouble(newValue) * Double.parseDouble(id_amount.getText());
             id_sum.setText(String.valueOf(str1));
         });
@@ -206,5 +211,7 @@ public class AddTableDeliveryController {
         }
 
     }
+
+    public void getIdNomen(){}
 
 }

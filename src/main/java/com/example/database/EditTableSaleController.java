@@ -62,6 +62,29 @@ public class EditTableSaleController {
     void initialize() {
         ComboBoxTableSale();
         ComboBoxTableNomenclature();
+
+        id_comboBoxNomenclature.setOnAction(e->{
+
+
+            try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+                String q1= "SELECT price FROM public.nomenklatyra WHERE naimenovanie = ?";
+                PreparedStatement pstmt = con.prepareStatement(q1);
+
+                pstmt.setString(1, (String) id_comboBoxNomenclature.getSelectionModel().getSelectedItem());
+                ResultSet rs = pstmt.executeQuery();
+
+                while (rs.next()) {
+                    id_price.setText(rs.getString("price"));
+                }
+
+                System.out.println(pstmt);
+                con.close();
+                pstmt.close();
+            } catch (SQLException ex) {
+
+            }
+        });
+
         id_amount.textProperty().addListener((observable, oldValue, newValue) -> {
             // String str = id_price.getText();
             // System.out.println("textfield changed from " + oldValue + " to " + newValue);

@@ -85,7 +85,7 @@ public class WarehoursePageController {
     @FXML
     protected void initialize() {
         UpdateWarehouse();
-        UpdateWarehouseNomenclature();
+
     }
 
     @FXML
@@ -178,18 +178,6 @@ public class WarehoursePageController {
         Peremennie.idCklad =  Integer.parseInt(cklad.get(0).toString()) ;
     }
 
-    public void getcellTable(MouseEvent mouseEvent) {
-        ObservableList tovarCklad = id_tableWarehouseNomenclature.getSelectionModel().getSelectedItem();
-        //  System.out.println(izm.get(0).toString());
-        dataS.setIdWarehouseNomenclature(tovarCklad.get(0).toString());
-        //System.out.println(dataS.getIdIzerenie());
-
-        Peremennie.idTovarWarehouseTable =  Integer.parseInt(tovarCklad.get(0).toString()) ;
-        Peremennie.idWarehouseTable =  Integer.parseInt(tovarCklad.get(1).toString()) ;
-        Peremennie.idNomWarehouse =  Integer.parseInt(tovarCklad.get(2).toString()) ;
-        Peremennie.amountWarehouse = tovarCklad.get(3).toString();
-    }
-
     public void showAddRow(ActionEvent actionEvent) {
         try{
             Stage stage = new Stage();
@@ -243,7 +231,7 @@ public class WarehoursePageController {
 
     public void showResetRow(ActionEvent actionEvent) {
         id_tableWarehouseNomenclature.getColumns().clear();
-        UpdateWarehouseNomenclature();
+        
     }
 
     public void UpdateWarehouse(){
@@ -284,42 +272,7 @@ public class WarehoursePageController {
 
     }
 
-    public void UpdateWarehouseNomenclature(){
-        dataTable = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from tovar_cklad");
-            for(int i = 1; i < rs.getMetaData(
 
-            ).getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableWarehouseNomenclature.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                dataTable.add(row);
-            }
-            id_tableWarehouseNomenclature.setItems(dataTable);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public void Search(ActionEvent actionEvent) {
         id_tableWarehouse.getColumns().clear();
@@ -357,6 +310,9 @@ public class WarehoursePageController {
             e.printStackTrace();
         }
 
+    }
+
+    public void getcellTable(MouseEvent mouseEvent) {
     }
 }
 
