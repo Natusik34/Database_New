@@ -1,10 +1,11 @@
 package com.example.database;
 
-import java.util.Properties;
+
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import java.util.Properties;
 
 public class SSLEmail {
 
@@ -17,7 +18,7 @@ public class SSLEmail {
     public static void main(String[] args) {
         final String fromEmail = "vasiltsova-natulya@yandex.ru"; //requires valid gmail id
         final String password = "kptvgwqnzkiojzth"; // correct password for gmail id
-        final String toEmail = "xifed82642@covbase.com"; // can be any email id
+        final String toEmail = "xifed82642@covbase.com"; // can be any email id xifed82642@covbase.com
 
         System.out.println("SSLEmail Start");
         Properties props = new Properties();

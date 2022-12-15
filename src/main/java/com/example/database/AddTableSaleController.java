@@ -11,15 +11,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static java.lang.Double.parseDouble;
 
 public class AddTableSaleController {
-
+    String Count;
     String idSale, sale, nom,idNom;
 
     List listIdSale, listSale, listNom, listIdNom;
@@ -30,6 +33,9 @@ public class AddTableSaleController {
     List<String>id_LISTNom = new ArrayList<>();
 
     String GetSale, GetNom, strSale, strNom;
+
+    @FXML
+    private AnchorPane AnchorP;
 
     @FXML
     private ResourceBundle resources;
@@ -54,7 +60,7 @@ public class AddTableSaleController {
 
     @FXML
     private TextField id_sum;
-
+    int countfinal = 0;
     @FXML
     void ButtonAdd(ActionEvent event) {
         GetSale = String.valueOf(id_comboBoxSale.getSelectionModel().getSelectedIndex());
@@ -67,8 +73,16 @@ public class AddTableSaleController {
         String idNomen = id_LISTNom.get(Integer.parseInt(strNom));
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
+
+            getIdNomen();
+            if(Integer.parseInt(Count)>Integer.parseInt(id_amount.getText())){
             int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_prodasha(id_prodasha, id_nomenklatyra, kolichestvo_prodasha, price_prodasha, summa_prodasha) VALUES('" + idSalE + "','" + idNomen + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
-        statement.close();
+            countfinal = Integer.parseInt(Count) - Integer.parseInt(id_amount.getText());
+            int rows1 = statement.executeUpdate("UPDATE public.cklad\n" +
+                    "\tSET  kolichestvo_cklad='"+String.valueOf(countfinal)+"'\n" +
+                    "\tWHERE id_nomenklatyra='"+id_LISTNom.get(Integer.parseInt(strNom))+"';");
+        } else{ getWarning("Критическая ошибка", "Невозможно вычесть со склада");}
+            statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -205,6 +219,43 @@ public class AddTableSaleController {
             throwables.printStackTrace();
         }
     }
+    public void getIdNomen(){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT kolichestvo_cklad\n" +
+                    "\tFROM public.cklad\n" +
+                    "\twhere \"id_nomenklatyra\"= '"+id_LISTNom.get(Integer.parseInt(strNom))+"';");
+            while(rs.next()){
+                ObservableList<String> listRow = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    listRow.add(rs.getString(i));
+                }
 
+                Count = listRow.get(0);
+
+            }
+            con.close();
+            statement.close();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void getWarning(String Head, String body){
+        Stage stage = (Stage) id_buttonAdd.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.WARNING;
+        Alert alert = new Alert(type,"");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText(body);
+
+        alert.getDialogPane().setHeaderText(Head);
+
+        alert.showAndWait();
+    }
 
 }

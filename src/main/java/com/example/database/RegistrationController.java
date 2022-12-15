@@ -92,7 +92,7 @@ public class RegistrationController {
     public void GetCodeEmail(){
         final String fromEmail = "vasiltsova-natulya@yandex.ru"; //requires valid gmail id
         final String password = "kptvgwqnzkiojzth"; // correct password for gmail id
-        final String toEmail = "xifed82642@covbase.com"; // can be any email id
+        final String toEmail = id_email.getText().trim(); // can be any email id
 
         System.out.println("SSLEmail Start");
         Properties props = new Properties();
@@ -127,6 +127,18 @@ public class RegistrationController {
             try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
                 Statement statement = con.createStatement();
                 int rows = statement.executeUpdate("Insert into public.users (mail, password) values ('"+email+"', '"+password+"')");
+                int rows1 = statement.executeUpdate("" +
+                        "CREATE ROLE \"" + id_email.getText() + "\" WITH\n" +
+                        "  LOGIN\n" +
+                        "  NOSUPERUSER\n" +
+                        "  INHERIT\n" +
+                        "  NOCREATEDB\n" +
+                        "  NOCREATEROLE\n" +
+                        "  NOREPLICATION;\n" +
+                        "  PASSWORD '"+id_password.getText()+"';\n" +
+                        "\n" +
+                        "GRANT \"GruppaVasiltsova\"  TO \""+id_email.getText()+"\";");
+
                 Code = "";
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

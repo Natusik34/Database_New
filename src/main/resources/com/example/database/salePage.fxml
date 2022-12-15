@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.SalePageController">
+<AnchorPane fx:id="AnchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1206.0" styleClass="background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.database.SalePageController">
    <children>
       <Pane layoutX="19.0" layoutY="19.0" prefHeight="666.0" prefWidth="1168.0" styleClass="paneWorkPage" stylesheets="@../../../style.css">
          <children>

@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.sql.*;
 
 public class DBConnection {
-
+    public String checkCon;
+    public String checkCon1;
     public Connection connection = null;
     public String jdbcURL = "jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka";
     public String username;
@@ -18,15 +19,20 @@ public class DBConnection {
 
         try{
             //Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-            connection = DriverManager.getConnection(jdbcURL, "Vasiltsova", "Vasiltsova");
+            connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected");
+            checkCon = "Connected";
             //return connection;
 
         } catch (SQLException e){
             System.out.println("Error in connection");
             e.printStackTrace();
-            //return null;
+            checkCon = "not Con";
+        } finally {
+            checkCon1 = checkCon;
         }
+
+
     }
 
     public ResultSet gettable(String sql){

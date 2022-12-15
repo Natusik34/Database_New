@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AddTableDeliveryController {
-
+    String Count;
     String idDeliv, deliv, nom,idNom;
 
     List listIdDeliv, listDeliv, listNom, listIdNom;
@@ -67,8 +67,12 @@ public class AddTableDeliveryController {
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra_postavka(id_postavka, id_nomenklatyra, kolichestvo_postavka, price_postavka, summa_postavka) VALUES('" + idDelivery + "', '" + idNomenclature + "','" + id_amount.getText() + "','" + id_price.getText() + "', '" + id_sum.getText() + "')");
-            int rows1 = statement.executeUpdate("UPDATE public.tovar_cklad\n" +
-                    "\tSET  kolichestvo_cklad='"+id_amount.getText()+"'\n" +
+            getIdNomen();
+
+            int countfinal =  Integer.parseInt(Count) + Integer.parseInt(id_amount.getText());
+
+            int rows1 = statement.executeUpdate("UPDATE public.cklad\n" +
+                    "\tSET  kolichestvo_cklad='"+String.valueOf(countfinal)+"'\n" +
                     "\tWHERE id_nomenklatyra='"+id_LISTNom.get(Integer.parseInt(srtNom))+"';");
 
             statement.close();
@@ -212,6 +216,26 @@ public class AddTableDeliveryController {
 
     }
 
-    public void getIdNomen(){}
+    public void getIdNomen(){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT kolichestvo_cklad\n" +
+                    "\tFROM public.cklad\n" +
+                    "\twhere \"id_nomenklatyra\"= '"+id_LISTNom.get(Integer.parseInt(srtNom))+"';");
+            while(rs.next()){
+                ObservableList<String> listRow = FXCollections.observableArrayList();
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    listRow.add(rs.getString(i));
+                }
 
-}
+                Count = listRow.get(0);
+
+            }
+            con.close();
+            statement.close();
+            rs.close();
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }}

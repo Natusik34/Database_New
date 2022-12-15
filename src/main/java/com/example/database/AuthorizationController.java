@@ -76,12 +76,13 @@ public class AuthorizationController {
 
     public void Authorization(){
         boolean UserInOnOff = false;
-
-
+        DBConnection con = new DBConnection();
+        con.username=id_login.getText();
+        con.password=id_password.getText();
         try {
-            DBConnection con = new DBConnection();
             con.Connection();
-            ResultSet rs = con.gettable("Select * from users");
+
+          /*  ResultSet rs = con.gettable("Select * from users");
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
@@ -109,16 +110,45 @@ public class AuthorizationController {
                     stage.setScene(new Scene(root));
                     stage.showAndWait();
 
-                    //Parent root = FXMLLoader.load(getClass().getResource("tabl_av.fxml"));
-                   // mainwindow = (Stage) vxod.getScene().getWindow();
-                   // mainwindow.setScene(new Scene(root1));
+
 
                 } else System.out.println("Фу, лох, даже данные ввести правильно не можешь!!!!");
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error on Building Data");
         }
+        if(con.checkCon1.equals("Connected")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("workingPage.fxml"));
 
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        }
+    }
+
+    public void openNewScene(String window) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(window));
+
+        Parent root1 = null;
+        try {
+            root1 = (Parent) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        // stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Hello Airline");
+        stage.setScene(new Scene(root1));
+        stage.setResizable(false);
+        stage.show();
     }
 }
