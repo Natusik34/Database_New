@@ -73,13 +73,14 @@ public class EditSaleController {
     }
 
     public void ButtonEdit(ActionEvent actionEvent) {
+        DBConnection dbConnection = new DBConnection();
         GetCklad = String.valueOf(id_warehouse.getSelectionModel().getSelectedIndex());
 
         strCkl = String.valueOf(cklad_LIST.indexOf(cklad_LIST.get(Integer.parseInt(GetCklad))));
 
         String idCklad = id_LIST.get(Integer.parseInt(strCkl));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.prodasha SET  nomer_nakladnoi= '"+id_invoiceNumber.getText()+"', data_prodasha= '"+id_saleDate.getValue()+"', id_cklad= '"+idCklad+"'  WHERE id_prodasha='"+idSale+"' ;");
         statement.close();
@@ -92,7 +93,8 @@ public class EditSaleController {
 
 
     public void ComboBoxSale(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.cklad");
             while(rs.next()){

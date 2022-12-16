@@ -49,6 +49,7 @@ public class AddTableWarehouseController {
 
     @FXML
     void ButtonAdd(ActionEvent event) {
+        DBConnection dbConnection = new DBConnection();
         GetWareh = String.valueOf(id_comboBoxWarehouse.getSelectionModel().getSelectedIndex());
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
 
@@ -58,7 +59,7 @@ public class AddTableWarehouseController {
         String idWarehouse = id_LISTWareh.get(Integer.parseInt(strWareh));
         String idNomenclature = id_LISTNom.get(Integer.parseInt(srtNom));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.tovar_cklad(id_cklad, id_nomenklatyra, kolichestvo_cklad) VALUES('" + idWarehouse + "', '" + idNomenclature + "','" + id_amount.getText() + "')");
        statement.close();
@@ -80,7 +81,8 @@ public class AddTableWarehouseController {
     }
 
     public void ComboBoxWarehouse(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.cklad");
             while(rs.next()){
@@ -133,7 +135,8 @@ public class AddTableWarehouseController {
     }
 
     public void ComboBoxNomenclature(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.nomenklatyra");
             while(rs.next()){

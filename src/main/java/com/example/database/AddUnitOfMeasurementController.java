@@ -45,7 +45,8 @@ public class AddUnitOfMeasurementController {
     }
 
     public void addButton(ActionEvent actionEvent) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.izmerenie(naimenovanie) VALUES('" + id_name.getText() + "')");
         statement.close();

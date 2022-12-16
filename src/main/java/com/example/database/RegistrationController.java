@@ -118,26 +118,27 @@ public class RegistrationController {
     }
 
     private void AddUser(){
+        DBConnection dbConnection = new DBConnection();
         String email = id_email.getText().trim();
         String code = id_confirmationCode.getText().trim();
         String password = id_password.getText().trim();
         String repeatPassword = id_repeatPassword.getText().trim();
 
         if(Objects.equals(Code, code) && password.equals(repeatPassword) && !password.equals("") && !repeatPassword.equals("")){
-            try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+            try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
                 Statement statement = con.createStatement();
                 int rows = statement.executeUpdate("Insert into public.users (mail, password) values ('"+email+"', '"+password+"')");
-                int rows1 = statement.executeUpdate("" +
-                        "CREATE ROLE \"" + id_email.getText() + "\" WITH\n" +
+                int rows1 = statement.executeUpdate(
+                        "CREATE ROLE \""+email+"\" WITH\n" +
                         "  LOGIN\n" +
                         "  NOSUPERUSER\n" +
                         "  INHERIT\n" +
                         "  NOCREATEDB\n" +
                         "  NOCREATEROLE\n" +
-                        "  NOREPLICATION;\n" +
-                        "  PASSWORD '"+id_password.getText()+"';\n" +
+                        "  NOREPLICATION\n" +
+                        "  PASSWORD '" + password + "';\n" +
                         "\n" +
-                        "GRANT \"GruppaVasiltsova\"  TO \""+id_email.getText()+"\";");
+                        "GRANT \"GruppaVasiltsova\" TO \""+email+"\";");
 
                 Code = "";
             } catch (SQLException throwables) {

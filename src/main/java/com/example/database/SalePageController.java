@@ -328,10 +328,11 @@ public class SalePageController {
     }
 
     public void Diagram() {
+        DBConnection dbConnection = new DBConnection();
         String nomenclature;
         String amount;
         ObservableList<PieChart.Data> pieChart = null;
-        try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+        try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)) {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT naimenovanie, sum(kolichestvo_prodasha) FROM public.nomenklatyra_prodasha\n" +
                     "JOIN public.nomenklatyra ON public.nomenklatyra_prodasha.id_nomenklatyra = public.nomenklatyra.id_nomenklatyra\n" +

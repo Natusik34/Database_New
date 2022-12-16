@@ -63,6 +63,7 @@ public class AddTableSaleController {
     int countfinal = 0;
     @FXML
     void ButtonAdd(ActionEvent event) {
+        DBConnection dbConnection = new DBConnection();
         GetSale = String.valueOf(id_comboBoxSale.getSelectionModel().getSelectedIndex());
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
 
@@ -71,7 +72,7 @@ public class AddTableSaleController {
 
         String idSalE = id_LISTSale.get(Integer.parseInt(strSale));
         String idNomen = id_LISTNom.get(Integer.parseInt(strNom));
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
 
             getIdNomen();
@@ -117,8 +118,8 @@ public class AddTableSaleController {
 
         id_comboBoxNomenclature.setOnAction(e->{
 
-
-            try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")) {
+            DBConnection dbConnection = new DBConnection();
+            try (Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)) {
                 String q1= "SELECT price FROM public.nomenklatyra WHERE naimenovanie = ?";
                 PreparedStatement pstmt = con.prepareStatement(q1);
 
@@ -139,7 +140,8 @@ public class AddTableSaleController {
     }
 
     public void ComboBoxTableSale(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.prodasha");
             while(rs.next()){
@@ -180,7 +182,8 @@ public class AddTableSaleController {
     }
 
     public void ComboBoxTableNomenclature(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.nomenklatyra");
             while(rs.next()){
@@ -220,7 +223,8 @@ public class AddTableSaleController {
         }
     }
     public void getIdNomen(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT kolichestvo_cklad\n" +
                     "\tFROM public.cklad\n" +

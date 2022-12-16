@@ -59,6 +59,7 @@ public class EditTableDeliveryController {
 
     @FXML
     void ButtonEdit(ActionEvent event) {
+        DBConnection dbConnection = new DBConnection();
         GetDeliv = String.valueOf(id_comboBoxDelivery.getSelectionModel().getSelectedIndex());
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
         strDeliv = String.valueOf(deliv_LIST.indexOf(deliv_LIST.get(Integer.parseInt(GetDeliv))));
@@ -66,7 +67,7 @@ public class EditTableDeliveryController {
         String idDelivery = id_LISTDeliv.get(Integer.parseInt(strDeliv));
         String idNomenclature = id_LISTNom.get(Integer.parseInt(srtNom));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.nomenklatyra_postavka SET  id_postavka= '"+idDelivery+"',id_nomenklatyra = '"+idNomenclature+"', kolichestvo_postavka = '"+id_amount.getText()+"', price_postavka = '"+id_price.getText()+"', summa_postavka = '"+id_sum.getText()+"' WHERE id_nomenklatyra_postavka='"+idNomenclatureDelivery+"' ;");
         statement.close();
@@ -126,7 +127,8 @@ public class EditTableDeliveryController {
     }
 
     public void ComboBoxDelivery(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.postavka");
             while(rs.next()){
@@ -179,7 +181,8 @@ public class EditTableDeliveryController {
     }
 
     public void ComboBoxNomenclature(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.nomenklatyra");
             while(rs.next()){

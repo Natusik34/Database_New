@@ -68,7 +68,8 @@ public class AddDeliveryController {
     }
 //склад,поставщик
     public void ComboBoxDeliveryWarehouse(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.cklad");
             while(rs.next()){
@@ -122,7 +123,8 @@ public class AddDeliveryController {
     }
 
     public void ComboBoxDeliverySupplier(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.postavchik");
             while(rs.next()){
@@ -176,6 +178,7 @@ public class AddDeliveryController {
     }
 
     public void AddDelivery(ActionEvent actionEvent) {
+        DBConnection dbConnection = new DBConnection();
         GetCklad = String.valueOf(id_warehouse.getSelectionModel().getSelectedIndex());
         GetPost = String.valueOf(id_supplier.getSelectionModel().getSelectedIndex());
 
@@ -185,7 +188,7 @@ public class AddDeliveryController {
         String idCklad = id_LIST.get(Integer.parseInt(strCkl));
         String idPost = id_LISTPost.get(Integer.parseInt(srtPost));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.postavka(nomer_nakladnoi, data_postavki, id_cklad, id_postavchik) VALUES('" + id_invoiceNumber.getText() + "','" + id_deliveryDate.getValue() + "','" + idCklad + "', '" + idPost + "')");
         statement.close();

@@ -28,8 +28,8 @@ public class DeleteWarehourseController {
 
     @FXML
     void buttonDelete(ActionEvent event) {
-
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("DELETE FROM public.cklad WHERE id_cklad = " + Peremennie.idCklad + "");

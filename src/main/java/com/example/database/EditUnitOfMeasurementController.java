@@ -61,28 +61,9 @@ public class EditUnitOfMeasurementController {
     }
 
     public void buttonEditUnitOfMeasurement(ActionEvent actionEvent) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
-         /*   idIzmerenie = dataS.getIdIzerenie();
-
-
-            ResultSet rs =  statement.executeUpdate("Select * from public.izmerenie where id_izmerenie = '" + idIzmerenie + "';");
-
-            ObservableList<String> row = FXCollections.observableArrayList();
-            for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                row.add(rs.getString(i));
-            }
-            id_editName.setText(row.get(0));
-            System.out.println(row.get(0));
-            System.out.println(row.get(1));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-
             int rows = statement.executeUpdate("UPDATE public.izmerenie\n" +
                     "\tSET  naimenovanie='"+id_editName.getText()+"'" +"\n" +
                     "\tWHERE id_izmerenie='"+idIzmerenie+"' ;");

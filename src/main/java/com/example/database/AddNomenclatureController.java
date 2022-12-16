@@ -48,8 +48,9 @@ public class AddNomenclatureController {
     }
 
     public void ComboBoxNomenclature(){
+        DBConnection dbConnection = new DBConnection();
         //ObservableList<ObservableList> list = FXCollections.observableArrayList();
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.izmerenie");
             while(rs.next()){
@@ -90,12 +91,13 @@ public class AddNomenclatureController {
     }
 
     public void ButtonAdd(ActionEvent actionEvent) {
+        DBConnection dbConnection = new DBConnection();
         GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
 
         str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
         String idIzmerenie = id_LIST.get(Integer.parseInt(str));
      //   System.out.println();
-          try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+          try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka",  dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("INSERT INTO public.nomenklatyra(naimenovanie, id_izmerenie, price) VALUES('" + id_name.getText() + "','" + idIzmerenie + "', '" + id_price.getText() + "')");
         statement.close();

@@ -53,6 +53,7 @@ public class EditTableWarehouseController {
 
     @FXML
     void ButtonEdit(ActionEvent event) {
+        DBConnection dbConnection = new DBConnection();
         GetWareh = String.valueOf(id_comboBoxWarehouse.getSelectionModel().getSelectedIndex());
         GetNom = String.valueOf(id_comboBoxNomenclature.getSelectionModel().getSelectedIndex());
         strWareh = String.valueOf(wareh_LIST.indexOf(wareh_LIST.get(Integer.parseInt(GetWareh))));
@@ -60,7 +61,7 @@ public class EditTableWarehouseController {
         String idWarehouse = id_LISTWareh.get(Integer.parseInt(strWareh));
         String idNomenclature = id_LISTNom.get(Integer.parseInt(strNom));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.tovar_cklad SET  id_cklad= '"+idWarehouse+"',id_nomenklatyra = '"+idNomenclature+"', kolichestvo_cklad = '"+id_amount.getText()+"' WHERE id_tovar_cklad='"+idNomenclatureWarehouse+"' ;");
         } catch (SQLException throwables) {// id_editName.getText()   Peremennie.id
@@ -101,7 +102,8 @@ public class EditTableWarehouseController {
     }
 
     public void ComboBoxWarehouse(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.cklad");
             while(rs.next()){
@@ -154,7 +156,8 @@ public class EditTableWarehouseController {
     }
 
     public void ComboBoxNomenclature(){
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.nomenklatyra");
             while(rs.next()){

@@ -52,11 +52,12 @@ public class EditNomenclatureController {
 
     @FXML
     void ButtonEdit(ActionEvent event) {
+        DBConnection dbConnection = new DBConnection();
         GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
         str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
         String idIzmerenie = id_LIST.get(Integer.parseInt(str));
 
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             int rows = statement.executeUpdate("UPDATE public.nomenklatyra SET  naimenovanie= '"+id_name.getText()+"', id_izmerenie= '"+idIzmerenie+"', price= '"+id_price.getText()+"' WHERE id_nomenklatyra='"+idNomenclature+"' ;");
         statement.close();
@@ -97,47 +98,12 @@ public class EditNomenclatureController {
 
     }
 
-  /*
-public void getCB(){
-    try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
-        Statement statement = con.createStatement();
-        ResultSet rs = statement.executeQuery("Select * from public.izmerenie where id_izmerenie ='"+dataS.getIdIzerenieFromNom()+"';");
-        while(rs.next()){
-            ObservableList<String> listRow = FXCollections.observableArrayList();
-            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                listRow.add(rs.getString(i));
-            }
 
-            nom = listRow.get(1);
-
-            listgetNomfromCB = new ArrayList<>(Collections.singleton(nom));
-            listgetNomfromCB.add(nom);
-
-            listgetNomfromCB.indexOf(dataS.getIdIzerenieFromNom());
-
-
-
-         //   id_comboBoxUnit.getItems().addAll(listUnit);
-
-
-          //  id_comboBoxUnit.getSelectionModel().select(0);
-           // GetValue = String.valueOf(id_comboBoxUnit.getSelectionModel().getSelectedIndex());
-
-        //    str = String.valueOf(NAM_LIST.indexOf(NAM_LIST.get(Integer.parseInt(GetValue))));
-        }System.out.println("ВЫбранный элемент "+  listgetNomfromCB);
-     //   System.out.println(NAM_LIST.get(0));
-      //  System.out.println(id_LIST.get(Integer.parseInt(str)));
-
-       // str1 = dataS.getIdIzerenieFromNom();
-       // id_comboBoxUnit.getSelectionModel().select(Integer.parseInt(str1));
-    } catch (SQLException throwables) {
-        throwables.printStackTrace();
-    }
-}*/
 
     public void ComboBoxNomenclature(){
+        DBConnection dbConnection = new DBConnection();
         //ObservableList<ObservableList> list = FXCollections.observableArrayList();
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("Select * from public.izmerenie");
             while(rs.next()){

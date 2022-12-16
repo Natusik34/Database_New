@@ -72,44 +72,6 @@ public class UnitOfMeasurementPageController {
     @FXML
     protected void initialize() {
 
-       /* data = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from izmerenie");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableUnitOfMeasurement.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                data.add(row);
-            }
-            id_tableUnitOfMeasurement.setItems(data);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-/*
-        id_search.getOnAction(e->{
-            id_tableUnitOfMeasurement.getColumns().clear();
-
-            UpdateTable("Select public.izmerenie  where naimenovanie like \'%"+id_search.getText()+"%\' ");
-        });*/
-
         UpdateTable();
     }
 
@@ -208,7 +170,8 @@ public class UnitOfMeasurementPageController {
     }
 
     public void showEdit(ActionEvent actionEvent) {
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
+        DBConnection dbConnection = new DBConnection();
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka",  dbConnection.username, dbConnection.password)){
             Statement statement = con.createStatement();
 
             int rows = statement.executeUpdate("Select FROM public.izmerenie WHERE id_izmerenie = '" + Peremennie.id + "'");
@@ -298,38 +261,7 @@ public class UnitOfMeasurementPageController {
     } catch (IOException e) {
         e.printStackTrace();
     }
-/*
-        id_search.getOnAction(e->{
-            id_tableUnitOfMeasurement.getColumns().clear();
 
-            UpdateTable("Select public.izmerenie  where naimenovanie like \'%"+id_search.getText()+"%\' ");
-        });
-
-       // DBConnection con = new DBConnection();
-       // con.gettable(id_tableUnitOfMeasurement, "Select public.cklad  where naimenovanie like '%"+id_search.getText()+"%' ")
-    /*    try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("Select public.izmerenie where naimenovanie like '%"+id_search.getText()+"%' ");
-    } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }*/
-/*
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova"))
-        {
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT FROM public.cklad WHERE ID LIKE ?% ");
-            ps.setString(1, this.search.getText());
-
-            ResultSet rs = conn.createStatement().executeQuery(String.valueOf(ps));
-            while (rs.next())
-            {
-                this.data.add(new StudentData(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
-            }
-        }
-        catch (SQLException e)
-        {
-            System.out.println(e);
-        }*/
     }
 }
 
