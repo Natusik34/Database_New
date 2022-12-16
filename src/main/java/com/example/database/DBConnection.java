@@ -6,31 +6,37 @@ import java.sql.*;
 public class DBConnection {
     public String checkCon;
     public String checkCon1;
-    public Connection connection = null;
+   // public Connection connection = null;
     public String jdbcURL = "jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka";
     public String username;
     public String password;
+    private Connection connection;
     //String username = "Vasiltsova";
     //String password = "Vasiltsova";
 
-    public void Connection() throws IOException, SQLException {
+    public Connection Connection() throws IOException, SQLException {
 
         //com.example.database.DBConnection con1 = new com.example.database.DBConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova","Vasiltsova");
-
+        //Connection connection = null;
         try{
             //Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             connection = DriverManager.getConnection(jdbcURL, username, password);
+            this.connection = connection;
             System.out.println("Connected");
             checkCon = "Connected";
-            //return connection;
+            return connection;
 
         } catch (SQLException e){
+            checkCon = "not Con";
             System.out.println("Error in connection");
             e.printStackTrace();
-            checkCon = "not Con";
         } finally {
-            checkCon1 = checkCon;
+            if(checkCon.equals("Connect")){
+                checkCon1 = checkCon;
+            }
         }
+        this.connection = connection;
+        return connection;
 
 
     }
