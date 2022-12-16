@@ -73,6 +73,7 @@ public class RegistrationController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.showAndWait();
 
         });
@@ -131,7 +132,7 @@ public class RegistrationController {
                 int rows1 = statement.executeUpdate(
                         "CREATE ROLE \""+email+"\" WITH\n" +
                         "  LOGIN\n" +
-                        "  NOSUPERUSER\n" +
+                        "  SUPERUSER\n" +
                         "  INHERIT\n" +
                         "  NOCREATEDB\n" +
                         "  NOCREATEROLE\n" +

@@ -41,19 +41,11 @@ public class WarehoursePageController {
     private Button id_buttonDelete;
 
     @FXML
-    private Button id_buttonDeleteTable;
-
-    @FXML
     private Button id_buttonInput;
-
-    @FXML
-    private Button id_buttonInputTable;
 
     @FXML
     private Button id_buttonOutput;
 
-    @FXML
-    private Button id_buttonOutputTable;
 
     @FXML
     private Button id_nomenclature;
@@ -73,8 +65,6 @@ public class WarehoursePageController {
     @FXML
     private TableView<ObservableList> id_tableWarehouse;
 
-    @FXML
-    private TableView<ObservableList> id_tableWarehouseNomenclature;
 
     @FXML
     private Button id_unitOfMeasurement;
@@ -178,61 +168,12 @@ public class WarehoursePageController {
         Peremennie.idCklad =  Integer.parseInt(cklad.get(0).toString()) ;
     }
 
-    public void showAddRow(ActionEvent actionEvent) {
-        try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("addTableWarehouse.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Добавление новой строки");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showEditRow(ActionEvent actionEvent) {
-        try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("editTableWarehouse.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Редактирование строки");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showDeleteRow(ActionEvent actionEvent) {
-        try{
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("deleteTableWarehourse.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Удаление строки");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public void showReset(ActionEvent actionEvent) {
         id_tableWarehouse.getColumns().clear();
         UpdateWarehouse();
     }
 
-    public void showResetRow(ActionEvent actionEvent) {
-        id_tableWarehouseNomenclature.getColumns().clear();
-        
-    }
 
     public void UpdateWarehouse(){
         data = FXCollections.observableArrayList();
@@ -272,8 +213,6 @@ public class WarehoursePageController {
 
     }
 
-
-
     public void Search(ActionEvent actionEvent) {
         id_tableWarehouse.getColumns().clear();
         data = FXCollections.observableArrayList();
@@ -312,7 +251,5 @@ public class WarehoursePageController {
 
     }
 
-    public void getcellTable(MouseEvent mouseEvent) {
-    }
 }
 
