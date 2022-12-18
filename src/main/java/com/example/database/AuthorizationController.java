@@ -61,7 +61,6 @@ public class AuthorizationController {
     }
 
     public void Authorization(){
-
         DBConnection con = new DBConnection();
         con.username=id_login.getText();
         con.password=id_password.getText();

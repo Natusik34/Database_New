@@ -139,6 +139,7 @@ public class SalePageController {
             stage.setTitle("Добавление новой записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -154,6 +155,7 @@ public class SalePageController {
             stage.setTitle("Редактирование записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -169,6 +171,7 @@ public class SalePageController {
             stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -210,6 +213,7 @@ public class SalePageController {
             stage.setTitle("Добавление новой строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -225,6 +229,7 @@ public class SalePageController {
             stage.setTitle("Редактирование строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -240,6 +245,7 @@ public class SalePageController {
             stage.setTitle("Удаление строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {

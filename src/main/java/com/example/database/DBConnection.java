@@ -8,8 +8,8 @@ public class DBConnection {
     public String checkCon1;
    // public Connection connection = null;
     public String jdbcURL = "jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka";
-    public  String username;
-    public  String password;
+    public static String username;
+    public static String password;
     private static Connection connection;
     //String username = "Vasiltsova";
     //String password = "Vasiltsova";

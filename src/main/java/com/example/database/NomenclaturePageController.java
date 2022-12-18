@@ -85,6 +85,7 @@ public class NomenclaturePageController {
             stage.setTitle("Добавление новой записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -100,6 +101,7 @@ public class NomenclaturePageController {
             stage.setTitle("Редактирование записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -150,6 +152,7 @@ public class NomenclaturePageController {
             stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {

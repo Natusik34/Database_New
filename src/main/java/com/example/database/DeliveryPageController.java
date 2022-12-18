@@ -136,6 +136,7 @@ public class DeliveryPageController {
             stage.setTitle("Редактирование записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -151,6 +152,7 @@ public class DeliveryPageController {
             stage.setTitle("Добавление новой записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -180,6 +182,7 @@ public class DeliveryPageController {
             stage.setTitle("Удаление записи");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -209,6 +212,7 @@ public class DeliveryPageController {
             stage.setTitle("Редактирование строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -224,6 +228,7 @@ public class DeliveryPageController {
             stage.setTitle("Добавление новой строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -239,6 +244,7 @@ public class DeliveryPageController {
             stage.setTitle("Удаление строки");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.setResizable(false);
             stage.show();
 
         } catch (IOException e) {
@@ -360,42 +366,6 @@ public class DeliveryPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void SearchTable(ActionEvent actionEvent) {
-        id_tableDeliveryNomenclature.getColumns().clear();
-        dataTable = FXCollections.observableArrayList();
-        try{
-            DBConnection con = new DBConnection();
-            con.Connection();
-            ResultSet rs = con.gettable("Select * from nomenklatyra_postavka  where id_postavka like '"+id_searchTable.getText()+"%'");
-            for(int i = 1; i < rs.getMetaData().getColumnCount(); i++){
-                final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-
-
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                id_tableDeliveryNomenclature.getColumns().addAll(col);
-            }
-
-            while(rs.next()){
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for( int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
-                    row.add(rs.getString(i));
-                }
-                dataTable.add(row);
-            }
-            id_tableDeliveryNomenclature.setItems(dataTable);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }
 
