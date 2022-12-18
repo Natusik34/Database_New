@@ -17,7 +17,7 @@
                   <Pane layoutY="112.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: A59B9B;" />
                   <Pane layoutY="176.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_nomenclature" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
+                        <Button fx:id="id_nomenclature" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonNomenclature" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Номенклатура" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -26,7 +26,7 @@
                   </Pane>
                   <Pane layoutY="220.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_supplier" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставщик" textFill="WHITE">
+                        <Button fx:id="id_supplier" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonSupplier" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставщик" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -35,7 +35,7 @@
                   </Pane>
                   <Pane layoutY="262.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_supply" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставка" textFill="WHITE">
+                        <Button fx:id="id_supply" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonSupply" prefHeight="31.0" prefWidth="207.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Поставка" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -49,7 +49,7 @@
                   </Label>
                   <Pane layoutY="305.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_sale" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
+                        <Button fx:id="id_sale" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonSale" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Продажа" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -58,7 +58,7 @@
                   </Pane>
                   <Pane layoutY="346.0" prefHeight="29.0" prefWidth="207.0" style="-fx-background-color: #847272;">
                      <children>
-                        <Button fx:id="id_warehouse" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
+                        <Button fx:id="id_warehouse" layoutY="-1.0" mnemonicParsing="false" onAction="#buttonWarehouse" prefHeight="31.0" prefWidth="206.0" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Склад" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>

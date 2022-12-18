@@ -336,7 +336,7 @@ public class SalePageController {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT naimenovanie, sum(kolichestvo_prodasha) FROM public.nomenklatyra_prodasha\n" +
                     "JOIN public.nomenklatyra ON public.nomenklatyra_prodasha.id_nomenklatyra = public.nomenklatyra.id_nomenklatyra\n" +
-                    "GROUP BY naimenovanie, kolichestvo_prodasha;");
+                    "GROUP BY naimenovanie;");
             while(rs.next()){
                 ObservableList<String> row = FXCollections.observableArrayList();
                 for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
