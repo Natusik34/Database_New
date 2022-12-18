@@ -15,9 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AuthorizationController {
@@ -47,24 +49,6 @@ public class AuthorizationController {
 
     @FXML
     void initialize() {
-      /*  id_registration.setOnAction(event -> {
-            id_registration.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("registration.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-        });*/
 
         id_entrance.setOnAction(event -> {
 
@@ -77,7 +61,7 @@ public class AuthorizationController {
     }
 
     public void Authorization(){
-        boolean UserInOnOff = false;
+
         DBConnection con = new DBConnection();
         con.username=id_login.getText();
         con.password=id_password.getText();
@@ -87,7 +71,7 @@ public class AuthorizationController {
             e.printStackTrace();
             System.out.println("Error on Building Data");
         }
-        if(con.checkCon.equals("Connected")){
+        if(con.checkCon.equals("Connected")) {
             id_entrance.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("workingPage.fxml"));
@@ -103,30 +87,30 @@ public class AuthorizationController {
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.showAndWait();
+        }else{ getWarning("Ошибка", "Неверный логин или пароль!!!");}
         }
-    }
-/*
-    public void openNewScene(String window) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(window));
 
-        Parent root1 = null;
-        try {
-            root1 = (Parent) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        // stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("Hello Airline");
-        stage.setScene(new Scene(root1));
-        stage.setResizable(false);
-        stage.show();
-    }*/
 
     @FXML
     protected void ButtonRegistration() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
         window = (Stage) id_registration.getScene().getWindow();
         window.setScene(new Scene(root));
+    }
+
+    public void getWarning(String Head, String body){
+        Stage stage = (Stage) id_entrance.getScene().getWindow();
+
+        Alert.AlertType type = Alert.AlertType.WARNING;
+        Alert alert = new Alert(type,"");
+
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+
+        alert.getDialogPane().setContentText(body);
+
+        alert.getDialogPane().setHeaderText(Head);
+
+        alert.showAndWait();
     }
 }
