@@ -24,6 +24,8 @@ import javax.mail.Session;
 
 public class RegistrationController {
 
+    Stage window;
+
     private final int min = 0;
     private final int max = 999999;
     private Random random = new Random();
@@ -58,7 +60,7 @@ public class RegistrationController {
 
     @FXML
     void initialize() {
-        id_avtoriz.setOnAction(event -> {
+      /*  id_avtoriz.setOnAction(event -> {
             id_avtoriz.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
@@ -76,7 +78,7 @@ public class RegistrationController {
             stage.setResizable(false);
             stage.showAndWait();
 
-        });
+        });*/
 
 
 
@@ -146,5 +148,12 @@ public class RegistrationController {
                 throwables.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    protected void ButtonAvtorization() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("authorization.fxml"));
+        window = (Stage) id_avtoriz.getScene().getWindow();
+        window.setScene(new Scene(root));
     }
 }

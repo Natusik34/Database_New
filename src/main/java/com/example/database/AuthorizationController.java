@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 public class AuthorizationController {
 
+    Stage window;
+
     String login;
     String password;
 
@@ -45,7 +47,7 @@ public class AuthorizationController {
 
     @FXML
     void initialize() {
-        id_registration.setOnAction(event -> {
+      /*  id_registration.setOnAction(event -> {
             id_registration.getScene().getWindow().hide();
 
             FXMLLoader loader = new FXMLLoader();
@@ -62,7 +64,7 @@ public class AuthorizationController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-        });
+        });*/
 
         id_entrance.setOnAction(event -> {
 
@@ -103,7 +105,7 @@ public class AuthorizationController {
             stage.showAndWait();
         }
     }
-
+/*
     public void openNewScene(String window) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(window));
 
@@ -119,5 +121,12 @@ public class AuthorizationController {
         stage.setScene(new Scene(root1));
         stage.setResizable(false);
         stage.show();
+    }*/
+
+    @FXML
+    protected void ButtonRegistration() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("registration.fxml"));
+        window = (Stage) id_registration.getScene().getWindow();
+        window.setScene(new Scene(root));
     }
 }

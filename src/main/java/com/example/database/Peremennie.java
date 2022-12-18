@@ -18,6 +18,8 @@ public class Peremennie {
 //склад
 public static int idCklad;
     public static String nameCklad;
+    public static int idNomWarehouse;
+    public static String amountWarehouse;
     //поставка
     public static int idDelivery;
     public static String nomNakDelivery;
@@ -43,11 +45,5 @@ public static int idNomenclatureDeliveryTable;
     public static String amountSale;
     public static String priceSale;
     public static String sumSale;
-    //товар на складе
-    public static int idTovarWarehouseTable;
-    public static int idWarehouseTable;
-    public static int idNomWarehouse;
-    public static String amountWarehouse;
-
 
 }

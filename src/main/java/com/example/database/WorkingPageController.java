@@ -14,14 +14,6 @@ import javafx.stage.Stage;
 
 public class WorkingPageController {
     Stage window;
-   /* @FXML
-    public void showNomenclature(ActionEvent actionEvent){
-        try {
-            Stage stage = new Stage();
-            stage.initOwner(MainWindow);
-
-        }
-    }*/
 
     @FXML
     private ResourceBundle resources;

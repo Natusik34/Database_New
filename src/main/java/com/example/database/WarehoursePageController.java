@@ -164,8 +164,10 @@ public class WarehoursePageController {
         dataS.setIdWarehouse(cklad.get(0).toString());
         //System.out.println(dataS.getIdIzerenie());
 
-        Peremennie.nameCklad = cklad.get(1).toString();
         Peremennie.idCklad =  Integer.parseInt(cklad.get(0).toString()) ;
+        Peremennie.nameCklad = cklad.get(1).toString();
+        Peremennie.idNomWarehouse =  Integer.parseInt(cklad.get(2).toString()) ;
+        Peremennie.amountWarehouse = cklad.get(3).toString();
     }
 
 

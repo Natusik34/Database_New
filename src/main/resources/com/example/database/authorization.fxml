@@ -33,7 +33,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="id_registration" layoutX="116.0" layoutY="292.0" mnemonicParsing="false" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Регистрация" textFill="#8f5858">
+            <Button fx:id="id_registration" layoutX="116.0" layoutY="292.0" mnemonicParsing="false" onAction="#ButtonRegistration" styleClass="buttonRegistration" stylesheets="@../../../style.css" text="Регистрация" textFill="#8f5858">
                <font>
                   <Font size="15.0" />
                </font>
