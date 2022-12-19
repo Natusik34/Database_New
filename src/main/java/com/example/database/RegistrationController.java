@@ -133,7 +133,7 @@ public class RegistrationController {
         String repeatPassword = id_repeatPassword.getText().trim();
 
         if(Objects.equals(Code, code) && password.equals(repeatPassword) && !password.equals("") && !repeatPassword.equals("")){
-            try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", dbConnection.username, dbConnection.password)){
+            try(Connection con = DriverManager.getConnection("jdbc:postgresql://46.229.214.241:5432/vasiltsova_awtozaprawka", "Vasiltsova", "Vasiltsova")){
                 Statement statement = con.createStatement();
                 int rows = statement.executeUpdate("Insert into public.users (mail, password) values ('"+email+"', '"+password+"')");
                 int rows1 = statement.executeUpdate(
